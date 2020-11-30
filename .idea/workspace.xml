@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5aa0c897-1731-4388-95a7-12f2720cdedf" name="Default Changelist" comment="" />
+    <list default="true" id="5aa0c897-1731-4388-95a7-12f2720cdedf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/RegisterPopup.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/RegisterPopup.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/methodsMixin.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/methodsMixin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/Hello.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Hello.vue" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,12 +18,16 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Vue Single File Component" />
         <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1kxhk9iib7Q2iZFwNkcsubKAioM" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -38,7 +50,8 @@
       <option name="presentableId" value="Default" />
       <updated>1606648290325</updated>
       <workItem from="1606648291440" duration="372000" />
-      <workItem from="1606659375326" duration="13478000" />
+      <workItem from="1606659375326" duration="14292000" />
+      <workItem from="1606712288072" duration="19364000" />
     </task>
     <servers />
   </component>
@@ -46,6 +59,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="438" y="183" key="#Notifications" timestamp="1606734660225">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="438" y="183" key="#Notifications/0.0.1366.728@0.0.1366.728" timestamp="1606734660225" />
     <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606648416197">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

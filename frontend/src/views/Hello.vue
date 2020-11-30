@@ -26,7 +26,11 @@
         <div style="margin: 10px 0px"></div>
         <TwitterButton clickEvent="toggleRegisterPage" h="40px" w="370px" br="25px" text="Kaydol" bgType="blue"></TwitterButton>
         <div style="margin: 10px 0px"></div>
-        <TwitterButton h="40px" w="370px" br="25px" text="Giriş yap" bgType="white"></TwitterButton>
+
+        <router-link to="/login">
+          <TwitterButton h="40px" w="370px" br="25px" text="Giriş yap" bgType="white"></TwitterButton>
+        </router-link>
+
       </div>
     </div>
   </div>

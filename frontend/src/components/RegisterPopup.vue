@@ -5,7 +5,7 @@
       <div class="popup-header">
         <TwitterButton clickEvent="toggleRegisterPage" h="30px" w="70px" br="15px" text="Geri" bgType="white"></TwitterButton>
         <i style="color: #1DA1F2;font-size: 30px" class="fab fa-twitter"></i>
-        <TwitterButton h="30px" w="70px" br="15px" text="İleri" bgType="blue"></TwitterButton>
+        <TwitterButton clickEvent="loginUser" h="30px" w="70px" br="15px" text="İleri" bgType="blue"></TwitterButton>
       </div>
 
       <div class="popup-content">
@@ -14,9 +14,15 @@
           <div>İsim</div>
           <input @focusout="focusOutEvent(0)" @focus="focusEvent(0)" type="text">
         </div>
+
+        <div class="custom-input">
+          <div>Şifre</div>
+          <input @focusout="focusOutEvent(1)" @focus="focusEvent(1)" type="password">
+        </div>
+
         <div class="custom-input">
           <div>E-posta</div>
-          <input @focusout="focusOutEvent(1)" @focus="focusEvent(1)" type="text">
+          <input @focusout="focusOutEvent(2)" @focus="focusEvent(2)" type="text">
         </div>
       </div>
 
@@ -33,16 +39,6 @@ export default {
   components:{
     TwitterButton
   },
-  methods:{
-    focusEvent(i){
-      document.querySelectorAll(".custom-input")[i].style.borderBottom = "2px solid #1da1f2"
-      document.querySelectorAll(".custom-input div")[i].style.color = "#1da1f2"
-    },
-    focusOutEvent(i){
-      document.querySelectorAll(".custom-input")[i].style.borderBottom = "2px solid #5b7083"
-      document.querySelectorAll(".custom-input div")[i].style.color = ""
-    }
-  }
 }
 </script>
 
