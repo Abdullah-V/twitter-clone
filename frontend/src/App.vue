@@ -13,6 +13,16 @@
         <label for="asd" class="search-icon"><i class="fas fa-search"></i></label>
         <input  id="asd" @focusout="searchInputFocusOutEvent()" @focus="searchInputFocusEvent()" type="text" class="search-input" placeholder="Search on twitter">
       </div>
+
+      <div class="who-to-follow">
+        <div class="title">Who to follow</div>
+        <div class="users-container">
+          <MiniUserProfile imgSrc="https://pbs.twimg.com/profile_images/1151410974240444416/yVvaD7hU_400x400.jpg" name="Recep Tayyip Erdoğan" username="@RTErdogan"></MiniUserProfile>
+          <MiniUserProfile imgSrc="https://pbs.twimg.com/profile_images/1317884017333723138/3gyjyuL2_400x400.jpg" name="Ilham Eliyev" username="@azpresident"></MiniUserProfile>
+
+        </div>
+        <div class="more">Show more</div>
+      </div>
     </div>
 
 
@@ -23,11 +33,13 @@
 <script>
 import { methodsMixin } from "@/methodsMixin";
 import Sidebar from "@/components/Sidebar";
+import MiniUserProfile from "@/components/MiniUserProfile";
 
 export default {
   mixins:[methodsMixin],
   components:{
     Sidebar,
+    MiniUserProfile
   },
   methods:{
     searchInputFocusEvent(){
@@ -70,6 +82,12 @@ export default {
   padding-top: 10px;
 }
 
+@media screen and (max-width: 1000px){
+  .right-section{
+    display: none;
+  }
+}
+
 .search-box{
   width: 86%;
   height: 40px;
@@ -98,5 +116,35 @@ export default {
   color: #98a5b1;
 }
 
+.who-to-follow{
+  margin-top: 50px;
+}
+
+.title,
+.more{
+  width: 86%;
+  height: 50px;
+  padding-left: 15px;
+  padding-top: 15px;
+  background: #F7F9FA;
+}
+
+.title{
+  color: black;
+  border-radius: 10px 10px 0px 0px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.more{
+  border-radius: 0px 0px 10px 10px;
+  color: #1DA1F2;
+  cursor: pointer;
+}
+
+.users-container{
+  height: auto;
+  width: 86%;
+}
 
 </style>
