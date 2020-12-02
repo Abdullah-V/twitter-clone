@@ -68,7 +68,7 @@ export default {
   /*margin-right: 25px;*/
 }
 
-img{
+.mini-user-profile-root img{
   width: 40px;
   height: 40px;
   border-radius: 20px;

@@ -40,7 +40,18 @@ export default {
   components:{
     Sidebar,
     MiniUserProfile
-  },
+},
+  // data(){
+  //   return{
+  //     hashtagRegex:/(?:(?<=\s)|^)#(\w*[A-Za-z_ğüşıöçĞÜŞİÖÇ]+\w*)/gi,
+  //     usernameRegex:/(?:(?<=\s)|^)@(\w*[A-Za-z_ğüşıöçĞÜŞİÖÇ]+\w*)/gi
+  //   }
+  // },
+  // mounted(){
+  //   var elemHTML = document.querySelectorAll(".tweet-text pre")[0].innerHTML
+  //   document.querySelectorAll(".tweet-text pre")[0].innerHTML = this.parseHashtag(elemHTML)
+  //   document.querySelectorAll(".tweet-text pre")[0].innerHTML = this.parseUsername(elemHTML)
+  // },
   methods:{
     searchInputFocusEvent(){
       document.querySelector(".search-box").style.border = "1px solid #1DA1F2"
@@ -49,8 +60,14 @@ export default {
     searchInputFocusOutEvent(){
       document.querySelector(".search-box").style.border = ""
       document.querySelector(".search-icon").style.color = ""
-    }
-  }
+    },
+    // parseHashtag(text){
+    //   return text.replace(this.hashtagRegex,"burda hashtag")
+    // },
+    // parseUsername(text){
+    //   return text.replace(this.usernameRegex,"burda username")
+    // },
+  },
 }
 </script>
 
@@ -85,6 +102,9 @@ export default {
 @media screen and (max-width: 1000px){
   .right-section{
     display: none;
+  }
+  .left-section{
+    padding-left: 0px;
   }
 }
 
@@ -140,6 +160,11 @@ export default {
   border-radius: 0px 0px 10px 10px;
   color: #1DA1F2;
   cursor: pointer;
+  transition: 200ms all;
+}
+
+.more:hover{
+  background: #EFF1F2;
 }
 
 .users-container{

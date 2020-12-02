@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5aa0c897-1731-4388-95a7-12f2720cdedf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/MiniUserProfile.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/MiniUserProfile.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Home.vue" afterDir="false" />
@@ -50,7 +50,9 @@
       <workItem from="1606648291440" duration="372000" />
       <workItem from="1606659375326" duration="14292000" />
       <workItem from="1606712288072" duration="20430000" />
-      <workItem from="1606800904652" duration="13071000" />
+      <workItem from="1606800904652" duration="14043000" />
+      <workItem from="1606820962958" duration="672000" />
+      <workItem from="1606883490694" duration="21553000" />
     </task>
     <servers />
   </component>
@@ -66,5 +68,13 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1606648416197" />
+    <state x="339" y="162" key="run.anything.popup" timestamp="1606889300999">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1606889300999" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1606908322546">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1606908322546" />
   </component>
 </project>
