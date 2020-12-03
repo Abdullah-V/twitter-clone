@@ -1,16 +1,28 @@
 <template>
-  <i class="actionButton" :style="styleObject" :class="iconClass"></i>
+  <i @click="handleAction()" class="actionButton" :style="styleObject" :class="iconClass"></i>
 </template>
 
 <script>
+import { methodsMixin } from "@/methodsMixin";
+
 export default {
-  props:["iconClass","defaultColor","hoverBg","hoverColor"],
+  mixins:[methodsMixin],
+  props:["action","iconClass","defaultColor","hoverBg","hoverColor"],
   computed:{
     styleObject(){
       return {
         '--defaultColor':this.defaultColor,
         '--hoverBg':this.hoverBg,
         '--hoverColor':this.hoverColor
+      }
+    }
+  },
+  methods:{
+    handleAction(){
+      try{
+        this[this.action]("deneme parametr action button component")
+      }catch (e){
+        console.log(`Error in ActionButton components method handler method:\n ${e}`)
       }
     }
   }
@@ -24,6 +36,8 @@ export default {
   padding: 15px;
   border-radius: 30px;
   transition: 200ms all;
+  cursor: pointer;
+  font-size: 18px;
 }
 
 .actionButton:hover{

@@ -12,8 +12,8 @@
     <NavItem text="Profile" path="#######" icon="far fa-user"></NavItem>
     <NavItem text="More" path="########" icon="fas fa-ellipsis-h"></NavItem>
       <div style="margin: 6px 0px"></div>
-    <TwitterButton class="tb" h="54px" w="240px" br="27px" text="Tweet" bgType="blue"></TwitterButton>
-    <button class="media-query-btn"><i class="fas fa-feather-alt"></i></button>
+    <TwitterButton click-event="toggleAddTweetPopup" class="tb" h="54px" w="240px" br="27px" text="Tweet" bgType="blue"></TwitterButton>
+    <TwitterButton click-event="toggleAddTweetPopup" h="60px" w="60px" br="30px" bg-type="blue" class="media-query-btn" text="<i class='fas fa-feather-alt'></i>"></TwitterButton>
 
   </div>
 </template>

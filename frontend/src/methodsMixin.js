@@ -14,6 +14,13 @@ export var methodsMixin = {
         loginUser(){
             this.$store.state.userId = "sdfsadfas"
             this.$router.push({path:"/home"})
+        },
+        sampleAction(obj){
+            console.log("a action from mixin")
+            console.log(`parametr in mixin: ${obj}`)
+        },
+        toggleAddTweetPopup(){
+            this.$store.state.addTweetPopup = !this.$store.state.addTweetPopup
         }
     }
 }

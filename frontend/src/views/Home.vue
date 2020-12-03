@@ -1,8 +1,16 @@
 <template>
-  <div class="home-root">
 
     <div class="main-section">
-      <Tweet
+      <div class="fixed-header-for-home">
+        <span class="fixed-header-text">Home</span>
+        <span>
+          <ActionButton action="sampleAction" icon-class="fas fa-home" default-color="#1DA1F2" hover-color="#1DA1F2" hover-bg="#E8F5FE"></ActionButton>
+        </span>
+      </div>
+      <div class="tweets">
+        <AddTweet add-tweet-user-img="https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png"></AddTweet>
+
+        <Tweet
           tweet-user-name="Selçuk Bayraktar"
           tweet-user-username="@Selcuk"
           tweet-created-date="11h"
@@ -66,6 +74,9 @@ Almanya’nın Akdeniz’de gemimize korsanca çıkmasına
 
 #MilliTeknolojiHamlesi"
           tweet-img="https://pbs.twimg.com/media/EoLHVqaXYAcny8X?format=jpg&name=large"
+          like-count="6.9k"
+          comment-count="946"
+          reply-count="2.1k"
       ></Tweet>
 
       <Tweet
@@ -106,38 +117,47 @@ Neyse... demekki insanların sadece Türkiye’den haber alma özgürlüğü var
           tweet-user-img="https://pbs.twimg.com/profile_images/1317884017333723138/3gyjyuL2_400x400.jpg"
           tweet-img="https://pbs.twimg.com/media/EoJzsN1XcAENVNZ?format=jpg&name=large"
       ></Tweet>
-
+      </div>
     </div>
 
-  </div>
 </template>
 
 <script>
 import Tweet from "@/components/Tweet";
+import ActionButton from "@/components/ActionButton";
+import AddTweet from "@/components/AddTweet";
 
 export default {
   components:{
-    Tweet
+    Tweet,
+    ActionButton,
+    AddTweet
   }
 }
 </script>
 
 <style scoped>
-
-.trial-div{
-  width: 100%;
-  height: 300px;
-  background: #fafafa;
+.fixed-header-for-home{
+  width: 51%;
+  background: white;
+  height: 55px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 4px 0px 15px;
   border: 1px solid #bfbfbf;
-  transition: 200ms all;
-  scroll-behavior: smooth;
+  position: fixed;
 }
 
-.trial-div:hover{
-  background: #ececec;
+.fixed-header-text{
+  font-size: 22px;
+  font-weight: bolder;
 }
 
-/*  #f1f1f1 */
+.tweets{
+  margin-top: 55px;
+}
 
 .main-section{
   width: 51%;
@@ -151,7 +171,7 @@ export default {
 }
 
 @media screen and (max-width: 1000px){
-  .main-section{
+  .main-section,.fixed-header-for-home{
     width: 76.5%;
   }
 }

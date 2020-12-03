@@ -22,10 +22,19 @@
         <img v-if="tweetImg" class="tweet-img" :src="tweetImg" alt="">
       </div>
       <div class="tweet-action-buttons">
-        <ActionButton iconClass="far fa-comment"  default-color="#5B7083" hover-color="#1DA1F2" hover-bg="#E8F5FE"></ActionButton>
-        <ActionButton iconClass="fas fa-retweet"  default-color="#5B7083" hover-color="#17BF63" hover-bg="#E0F2E8"></ActionButton>
+        <span class="with-count">
+          <ActionButton iconClass="far fa-comment"  default-color="#5B7083" hover-color="#1DA1F2" hover-bg="#E8F5FE"></ActionButton>
+          <span class="count">{{ replyCount }}</span>
+        </span>
+        <span class="with-count">
+          <ActionButton iconClass="fas fa-retweet"  default-color="#5B7083" hover-color="#17BF63" hover-bg="#E0F2E8"></ActionButton>
+          <span class="count">{{ commentCount }}</span>
+        </span>
+        <span class="with-count">
         <ActionButton iconClass="far fa-heart"  default-color="#5B7083" hover-color="#E0245E" hover-bg="#F5E1E7"></ActionButton>
-        <ActionButton iconClass="fas fa-share-square"  default-color="#5B7083" hover-color="#1DA1F2" hover-bg="#E8F5FE"></ActionButton>
+          <span class="count">{{ likeCount }}</span>
+        </span>
+        <ActionButton iconClass="fas fa-upload"  default-color="#5B7083" hover-color="#1DA1F2" hover-bg="#E8F5FE"></ActionButton>
 
       </div>
     </div>
@@ -37,7 +46,7 @@
 import ActionButton from "@/components/ActionButton";
 
 export default {
-  props:["tweetUserImg","tweetUserName","tweetUserUsername","tweetText","tweetImg","tweetCreatedDate"],
+  props:["replyCount","commentCount","likeCount","tweetUserImg","tweetUserName","tweetUserUsername","tweetText","tweetImg","tweetCreatedDate"],
   components:{
     ActionButton
   },
@@ -87,6 +96,15 @@ export default {
   font-size: 18px;
   white-space: pre-wrap;
   white-space: -moz-pre-wrap;
+}
+
+.count{
+  color: #5B7083;
+}
+
+.with-count{
+  display: flex;
+  align-items: center;
 }
 
 .tweet-root .tweet-section1 img{

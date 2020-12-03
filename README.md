@@ -20,11 +20,11 @@
     - [ ] Bookmarks page
     - [ ] Notifications page
     - [ ] Child pages menu for some parent pages
-    - [ ] Tweet component
+    - [x] Tweet component
     - [ ] Profile component for sidebar
-    - [ ] Add tweet container
-    - [ ] Add tweet popup
-    - [ ] Action button component
+    - [x] Add tweet component
+    - [x] Add tweet popup
+    - [x] Action button component
     - [ ] Routing
         - [ ] Route guards
         - [ ] Define all routes

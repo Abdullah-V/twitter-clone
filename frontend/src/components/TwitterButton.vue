@@ -1,6 +1,6 @@
 <template>
   <div class="twitter-button-root">
-    <button @click="methodHandler()" :class="[ isBlueBg ? 'blueBg' :'whiteBg' ]" :style="{ height: h, width: w, borderRadius: br,}">{{ text }}</button>
+    <button @click="methodHandler()" :class="[ isBlueBg ? 'blueBg' :'whiteBg' ]" :style="{ height: h, width: w, borderRadius: br,}" v-html="text"></button>
   </div>
 </template>
 

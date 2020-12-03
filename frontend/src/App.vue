@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-
+    <AddTweetPopup v-if="$store.state.addTweetPopup"></AddTweetPopup>
     <div class="left-section" v-if="$store.state.userId">
 
       <Sidebar></Sidebar>
@@ -15,10 +15,10 @@
       </div>
 
       <div class="who-to-follow">
-        <div class="title">Who to follow</div>
+        <div class="title"><span>Who to follow</span><ActionButton class="sett-acb" icon-class="fas fa-cog" default-color="#1DA1F2" hover-color="#1DA1F2" hover-bg="#E8F5FE"></ActionButton></div>
         <div class="users-container">
           <MiniUserProfile imgSrc="https://pbs.twimg.com/profile_images/1151410974240444416/yVvaD7hU_400x400.jpg" name="Recep Tayyip Erdoğan" username="@RTErdogan"></MiniUserProfile>
-          <MiniUserProfile imgSrc="https://pbs.twimg.com/profile_images/1317884017333723138/3gyjyuL2_400x400.jpg" name="Ilham Eliyev" username="@azpresident"></MiniUserProfile>
+          <MiniUserProfile imgSrc="https://pbs.twimg.com/profile_images/1317884017333723138/3gyjyuL2_400x400.jpg" name="İlham Əliyev" username="@azpresident"></MiniUserProfile>
 
         </div>
         <div class="more">Show more</div>
@@ -34,12 +34,16 @@
 import { methodsMixin } from "@/methodsMixin";
 import Sidebar from "@/components/Sidebar";
 import MiniUserProfile from "@/components/MiniUserProfile";
+import AddTweetPopup from "@/components/AddTweetPopup";
+import ActionButton from "@/components/ActionButton";
 
 export default {
   mixins:[methodsMixin],
   components:{
     Sidebar,
-    MiniUserProfile
+    MiniUserProfile,
+    AddTweetPopup,
+    ActionButton
 },
   // data(){
   //   return{
@@ -154,7 +158,13 @@ export default {
   border-radius: 10px 10px 0px 0px;
   font-size: 20px;
   font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 15px;
 }
+
 
 .more{
   border-radius: 0px 0px 10px 10px;
