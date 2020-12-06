@@ -3,6 +3,7 @@
 ### Start: 29 november 2020
 ### End: in progress...
 ### [==> . . . . . . . . . . .] 15%
+### Damn, because my computer is broken and my lessons are too many, my project is halfway.
 ## Todos:
 - [ ] Frontend
     - [x] TwitterButton component
