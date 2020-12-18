@@ -1,6 +1,33 @@
 <template>
   <div class="tweet-root">
 
+    <div v-if="tweetActionLVisible" class="tweet-actions-list">
+      <div class="tweet-actions-list-item">
+        <i class="fas fa-user-alt-slash"></i>
+        Unfollow {{ tweetUserUsername }}
+      </div>
+      <div class="tweet-actions-list-item">
+        <i class="far fa-list-alt"></i>
+        Add/remove from lists
+      </div>
+      <div class="tweet-actions-list-item">
+        <i class="fas fa-volume-mute"></i>
+        Mute {{ tweetUserUsername }}
+      </div>
+      <div class="tweet-actions-list-item">
+        <i class="fas fa-ban"></i>
+        Block {{ tweetUserUsername }}
+      </div>
+      <div class="tweet-actions-list-item">
+        <i class="fas fa-code"></i>
+        Embed tweet
+      </div>
+      <div class="tweet-actions-list-item">
+        <i class="fas fa-flag"></i>
+        Report tweet
+      </div>
+    </div>
+    
     <div class="tweet-section1">
       <img :src="tweetUserImg" alt="">
     </div>
@@ -13,7 +40,7 @@
           <span class="uc">&#8226;</span>
           <span class="created-date">{{ tweetCreatedDate }}</span>
         </span>
-        <span class="header-sec2"><ActionButton icon-class="fas fa-ellipsis-h" default-color="#5B7083" hover-color="#1DA1F2" hover-bg="#E8F5FE"></ActionButton></span>
+        <span @click="toggleTweetActionLVisible()" class="header-sec2"><ActionButton icon-class="fas fa-ellipsis-h" default-color="#5B7083" hover-color="#1DA1F2" hover-bg="#E8F5FE"></ActionButton></span>
       </div>
       <div class="tweet-content">
         <div class="tweet-text" v-if="tweetText">
@@ -52,14 +79,18 @@ export default {
   },
   data(){
     return{
-      hashtagRegex:/(?:(?<=\s)|^)#(\w*[A-Za-z_ğüşıöçĞÜŞİÖÇ]+\w*)/gi,
-      usernameRegex:/(?:(?<=\s)|^)@(\w*[A-Za-z_ğüşıöçĞÜŞİÖÇ]+\w*)/gi,
+      tweetActionLVisible:false,
     }
   },
   mounted() {
-    var r = this.tweetText.replaceAll(this.hashtagRegex,"<a href=" + "'#$1'>#$1</a>")
-    r = r.replaceAll(this.usernameRegex,"<a href=" + "'#$1'>@$1</a>")
+    var r = this.tweetText.replaceAll(this.$store.state.hashtagRegex,"<a href=" + "'#$1'>#$1</a>")
+    r = r.replaceAll(this.$store.state.usernameRegex,"<a href=" + "'#$1'>@$1</a>")
     this.tweetText = r
+  },
+  methods:{
+    toggleTweetActionLVisible(){
+      this.tweetActionLVisible = !this.tweetActionLVisible
+    }
   }
 }
 </script>
@@ -157,5 +188,31 @@ export default {
   width: 80%;
 }
 
+
+.tweet-actions-list{
+  width: 210px;
+  height: auto;
+  background:white;
+  position:absolute;
+  right: 70px;
+}
+
+.tweet-actions-list-item{
+  height: 50px;
+  width: 100%;
+  padding: 0px 8px;
+  display: flex;
+  align-items: center;
+  transition: 300ms all;
+}
+
+.tweet-actions-list-item i{
+  margin: 0px 6px;
+  color: #5B7083;
+}
+
+.tweet-actions-list-item:hover{
+  background: #ececec;
+}
 
 </style>

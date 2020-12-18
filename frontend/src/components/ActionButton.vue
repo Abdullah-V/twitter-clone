@@ -1,5 +1,7 @@
 <template>
-  <i @click="handleAction()" class="actionButton" :style="styleObject" :class="iconClass"></i>
+  <span>
+    <i @click="handleAction()" class="actionButton" :style="styleObject" :class="iconClass"></i>
+  </span>
 </template>
 
 <script>
@@ -44,5 +46,6 @@ export default {
   background: var(--hoverBg);
   color: var(--hoverColor);
 }
+
 
 </style>

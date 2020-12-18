@@ -9,7 +9,7 @@
     <NavItem text="Messages" path="####" icon="far fa-envelope"></NavItem>
     <NavItem text="Bookmarks" path="#####" icon="far fa-bookmark"></NavItem>
     <NavItem text="Lists" path="######" icon="far fa-list-alt"></NavItem>
-    <NavItem text="Profile" path="#######" icon="far fa-user"></NavItem>
+    <NavItem text="Profile" path="/Selcuk" icon="far fa-user"></NavItem>
     <NavItem text="More" path="########" icon="fas fa-ellipsis-h"></NavItem>
       <div style="margin: 6px 0px"></div>
     <TwitterButton click-event="toggleAddTweetPopup" class="tb" h="54px" w="240px" br="27px" text="Tweet" bgType="blue"></TwitterButton>

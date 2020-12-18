@@ -16,11 +16,11 @@
     - [x] Right container
     - [x] Components for right container
     - [x] All components responsive
-    - [ ] Fixed headers for pages
-    - [ ] Profile page
+    - [x] Fixed headers for pages
+    - [x] Profile page
     - [ ] Bookmarks page
     - [ ] Notifications page
-    - [ ] Child pages menu for some parent pages
+    - [x] Child pages menu for some parent pages
     - [x] Tweet component
     - [ ] Profile component for sidebar
     - [x] Add tweet component
@@ -32,6 +32,12 @@
         - [ ] Define all child routes
     - [ ] Socket support for realtime 
 - [ ] Backend
+    - [ ] Install modules
+      - [ ] Express
+      - [ ] Mongoose
+      - [ ] Cors
+      - [ ] Nodemon
+      - [ ] Body-parser
     - [ ] Express configurations
     - [ ] Mongoose configurations 
         - [ ] Create models

@@ -107,7 +107,7 @@ Oysa bunlar Gezi Terör eylemlerini sokak sokak canlı yayınlıyordu.
 
 Neyse... demekki insanların sadece Türkiye’den haber alma özgürlüğü varmış.
 
-İkiyüzlüğün adıdır çağdaşlık!"
+@dashersw İkiyüzlüğün adıdır çağdaşlık!"
           tweet-img="https://pbs.twimg.com/media/En-0rLkXYAUyrYX?format=jpg&name=medium"
       ></Tweet>
       <Tweet

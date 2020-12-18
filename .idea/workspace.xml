@@ -3,13 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="5aa0c897-1731-4388-95a7-12f2720cdedf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/ActionButton.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ActionButton.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Sidebar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Sidebar.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Tweet.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Tweet.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/TwitterButton.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/TwitterButton.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/methodsMixin.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/methodsMixin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/router/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Home.vue" afterDir="false" />
     </list>
@@ -37,11 +35,14 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -59,28 +60,18 @@
       <workItem from="1606820962958" duration="672000" />
       <workItem from="1606883490694" duration="22368000" />
       <workItem from="1606974554772" duration="13790000" />
+      <workItem from="1608145514155" duration="137000" />
+      <workItem from="1608145766496" duration="258000" />
+      <workItem from="1608146047763" duration="118000" />
+      <workItem from="1608146194644" duration="1517000" />
+      <workItem from="1608203636148" duration="1604000" />
+      <workItem from="1608274067047" duration="11616000" />
+      <workItem from="1608287886944" duration="928000" />
+      <workItem from="1608290501211" duration="9162000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="438" y="183" key="#Notifications" timestamp="1606734660225">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="438" y="183" key="#Notifications/0.0.1366.728@0.0.1366.728" timestamp="1606734660225" />
-    <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606648416197">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1606648416197" />
-    <state x="339" y="162" key="run.anything.popup" timestamp="1606889300999">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1606889300999" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1606908322546">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1606908322546" />
   </component>
 </project>
