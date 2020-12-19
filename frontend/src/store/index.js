@@ -11,13 +11,15 @@ export default new Vuex.Store({
     hashtagRegex:/(?:(?<=\s)|^)#(\w*[A-Za-z_ğüşıöçĞÜŞİÖÇ]+\w*)/gi,
     usernameRegex:/(?:(?<=\s)|^)@(\w*[A-Za-z_ğüşıöçĞÜŞİÖÇ]+\w*)/gi,
 
+    zoomedImage:"",
+
     userForProfile:{
       name:"Selcuk Bayraktar",
       username:"Selcuk",
       joined:"January 24",
       mail:"selcuk@bayraktar.com",
       location:"Istanbul",
-      website:"baykar.com",
+      website:"baykarsavunma.com",
       bio:"@Baykar_Savunma" +
           " Teknik Müdür/CTO\n" +
           "@T3Vakfi" +

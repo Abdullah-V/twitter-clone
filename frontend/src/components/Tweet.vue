@@ -27,12 +27,44 @@
         Report tweet
       </div>
     </div>
+
+
+    <div class="retweet-actions-list" v-if="retweetActionVisible">
+      <div class="tweet-actions-list-item">
+        <i class="fas fa-retweet"></i>
+        Retweet
+      </div>
+      <div class="tweet-actions-list-item">
+        <i class="fas fa-pencil-alt"></i>
+        Quote tweet
+      </div>
+    </div>
+
+
+    <div class="action-list3" v-if="actionList3">
+      <div class="tweet-actions-list-item">
+        <i class="far fa-envelope"></i>
+        Send via direct message
+      </div>
+      <div class="tweet-actions-list-item">
+        <i class="far fa-bookmark"></i>
+        Add tweet to bookmarks
+      </div>
+      <div class="tweet-actions-list-item">
+        <i class="fas fa-link"></i>
+        Copy link to tweet
+      </div>
+    </div>
+
+
+
+
     
-    <div class="tweet-section1">
+    <div class="tweet-section1" @click.stop="rootClick()">
       <img :src="tweetUserImg" alt="">
     </div>
 
-    <div class="tweet-section2">
+    <div class="tweet-section2" @click.stop="rootClick()">
       <div class="tweet-section2-header">
         <span class="header-sec1">
           <span class="name">{{ tweetUserName }}</span>
@@ -40,20 +72,20 @@
           <span class="uc">&#8226;</span>
           <span class="created-date">{{ tweetCreatedDate }}</span>
         </span>
-        <span @click="toggleTweetActionLVisible()" class="header-sec2"><ActionButton icon-class="fas fa-ellipsis-h" default-color="#5B7083" hover-color="#1DA1F2" hover-bg="#E8F5FE"></ActionButton></span>
+        <span @click.stop="toggleTweetActionLVisible()" class="header-sec2"><ActionButton icon-class="fas fa-ellipsis-h" default-color="#5B7083" hover-color="#1DA1F2" hover-bg="#E8F5FE"></ActionButton></span>
       </div>
       <div class="tweet-content">
         <div class="tweet-text" v-if="tweetText">
           <pre v-html="tweetText"></pre>
         </div>
-        <img v-if="tweetImg" class="tweet-img" :src="tweetImg" alt="">
+        <img @click.stop="makeZoomedImage()" v-if="tweetImg" class="tweet-img" :src="tweetImg" alt="">
       </div>
       <div class="tweet-action-buttons">
         <span class="with-count">
           <ActionButton iconClass="far fa-comment"  default-color="#5B7083" hover-color="#1DA1F2" hover-bg="#E8F5FE"></ActionButton>
           <span class="count">{{ replyCount }}</span>
         </span>
-        <span class="with-count">
+        <span class="with-count" @click.stop="toggleRetweetActionVisible()">
           <ActionButton iconClass="fas fa-retweet"  default-color="#5B7083" hover-color="#17BF63" hover-bg="#E0F2E8"></ActionButton>
           <span class="count">{{ commentCount }}</span>
         </span>
@@ -61,8 +93,9 @@
         <ActionButton iconClass="far fa-heart"  default-color="#5B7083" hover-color="#E0245E" hover-bg="#F5E1E7"></ActionButton>
           <span class="count">{{ likeCount }}</span>
         </span>
-        <ActionButton iconClass="fas fa-upload"  default-color="#5B7083" hover-color="#1DA1F2" hover-bg="#E8F5FE"></ActionButton>
-
+        <span @click.stop="toggleActionList3()">
+          <ActionButton iconClass="fas fa-upload"  default-color="#5B7083" hover-color="#1DA1F2" hover-bg="#E8F5FE"></ActionButton>
+        </span>
       </div>
     </div>
 
@@ -80,6 +113,8 @@ export default {
   data(){
     return{
       tweetActionLVisible:false,
+      retweetActionVisible:false,
+      actionList3:false,
     }
   },
   mounted() {
@@ -89,7 +124,27 @@ export default {
   },
   methods:{
     toggleTweetActionLVisible(){
+      this.actionList3 = false
+      this.retweetActionVisible = false
       this.tweetActionLVisible = !this.tweetActionLVisible
+      console.log('three dot action clicked')
+    },
+    toggleRetweetActionVisible(){
+      this.actionList3 = false
+      this.tweetActionLVisible = false
+      this.retweetActionVisible = !this.retweetActionVisible
+    },
+    toggleActionList3(){
+      this.retweetActionVisible = false
+      this.tweetActionLVisible = false
+      this.actionList3 = !this.actionList3
+    },
+    makeZoomedImage(){
+      this.$store.state.zoomedImage = this.tweetImg
+      console.log('tweet image clicked')
+    },
+    rootClick(){
+      console.log('tweet root clicked')
     }
   }
 }
@@ -110,6 +165,7 @@ export default {
   border-left: 1px solid #bfbfbf;
   transition: 200ms all;
   cursor: pointer;
+  position: relative;
 }
 
 .tweet-root:hover{
@@ -214,5 +270,24 @@ export default {
 .tweet-actions-list-item:hover{
   background: #ececec;
 }
+
+.retweet-actions-list{
+  width: 150px;
+  height: auto;
+  background: white;
+  position: absolute;
+  left: 70px;
+  bottom: 60px;
+}
+
+.action-list3{
+  width: 240px;
+  height: auto;
+  background: white;
+  position: absolute;
+  right: 183px;
+  bottom: 60px;
+}
+
 
 </style>

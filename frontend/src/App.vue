@@ -1,8 +1,18 @@
 <template>
   <div id="app">
-    <AddTweetPopup v-if="$store.state.addTweetPopup"></AddTweetPopup>
-    <div class="left-section" v-if="$store.state.userId">
 
+    <div class="image-zoomer" v-if="$store.state.zoomedImage">
+      <span @click="closeZoomedImage()" class="image-close-icon">
+        <i class="fas fa-times"></i>
+      </span>
+      <img style="width: 90%;height: 96%;border-radius: 25px" :src="$store.state.zoomedImage" alt="">
+    </div>
+
+
+
+    <AddTweetPopup v-if="$store.state.addTweetPopup"></AddTweetPopup>
+
+    <div class="left-section" v-if="$store.state.userId">
       <Sidebar></Sidebar>
     </div>
 
@@ -45,17 +55,6 @@ export default {
     AddTweetPopup,
     ActionButton
 },
-  // data(){
-  //   return{
-  //     hashtagRegex:/(?:(?<=\s)|^)#(\w*[A-Za-z_ğüşıöçĞÜŞİÖÇ]+\w*)/gi,
-  //     usernameRegex:/(?:(?<=\s)|^)@(\w*[A-Za-z_ğüşıöçĞÜŞİÖÇ]+\w*)/gi
-  //   }
-  // },
-  // mounted(){
-  //   var elemHTML = document.querySelectorAll(".tweet-text pre")[0].innerHTML
-  //   document.querySelectorAll(".tweet-text pre")[0].innerHTML = this.parseHashtag(elemHTML)
-  //   document.querySelectorAll(".tweet-text pre")[0].innerHTML = this.parseUsername(elemHTML)
-  // },
   methods:{
     searchInputFocusEvent(){
       document.querySelector(".search-box").style.border = "1px solid #1DA1F2"
@@ -65,12 +64,9 @@ export default {
       document.querySelector(".search-box").style.border = ""
       document.querySelector(".search-icon").style.color = ""
     },
-    // parseHashtag(text){
-    //   return text.replace(this.hashtagRegex,"burda hashtag")
-    // },
-    // parseUsername(text){
-    //   return text.replace(this.usernameRegex,"burda username")
-    // },
+    closeZoomedImage(){
+      this.$store.state.zoomedImage = ""
+    }
   },
 }
 </script>
@@ -180,6 +176,40 @@ export default {
 .users-container{
   height: auto;
   width: 86%;
+}
+
+.image-zoomer{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  left: 0px;
+  top: 0px;
+  background: rgba(0,0,0,.5);
+  z-index: 999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-close-icon i{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: white;
+  background: rgba(0,0,0,.6);
+  border-radius: 20px;
+  transition: 100ms all;
+  font-size: 20px;
+}
+
+.image-close-icon i:hover{
+  background: rgba(0,0,0,.3);
+
 }
 
 </style>

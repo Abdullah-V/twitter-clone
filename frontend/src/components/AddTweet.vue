@@ -55,7 +55,6 @@ export default {
   width: 90%;
   display: flex;
   flex-direction: column;
-  /*justify-content: center;*/
   align-items: center;
   padding-top: 10px;
 }

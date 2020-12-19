@@ -7,11 +7,11 @@
         <h5 class="user-tweet-count">2,300 tweet</h5>
       </span>
     </div>
-    <img class="banner-img" src="https://pbs.twimg.com/profile_banners/2271763025/1598131465/1500x500" alt="">
+    <img @click.stop="zoomedBannerImage()" class="banner-img" src="https://pbs.twimg.com/profile_banners/2271763025/1598131465/1500x500" alt="">
     <div class="profile-section">
       <div class="photo-and-buttons">
         <div class="profile-img">
-          <img src="https://pbs.twimg.com/profile_images/1155141513858433027/nJcIRDau_400x400.jpg" alt="">
+          <img @click="zoomedProfileImage()" src="https://pbs.twimg.com/profile_images/1155141513858433027/nJcIRDau_400x400.jpg" alt="">
         </div>
         <span class="profile-buttons">
           <TwitterButton h="40px" w="40px" br="20px" text="<i class='fas fa-ellipsis-h'></i>" bgType="white"></TwitterButton>
@@ -26,7 +26,7 @@
 
       <span class="some-info"><i class="fas fa-map-marker-alt"></i><span>Istanbul</span></span>
       <span class="some-info"><i class="fas fa-envelope"></i><a href="mailto:selcuk@bayraktar.com">selcuk@bayraktar.com</a></span>
-      <span class="some-info"><i class="fas fa-link"></i><a href="#">baykar.com</a></span>
+      <span class="some-info"><i class="fas fa-link"></i><a href="#">baykarsavunma.com</a></span>
       <span class="some-info"><i class="far fa-calendar-alt"></i><span>Joined January 24</span></span>
 
       <span class="f-and-f">
@@ -143,6 +143,12 @@ export default {
       }
       tabElems[j].style.color = "#1DA1F2"
       tabElems[j].style.borderBottom = "2px solid #1DA1F2"
+    },
+    zoomedProfileImage(){
+      this.$store.state.zoomedImage = this.$store.state.userForProfile.profileImg
+    },
+    zoomedBannerImage(){
+      this.$store.state.zoomedImage = this.$store.state.userForProfile.bannerImg
     }
   },
   created(){
@@ -194,6 +200,7 @@ export default {
 .banner-img{
   width: 100%;
   height: 200px;
+  cursor: pointer;
 }
 
 .profile-img{
@@ -205,6 +212,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .photo-and-buttons{
@@ -283,6 +291,7 @@ export default {
   width: 100%;
   height: 50px;
   display: flex;
+  color: #5B7083;
 }
 
 .a-profile-tab{

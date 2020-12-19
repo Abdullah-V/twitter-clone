@@ -1,9 +1,9 @@
 # MEVN stack twitter clone
 ### MEVN stack twitter clone.
 ### Start: 29 november 2020
+### NOTE: november 6 - novermber 17 my computer is broken and my lessons are too many, my project is halfway. 
 ### End: in progress...
-### [==> . . . . . . . . . . .] 15%
-### Damn, because my computer is broken and my lessons are too many, my project is halfway.
+### [=====> . . . . . .] 50%
 ## Todos:
 - [ ] Frontend
     - [x] TwitterButton component
@@ -24,43 +24,43 @@
     - [x] Tweet component
     - [ ] Profile component for sidebar
     - [x] Add tweet component
+    - [x] Toggle action list for tweet component  
     - [x] Add tweet popup
     - [x] Action button component
+    - [x] Image zoomer  
     - [ ] Routing
         - [ ] Route guards
         - [ ] Define all routes
         - [ ] Define all child routes
-    - [ ] Socket support for realtime 
+    - [ ] Backend Integration
 - [ ] Backend
     - [ ] Install modules
-      - [ ] Express
-      - [ ] Mongoose
-      - [ ] Cors
-      - [ ] Nodemon
-      - [ ] Body-parser
-    - [ ] Express configurations
-    - [ ] Mongoose configurations 
-        - [ ] Create models
-            - [ ] User model
-            - [ ] Tweet model
-        - [ ] Relationships
+      - [x] Express
+      - [x] Mongoose
+      - [x] Cors
+      - [x] Nodemon
+      - [x] Body-parser
+      - [ ] Socketio
+    - [x] Express configurations
+    - [x] Mongoose configurations 
+        - [x] Create models
+            - [x] User model
+            - [x] Tweet model
+        - [x] Relationships
     - [ ] Api
         - [ ] User operations api
         - [ ] Tweet operation api
     - [ ] Notifications for users
     - [ ] Bookmarks for users
     - [ ] Useful functions for apis
-        - [ ] Parsers
-            - [ ] Username parser
-            - [ ] Hashtag parser 
-        - [ ] Follow suggestion 
-    - [ ] Socket support for realtime 
+        - [ ] Follow suggestion
+- [ ] Socket support for realtime 
 
 ## Specifications:
-* Responsive
-* Its offering many functions of twitter
-* Fully handwritten css
-* Make by only one person
-* Make by a 16 years old when has only been dealing with computers and software for 6 months.
-* Do not "copy and paste" from anywhere
-* Made without any algorithm inspiration from anywhere
+* Responsive.
+* Its offering many functions of twitter.
+* **Fully handwritten** css.
+* Make by only one person.
+* Make by a 16 years old when has only been dealing with **computers and software for 6 months**.
+* **Do not "copy and paste"** from anywhere.
+* **Made without any algorithm inspiration** from anywhere.
