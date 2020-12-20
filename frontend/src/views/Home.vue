@@ -22,129 +22,130 @@
 
 #MilliTeknolojiHamlesi"
           tweet-img="https://pbs.twimg.com/media/EoLHVqaXYAcny8X?format=jpg&name=large"
+          :info-for-tweet="$store.state.tweets[0]"
       ></Tweet>
-        <Tweet
-            tweet-user-name="Abdurrahman Uzun"
-            tweet-user-username="@uzunabdurrahman
-"
-            tweet-created-date="Nov 30"
-            tweet-user-img="https://pbs.twimg.com/profile_images/1279006755637297156/XpQ-Jemo_400x400.jpg"
-            tweet-text="
-MİT tırları kumpasında FETÖ den yana taraf olanların, Can Dündar denen
-haini cansiperane savunanların
-bugün çıkıp
-Almanya’nın Akdeniz’de gemimize korsanca çıkmasına
-“kabul edilemez “diyor
-@asdsadsa Samimiyetinizi yesinler!!!"
-        ></Tweet>
-        <Tweet
-            tweet-user-name="İlham Əliyev "
-            tweet-user-username="@azpresident"
-            tweet-created-date="17h"
-            tweet-user-img="https://pbs.twimg.com/profile_images/1317884017333723138/3gyjyuL2_400x400.jpg"
-            tweet-img="https://pbs.twimg.com/media/EoJzsN1XcAENVNZ?format=jpg&name=large"
-        ></Tweet>
+<!--        <Tweet-->
+<!--            tweet-user-name="Abdurrahman Uzun"-->
+<!--            tweet-user-username="@uzunabdurrahman-->
+<!--"-->
+<!--            tweet-created-date="Nov 30"-->
+<!--            tweet-user-img="https://pbs.twimg.com/profile_images/1279006755637297156/XpQ-Jemo_400x400.jpg"-->
+<!--            tweet-text="-->
+<!--MİT tırları kumpasında FETÖ den yana taraf olanların, Can Dündar denen-->
+<!--haini cansiperane savunanların-->
+<!--bugün çıkıp-->
+<!--Almanya’nın Akdeniz’de gemimize korsanca çıkmasına-->
+<!--“kabul edilemez “diyor-->
+<!--@asdsadsa Samimiyetinizi yesinler!!!"-->
+<!--        ></Tweet>-->
+<!--        <Tweet-->
+<!--            tweet-user-name="İlham Əliyev "-->
+<!--            tweet-user-username="@azpresident"-->
+<!--            tweet-created-date="17h"-->
+<!--            tweet-user-img="https://pbs.twimg.com/profile_images/1317884017333723138/3gyjyuL2_400x400.jpg"-->
+<!--            tweet-img="https://pbs.twimg.com/media/EoJzsN1XcAENVNZ?format=jpg&name=large"-->
+<!--        ></Tweet>-->
 
-        <Tweet
-            tweet-user-name="Selçuk Bayraktar"
-            tweet-user-username="@Selcuk"
-            tweet-created-date="11h"
-            tweet-user-img="https://pbs.twimg.com/profile_images/1155141513858433027/nJcIRDau_400x400.jpg"
-            tweet-text="
-#BayraktarTB2 S/İHA
+<!--        <Tweet-->
+<!--            tweet-user-name="Selçuk Bayraktar"-->
+<!--            tweet-user-username="@Selcuk"-->
+<!--            tweet-created-date="11h"-->
+<!--            tweet-user-img="https://pbs.twimg.com/profile_images/1155141513858433027/nJcIRDau_400x400.jpg"-->
+<!--            tweet-text="-->
+<!--#BayraktarTB2 S/İHA-->
 
-7/24 devam eden uçuş eğitimlerinden...
+<!--7/24 devam eden uçuş eğitimlerinden...-->
 
-#MilliTeknolojiHamlesi"
-            tweet-img="https://pbs.twimg.com/media/EoLHVqaXYAcny8X?format=jpg&name=large"
-            like-count="6.9k"
-            comment-count="946"
-            reply-count="2.1k"
-        ></Tweet>
+<!--#MilliTeknolojiHamlesi"-->
+<!--            tweet-img="https://pbs.twimg.com/media/EoLHVqaXYAcny8X?format=jpg&name=large"-->
+<!--            like-count="6.9k"-->
+<!--            comment-count="946"-->
+<!--            reply-count="2.1k"-->
+<!--        ></Tweet>-->
 
-        <Tweet
-            tweet-user-name="Abdurrahman Uzun"
-            tweet-user-username="@uzunabdurrahman
-"
-            tweet-created-date="Nov 29"
-            tweet-user-img="https://pbs.twimg.com/profile_images/1279006755637297156/XpQ-Jemo_400x400.jpg"
-            tweet-text="
-Paris’te çarşı pazar karışık...ama CNN, BBC, France24 belgesel yayınlıyor...
-Oysa bunlar Gezi Terör eylemlerini sokak sokak canlı yayınlıyordu.
+<!--        <Tweet-->
+<!--            tweet-user-name="Abdurrahman Uzun"-->
+<!--            tweet-user-username="@uzunabdurrahman-->
+<!--"-->
+<!--            tweet-created-date="Nov 29"-->
+<!--            tweet-user-img="https://pbs.twimg.com/profile_images/1279006755637297156/XpQ-Jemo_400x400.jpg"-->
+<!--            tweet-text="-->
+<!--Paris’te çarşı pazar karışık...ama CNN, BBC, France24 belgesel yayınlıyor...-->
+<!--Oysa bunlar Gezi Terör eylemlerini sokak sokak canlı yayınlıyordu.-->
 
-Neyse... demekki insanların sadece Türkiye’den haber alma özgürlüğü varmış.
+<!--Neyse... demekki insanların sadece Türkiye’den haber alma özgürlüğü varmış.-->
 
-@asdasdas İkiyüzlüğün adıdır çağdaşlık!"
-            tweet-img="https://pbs.twimg.com/media/En-0rLkXYAUyrYX?format=jpg&name=medium"
-        ></Tweet>
-        <Tweet
-            tweet-user-name="İlham Əliyev "
-            tweet-user-username="@azpresident"
-            tweet-created-date="17h"
-            tweet-user-img="https://pbs.twimg.com/profile_images/1317884017333723138/3gyjyuL2_400x400.jpg"
-            tweet-img="https://pbs.twimg.com/media/EoJzsN1XcAENVNZ?format=jpg&name=large"
-        ></Tweet>
-      <Tweet
-          tweet-user-name="Abdurrahman Uzun"
-          tweet-user-username="@uzunabdurrahman
-"
-          tweet-created-date="Nov 30"
-          tweet-user-img="https://pbs.twimg.com/profile_images/1279006755637297156/XpQ-Jemo_400x400.jpg"
-          tweet-text="
-MİT tırları kumpasında FETÖ den yana taraf olanların, Can Dündar denen
-haini cansiperane savunanların
-bugün çıkıp
-Almanya’nın Akdeniz’de gemimize korsanca çıkmasına
-“kabul edilemez “diyor
-@asdsadsa Samimiyetinizi yesinler!!!"
-      ></Tweet>
-      <Tweet
-          tweet-user-name="İlham Əliyev "
-          tweet-user-username="@azpresident"
-          tweet-created-date="17h"
-          tweet-user-img="https://pbs.twimg.com/profile_images/1317884017333723138/3gyjyuL2_400x400.jpg"
-          tweet-img="https://pbs.twimg.com/media/EoJzsN1XcAENVNZ?format=jpg&name=large"
-      ></Tweet>
+<!--@asdasdas İkiyüzlüğün adıdır çağdaşlık!"-->
+<!--            tweet-img="https://pbs.twimg.com/media/En-0rLkXYAUyrYX?format=jpg&name=medium"-->
+<!--        ></Tweet>-->
+<!--        <Tweet-->
+<!--            tweet-user-name="İlham Əliyev "-->
+<!--            tweet-user-username="@azpresident"-->
+<!--            tweet-created-date="17h"-->
+<!--            tweet-user-img="https://pbs.twimg.com/profile_images/1317884017333723138/3gyjyuL2_400x400.jpg"-->
+<!--            tweet-img="https://pbs.twimg.com/media/EoJzsN1XcAENVNZ?format=jpg&name=large"-->
+<!--        ></Tweet>-->
+<!--      <Tweet-->
+<!--          tweet-user-name="Abdurrahman Uzun"-->
+<!--          tweet-user-username="@uzunabdurrahman-->
+<!--"-->
+<!--          tweet-created-date="Nov 30"-->
+<!--          tweet-user-img="https://pbs.twimg.com/profile_images/1279006755637297156/XpQ-Jemo_400x400.jpg"-->
+<!--          tweet-text="-->
+<!--MİT tırları kumpasında FETÖ den yana taraf olanların, Can Dündar denen-->
+<!--haini cansiperane savunanların-->
+<!--bugün çıkıp-->
+<!--Almanya’nın Akdeniz’de gemimize korsanca çıkmasına-->
+<!--“kabul edilemez “diyor-->
+<!--@asdsadsa Samimiyetinizi yesinler!!!"-->
+<!--      ></Tweet>-->
+<!--      <Tweet-->
+<!--          tweet-user-name="İlham Əliyev "-->
+<!--          tweet-user-username="@azpresident"-->
+<!--          tweet-created-date="17h"-->
+<!--          tweet-user-img="https://pbs.twimg.com/profile_images/1317884017333723138/3gyjyuL2_400x400.jpg"-->
+<!--          tweet-img="https://pbs.twimg.com/media/EoJzsN1XcAENVNZ?format=jpg&name=large"-->
+<!--      ></Tweet>-->
 
-      <Tweet
-          tweet-user-name="Selçuk Bayraktar"
-          tweet-user-username="@Selcuk"
-          tweet-created-date="11h"
-          tweet-user-img="https://pbs.twimg.com/profile_images/1155141513858433027/nJcIRDau_400x400.jpg"
-          tweet-text="
-#BayraktarTB2 S/İHA
+<!--      <Tweet-->
+<!--          tweet-user-name="Selçuk Bayraktar"-->
+<!--          tweet-user-username="@Selcuk"-->
+<!--          tweet-created-date="11h"-->
+<!--          tweet-user-img="https://pbs.twimg.com/profile_images/1155141513858433027/nJcIRDau_400x400.jpg"-->
+<!--          tweet-text="-->
+<!--#BayraktarTB2 S/İHA-->
 
-7/24 devam eden uçuş eğitimlerinden...
+<!--7/24 devam eden uçuş eğitimlerinden...-->
 
-#MilliTeknolojiHamlesi"
-          tweet-img="https://pbs.twimg.com/media/EoLHVqaXYAcny8X?format=jpg&name=large"
-          like-count="6.9k"
-          comment-count="946"
-          reply-count="2.1k"
-      ></Tweet>
+<!--#MilliTeknolojiHamlesi"-->
+<!--          tweet-img="https://pbs.twimg.com/media/EoLHVqaXYAcny8X?format=jpg&name=large"-->
+<!--          like-count="6.9k"-->
+<!--          comment-count="946"-->
+<!--          reply-count="2.1k"-->
+<!--      ></Tweet>-->
 
-      <Tweet
-          tweet-user-name="Abdurrahman Uzun"
-          tweet-user-username="@uzunabdurrahman
-"
-          tweet-created-date="Nov 29"
-          tweet-user-img="https://pbs.twimg.com/profile_images/1279006755637297156/XpQ-Jemo_400x400.jpg"
-          tweet-text="
-Paris’te çarşı pazar karışık...ama CNN, BBC, France24 belgesel yayınlıyor...
-Oysa bunlar Gezi Terör eylemlerini sokak sokak canlı yayınlıyordu.
+<!--      <Tweet-->
+<!--          tweet-user-name="Abdurrahman Uzun"-->
+<!--          tweet-user-username="@uzunabdurrahman-->
+<!--"-->
+<!--          tweet-created-date="Nov 29"-->
+<!--          tweet-user-img="https://pbs.twimg.com/profile_images/1279006755637297156/XpQ-Jemo_400x400.jpg"-->
+<!--          tweet-text="-->
+<!--Paris’te çarşı pazar karışık...ama CNN, BBC, France24 belgesel yayınlıyor...-->
+<!--Oysa bunlar Gezi Terör eylemlerini sokak sokak canlı yayınlıyordu.-->
 
-Neyse... demekki insanların sadece Türkiye’den haber alma özgürlüğü varmış.
+<!--Neyse... demekki insanların sadece Türkiye’den haber alma özgürlüğü varmış.-->
 
-@asdasdas İkiyüzlüğün adıdır çağdaşlık!"
-          tweet-img="https://pbs.twimg.com/media/En-0rLkXYAUyrYX?format=jpg&name=medium"
-      ></Tweet>
-      <Tweet
-          tweet-user-name="İlham Əliyev "
-          tweet-user-username="@azpresident"
-          tweet-created-date="17h"
-          tweet-user-img="https://pbs.twimg.com/profile_images/1317884017333723138/3gyjyuL2_400x400.jpg"
-          tweet-img="https://pbs.twimg.com/media/EoJzsN1XcAENVNZ?format=jpg&name=large"
-      ></Tweet>
+<!--@asdasdas İkiyüzlüğün adıdır çağdaşlık!"-->
+<!--          tweet-img="https://pbs.twimg.com/media/En-0rLkXYAUyrYX?format=jpg&name=medium"-->
+<!--      ></Tweet>-->
+<!--      <Tweet-->
+<!--          tweet-user-name="İlham Əliyev "-->
+<!--          tweet-user-username="@azpresident"-->
+<!--          tweet-created-date="17h"-->
+<!--          tweet-user-img="https://pbs.twimg.com/profile_images/1317884017333723138/3gyjyuL2_400x400.jpg"-->
+<!--          tweet-img="https://pbs.twimg.com/media/EoJzsN1XcAENVNZ?format=jpg&name=large"-->
+<!--      ></Tweet>-->
       </div>
     </div>
 
@@ -154,12 +155,17 @@ Neyse... demekki insanların sadece Türkiye’den haber alma özgürlüğü var
 import Tweet from "@/components/Tweet";
 import ActionButton from "@/components/ActionButton";
 import AddTweet from "@/components/AddTweet";
+import { methodsMixin } from "@/methodsMixin";
 
 export default {
+  mixins:[methodsMixin],
   components:{
     Tweet,
     ActionButton,
     AddTweet
+  },
+  created() {
+    this.restartTweets()
   }
 }
 </script>

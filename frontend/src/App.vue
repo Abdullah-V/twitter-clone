@@ -205,11 +205,15 @@ export default {
   border-radius: 20px;
   transition: 100ms all;
   font-size: 20px;
+  cursor: pointer;
 }
 
 .image-close-icon i:hover{
   background: rgba(0,0,0,.3);
+}
 
+.image-close-icon i:active{
+  background: rgba(0,0,0,.1);
 }
 
 </style>

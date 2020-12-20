@@ -24,7 +24,7 @@ export default {
       try{
         this[this.action]("deneme parametr action button component")
       }catch (e){
-        console.log(`Error in ActionButton components method handler method:\n ${e}`)
+        console.log(`Error in ActionButton components 'handleAction' method:\n ${e}`)
       }
     }
   }

@@ -21,6 +21,17 @@ export var methodsMixin = {
         },
         toggleAddTweetPopup(){
             this.$store.state.addTweetPopup = !this.$store.state.addTweetPopup
+        },
+        routeToPath(p){
+            this.$router.push({path:p})
+        },
+        restartTweets(){
+            this.$store.state.tweets.forEach(tweet => {
+                tweet.isDetailed = false
+            })
+        },
+        goToBack(){
+            this.$router.go(-1)
         }
     }
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="profile-root">
     <div class="fixed-header-for-profile">
-      <ActionButton action="sampleAction" icon-class="fas fa-arrow-left" default-color="#1DA1F2" hover-color="#1DA1F2" hover-bg="#E8F5FE"></ActionButton>
+      <ActionButton action="goToBack" icon-class="fas fa-arrow-left" default-color="#1DA1F2" hover-color="#1DA1F2" hover-bg="#E8F5FE"></ActionButton>
       <span>
         <h2>Selçuk Bayraktar</h2>
         <h5 class="user-tweet-count">2,300 tweet</h5>
@@ -45,73 +45,80 @@
 
 
     <div style="position: relative;bottom: 95px">
-    <Tweet
-        tweet-user-name="Selçuk Bayraktar"
-        tweet-user-username="@Selcuk"
-        tweet-created-date="11h"
-        tweet-user-img="https://pbs.twimg.com/profile_images/1155141513858433027/nJcIRDau_400x400.jpg"
-        tweet-text="
-#BayraktarTB2 S/İHA
+      <div v-for="(tweet,index) in $store.state.tweets" :key="index">
+        <Tweet :info-for-tweet="tweet"></Tweet>
+      </div>
 
-7/24 devam eden uçuş eğitimlerinden...
 
-#MilliTeknolojiHamlesi"
-        tweet-img="https://pbs.twimg.com/media/EoLHVqaXYAcny8X?format=jpg&name=large"
-        like-count="6.9k"
-        comment-count="946"
-        reply-count="2.1k"
-    ></Tweet>
 
-    <Tweet
-        tweet-user-name="Selçuk Bayraktar"
-        tweet-user-username="@Selcuk"
-        tweet-created-date="11h"
-        tweet-user-img="https://pbs.twimg.com/profile_images/1155141513858433027/nJcIRDau_400x400.jpg"
-        tweet-text="
-#BayraktarTB2 S/İHA
+<!--    <Tweet-->
+<!--        is-detailed="true"-->
+<!--        tweet-user-name="Selçuk Bayraktar"-->
+<!--        tweet-user-username="@Selcuk"-->
+<!--        tweet-created-date="11h"-->
+<!--        tweet-user-img="https://pbs.twimg.com/profile_images/1155141513858433027/nJcIRDau_400x400.jpg"-->
+<!--        tweet-text="-->
+<!--#BayraktarTB2 S/İHA-->
 
-7/24 devam eden uçuş eğitimlerinden...
+<!--7/24 devam eden uçuş eğitimlerinden...-->
 
-#MilliTeknolojiHamlesi"
-        tweet-img="https://pbs.twimg.com/media/EoLHVqaXYAcny8X?format=jpg&name=large"
-        like-count="6.9k"
-        comment-count="946"
-        reply-count="2.1k"
-    ></Tweet>
+<!--#MilliTeknolojiHamlesi"-->
+<!--        tweet-img="https://pbs.twimg.com/media/EoLHVqaXYAcny8X?format=jpg&name=large"-->
+<!--        like-count="6.9k"-->
+<!--        comment-count="946"-->
+<!--        reply-count="2.1k"-->
+<!--    ></Tweet>-->
 
-    <Tweet
-        tweet-user-name="Selçuk Bayraktar"
-        tweet-user-username="@Selcuk"
-        tweet-created-date="11h"
-        tweet-user-img="https://pbs.twimg.com/profile_images/1155141513858433027/nJcIRDau_400x400.jpg"
-        tweet-text="
-#BayraktarTB2 S/İHA
+<!--    <Tweet-->
+<!--        tweet-user-name="Selçuk Bayraktar"-->
+<!--        tweet-user-username="@Selcuk"-->
+<!--        tweet-created-date="11h"-->
+<!--        tweet-user-img="https://pbs.twimg.com/profile_images/1155141513858433027/nJcIRDau_400x400.jpg"-->
+<!--        tweet-text="-->
+<!--#BayraktarTB2 S/İHA-->
 
-7/24 devam eden uçuş eğitimlerinden...
+<!--7/24 devam eden uçuş eğitimlerinden...-->
 
-#MilliTeknolojiHamlesi"
-        tweet-img="https://pbs.twimg.com/media/EoLHVqaXYAcny8X?format=jpg&name=large"
-        like-count="6.9k"
-        comment-count="946"
-        reply-count="2.1k"
-    ></Tweet>
+<!--#MilliTeknolojiHamlesi"-->
+<!--        tweet-img="https://pbs.twimg.com/media/EoLHVqaXYAcny8X?format=jpg&name=large"-->
+<!--        like-count="6.9k"-->
+<!--        comment-count="946"-->
+<!--        reply-count="2.1k"-->
+<!--    ></Tweet>-->
 
-    <Tweet
-        tweet-user-name="Selçuk Bayraktar"
-        tweet-user-username="@Selcuk"
-        tweet-created-date="11h"
-        tweet-user-img="https://pbs.twimg.com/profile_images/1155141513858433027/nJcIRDau_400x400.jpg"
-        tweet-text="
-#BayraktarTB2 S/İHA
+<!--    <Tweet-->
+<!--        tweet-user-name="Selçuk Bayraktar"-->
+<!--        tweet-user-username="@Selcuk"-->
+<!--        tweet-created-date="11h"-->
+<!--        tweet-user-img="https://pbs.twimg.com/profile_images/1155141513858433027/nJcIRDau_400x400.jpg"-->
+<!--        tweet-text="-->
+<!--#BayraktarTB2 S/İHA-->
 
-7/24 devam eden uçuş eğitimlerinden...
+<!--7/24 devam eden uçuş eğitimlerinden...-->
 
-#MilliTeknolojiHamlesi"
-        tweet-img="https://pbs.twimg.com/media/EoLHVqaXYAcny8X?format=jpg&name=large"
-        like-count="6.9k"
-        comment-count="946"
-        reply-count="2.1k"
-    ></Tweet>
+<!--#MilliTeknolojiHamlesi"-->
+<!--        tweet-img="https://pbs.twimg.com/media/EoLHVqaXYAcny8X?format=jpg&name=large"-->
+<!--        like-count="6.9k"-->
+<!--        comment-count="946"-->
+<!--        reply-count="2.1k"-->
+<!--    ></Tweet>-->
+
+<!--    <Tweet-->
+<!--        tweet-user-name="Selçuk Bayraktar"-->
+<!--        tweet-user-username="@Selcuk"-->
+<!--        tweet-created-date="11h"-->
+<!--        tweet-user-img="https://pbs.twimg.com/profile_images/1155141513858433027/nJcIRDau_400x400.jpg"-->
+<!--        tweet-text="-->
+<!--#BayraktarTB2 S/İHA-->
+
+<!--7/24 devam eden uçuş eğitimlerinden...-->
+
+<!--#MilliTeknolojiHamlesi"-->
+<!--        tweet-img="https://pbs.twimg.com/media/EoLHVqaXYAcny8X?format=jpg&name=large"-->
+<!--        like-count="6.9k"-->
+<!--        comment-count="946"-->
+<!--        reply-count="2.1k"-->
+<!--    ></Tweet>-->
 
   </div>
 
@@ -122,8 +129,10 @@
 import ActionButton from "@/components/ActionButton";
 import TwitterButton from "@/components/TwitterButton";
 import Tweet from "@/components/Tweet";
+import { methodsMixin } from "@/methodsMixin";
 
 export default {
+  mixins:[methodsMixin],
   components:{
     ActionButton,
     TwitterButton,
@@ -156,11 +165,12 @@ export default {
     this.user.bio = this.user.bio.replaceAll(this.$store.state.hashtagRegex,"<a href=" + "'#$1'>#$1</a>")
     this.user.bio = this.user.bio.replaceAll(this.$store.state.usernameRegex,"<a href=" + "'#$1'>@$1</a>")
     console.log(this.user.bio)
+    this.restartTweets()
   }
 }
 </script>
 
-<style scoped>
+<style>
 
 .fixed-header-for-profile{
   position: sticky;
@@ -171,7 +181,6 @@ export default {
   padding: 0px;
   border: 1px solid #bfbfbf;
   border-top: 0px;
-  border-bottom: 0px;
 }
 
 .fixed-header-for-profile span{

@@ -4,6 +4,7 @@ import Hello from "@/views/Hello";
 import Login from "@/views/Login";
 import Home from "@/views/Home";
 import Profile from "@/views/Profile";
+import TweetDetails from "@/views/TweetDetails";
 
 Vue.use(VueRouter)
 
@@ -23,6 +24,10 @@ const routes = [
     {
         path:"/:username",
         component: Profile,
+    },
+    {
+        path:"/:username/tweets/:tweetId",
+        component: TweetDetails,
     }
 ]
 

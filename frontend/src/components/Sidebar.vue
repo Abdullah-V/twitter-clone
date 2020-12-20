@@ -15,6 +15,15 @@
     <TwitterButton click-event="toggleAddTweetPopup" class="tb" h="54px" w="240px" br="27px" text="Tweet" bgType="blue"></TwitterButton>
     <TwitterButton click-event="toggleAddTweetPopup" h="60px" w="60px" br="30px" bg-type="blue" class="media-query-btn" text="<i class='fas fa-feather-alt'></i>"></TwitterButton>
 
+    <div class="current-user-mini-profile">
+      <img src="https://pbs.twimg.com/profile_images/1155141513858433027/nJcIRDau_400x400.jpg" alt="">
+      <span>
+        <span><b>Selçuk Bayraktar</b></span>
+        <span>@Selcuk</span>
+      </span>
+      <span><i class="fas fa-ellipsis-h"></i></span>
+    </div>
+
   </div>
 </template>
 
@@ -31,6 +40,40 @@ export default {
 </script>
 
 <style scoped>
+
+.current-user-mini-profile{
+  width: 107%;
+  height: 64px;
+  background: white;
+  margin: auto;
+  border-radius: 32px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1px;
+  cursor: pointer;
+  transition: 300ms all;
+}
+
+.current-user-mini-profile img{
+  width: 52px;
+  height: 52px;
+  border-radius: 26px;
+}
+
+.current-user-mini-profile span:nth-child(1){
+  display: flex;
+  flex-direction: column;
+}
+
+.current-user-mini-profile span span:nth-child(2),
+.current-user-mini-profile i{
+  color: #5B7083;
+}
+
+.current-user-mini-profile:hover{
+  background: #E8F5FE;
+}
 
 .sidebar-root{
   display: flex;

@@ -28,7 +28,80 @@ export default new Vuex.Store({
           "<a href='#'>http://instagram.com/selcuk79</a>",
       profileImg:"https://pbs.twimg.com/profile_images/1155141513858433027/nJcIRDau_400x400.jpg",
       bannerImg:"https://pbs.twimg.com/profile_banners/2271763025/1598131465/1500x500",
-    }
+    },
+
+    tweetForDetail:{},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // TRIAL ====>
+
+    tweets:[
+      {
+        tweetId:1,
+        tweetUserName:"Selçuk Bayraktar",
+        tweetUserUsername:"@Selcuk",
+        tweetCreatedDate:"11h",
+        tweetUserImg:"https://pbs.twimg.com/profile_images/1155141513858433027/nJcIRDau_400x400.jpg",
+        tweetText:"#BayraktarTB2 S/İHA \n\n 7/24 devam eden uçuş eğitimlerinden... \n\n #MilliTeknolojiHamlesi",
+      tweetImg:"https://pbs.twimg.com/media/EoLHVqaXYAcny8X?format=jpg&name=large",
+      likeCount:"6.9k",
+      commentCount:"946",
+      replyCount:"2.1k",
+      },
+      {
+        tweetId:2,
+        tweetUserName:"Selçuk Bayraktar",
+        tweetUserUsername:"@Selcuk",
+        tweetCreatedDate:"11h",
+        tweetUserImg:"https://pbs.twimg.com/profile_images/1155141513858433027/nJcIRDau_400x400.jpg",
+        tweetText:"#BayraktarTB2 S/İHA \n\n 7/24 devam eden uçuş eğitimlerinden... \n\n #MilliTeknolojiHamlesi",
+        tweetImg:"https://pbs.twimg.com/media/EoLHVqaXYAcny8X?format=jpg&name=large",
+        likeCount:"6.9k",
+        commentCount:"946",
+        replyCount:"2.1k",
+      },
+    ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   },
   mutations: {

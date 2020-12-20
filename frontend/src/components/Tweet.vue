@@ -4,7 +4,7 @@
     <div v-if="tweetActionLVisible" class="tweet-actions-list">
       <div class="tweet-actions-list-item">
         <i class="fas fa-user-alt-slash"></i>
-        Unfollow {{ tweetUserUsername }}
+        Unfollow {{ infoForTweet.tweetUserUsername }}
       </div>
       <div class="tweet-actions-list-item">
         <i class="far fa-list-alt"></i>
@@ -12,11 +12,11 @@
       </div>
       <div class="tweet-actions-list-item">
         <i class="fas fa-volume-mute"></i>
-        Mute {{ tweetUserUsername }}
+        Mute {{ infoForTweet.tweetUserUsername }}
       </div>
       <div class="tweet-actions-list-item">
         <i class="fas fa-ban"></i>
-        Block {{ tweetUserUsername }}
+        Block {{ infoForTweet.tweetUserUsername }}
       </div>
       <div class="tweet-actions-list-item">
         <i class="fas fa-code"></i>
@@ -61,42 +61,70 @@
 
     
     <div class="tweet-section1" @click.stop="rootClick()">
-      <img :src="tweetUserImg" alt="">
+      <img :src="infoForTweet.tweetUserImg" alt="">
     </div>
 
     <div class="tweet-section2" @click.stop="rootClick()">
       <div class="tweet-section2-header">
         <span class="header-sec1">
-          <span class="name">{{ tweetUserName }}</span>
-          <span class="username">{{ tweetUserUsername }}</span>
+          <span class="name">{{ infoForTweet.tweetUserName }}</span>
+          <span class="username">{{ infoForTweet.tweetUserUsername }}</span>
           <span class="uc">&#8226;</span>
-          <span class="created-date">{{ tweetCreatedDate }}</span>
+          <span class="created-date">{{ infoForTweet.tweetCreatedDate }}</span>
         </span>
         <span @click.stop="toggleTweetActionLVisible()" class="header-sec2"><ActionButton icon-class="fas fa-ellipsis-h" default-color="#5B7083" hover-color="#1DA1F2" hover-bg="#E8F5FE"></ActionButton></span>
       </div>
       <div class="tweet-content">
-        <div class="tweet-text" v-if="tweetText">
-          <pre v-html="tweetText"></pre>
+        <div class="tweet-text" v-if="infoForTweet.tweetText">
+          <pre v-html="infoForTweet.tweetText" v-if="infoForTweet.isDetailed" style="font-size: 30px;line-height: 30px"></pre>
+          <pre v-html="infoForTweet.tweetText" v-if="!infoForTweet.isDetailed"></pre>
         </div>
-        <img @click.stop="makeZoomedImage()" v-if="tweetImg" class="tweet-img" :src="tweetImg" alt="">
+        <span v-if="infoForTweet.tweetImg">
+          <img v-if="!infoForTweet.isDetailed" @click.stop="makeZoomedImage()" class="tweet-img" :src="infoForTweet.tweetImg" alt="">
+          <img style="height: 500px;" v-if="infoForTweet.isDetailed" @click.stop="makeZoomedImage()" class="tweet-img" :src="infoForTweet.tweetImg" alt="">
+        </span>
       </div>
+
+<!--        <div style="width: 100%;height: 300px" v-if="!child">-->
+<!--          <Tweet-->
+<!--              child="true"-->
+<!--              tweet-user-name="Selçuk Bayraktar"-->
+<!--              tweet-user-username="@Selcuk"-->
+<!--              tweet-created-date="11h"-->
+<!--              tweet-user-img="https://pbs.twimg.com/profile_images/1155141513858433027/nJcIRDau_400x400.jpg"-->
+<!--              tweet-text="-->
+<!--#BayraktarTB2 S/İHA-->
+
+<!--7/24 devam eden uçuş eğitimlerinden...-->
+
+<!--#MilliTeknolojiHamlesi"-->
+<!--              like-count="6.9k"-->
+<!--              comment-count="946"-->
+<!--              reply-count="2.1k"-->
+<!--          ></Tweet>-->
+<!--        </div>-->
+
       <div class="tweet-action-buttons">
         <span class="with-count">
           <ActionButton iconClass="far fa-comment"  default-color="#5B7083" hover-color="#1DA1F2" hover-bg="#E8F5FE"></ActionButton>
-          <span class="count">{{ replyCount }}</span>
+          <span class="count">{{ infoForTweet.replyCount }}</span>
         </span>
         <span class="with-count" @click.stop="toggleRetweetActionVisible()">
           <ActionButton iconClass="fas fa-retweet"  default-color="#5B7083" hover-color="#17BF63" hover-bg="#E0F2E8"></ActionButton>
-          <span class="count">{{ commentCount }}</span>
+          <span class="count">{{ infoForTweet.commentCount }}</span>
         </span>
         <span class="with-count">
         <ActionButton iconClass="far fa-heart"  default-color="#5B7083" hover-color="#E0245E" hover-bg="#F5E1E7"></ActionButton>
-          <span class="count">{{ likeCount }}</span>
+          <span class="count">{{ infoForTweet.likeCount }}</span>
         </span>
         <span @click.stop="toggleActionList3()">
           <ActionButton iconClass="fas fa-upload"  default-color="#5B7083" hover-color="#1DA1F2" hover-bg="#E8F5FE"></ActionButton>
         </span>
       </div>
+      <span class="f-and-f" v-if="infoForTweet.isDetailed">
+        <span class="ff"><b>168</b> <span class="ftext">Retweet</span></span>
+        <span style="padding: 0px 20px" class="ff"><b>41.7k</b> <span class="ftext">Likes</span></span>
+      </span>
     </div>
 
   </div>
@@ -104,9 +132,12 @@
 
 <script>
 import ActionButton from "@/components/ActionButton";
+import { methodsMixin } from "@/methodsMixin";
 
 export default {
-  props:["replyCount","commentCount","likeCount","tweetUserImg","tweetUserName","tweetUserUsername","tweetText","tweetImg","tweetCreatedDate"],
+  mixins:[methodsMixin],
+  name:"Tweet",
+  props:["infoForTweet","isDetailed","child","replyCount","commentCount","likeCount","tweetUserImg","tweetUserName","tweetUserUsername","tweetText","tweetImg","tweetCreatedDate"],
   components:{
     ActionButton
   },
@@ -118,9 +149,9 @@ export default {
     }
   },
   mounted() {
-    var r = this.tweetText.replaceAll(this.$store.state.hashtagRegex,"<a href=" + "'#$1'>#$1</a>")
+    var r = this.infoForTweet.tweetText.replaceAll(this.$store.state.hashtagRegex,"<a href=" + "'#$1'>#$1</a>")
     r = r.replaceAll(this.$store.state.usernameRegex,"<a href=" + "'#$1'>@$1</a>")
-    this.tweetText = r
+    this.infoForTweet.tweetText = r
   },
   methods:{
     toggleTweetActionLVisible(){
@@ -140,17 +171,24 @@ export default {
       this.actionList3 = !this.actionList3
     },
     makeZoomedImage(){
-      this.$store.state.zoomedImage = this.tweetImg
+      this.$store.state.zoomedImage = this.infoForTweet.tweetImg
       console.log('tweet image clicked')
     },
     rootClick(){
+      if(this.infoForTweet.isDetailed){
+        return
+      }
       console.log('tweet root clicked')
+      this.$store.state.tweetForDetail = this.infoForTweet
+      this.$store.state.tweetForDetail.isDetailed = true
+      var redirectedPath = "/" + this.infoForTweet.tweetUserUsername + "/tweets/" + this.infoForTweet.tweetId
+      this.$router.push({path:redirectedPath})
     }
   }
 }
 </script>
 
-<style scoped>
+<style>
 
 .tweet-root{
   width: 100%;
@@ -288,6 +326,5 @@ export default {
   right: 183px;
   bottom: 60px;
 }
-
 
 </style>

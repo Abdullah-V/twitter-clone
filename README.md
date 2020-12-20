@@ -1,8 +1,8 @@
 # MEVN stack twitter clone
 ### MEVN stack twitter clone.
-### Start: 29 november 2020
+### START: 29 november 2020
 ### NOTE: november 6 - novermber 17 my computer is broken and my lessons are too many, my project is halfway. 
-### End: in progress...
+### END: in progress...
 ### [=====> . . . . . .] 50%
 ## Todos:
 - [ ] Frontend
@@ -22,12 +22,19 @@
     - [ ] Notifications page
     - [x] Child pages menu for some parent pages
     - [x] Tweet component
-    - [ ] Profile component for sidebar
+    - [x] Profile component for sidebar
     - [x] Add tweet component
     - [x] Toggle action list for tweet component  
     - [x] Add tweet popup
     - [x] Action button component
-    - [x] Image zoomer  
+    - [x] Image zoomer
+    - [ ] Folowers list
+    - [ ] Tweet likers list
+    - [ ] Tweets detail page
+    - [ ] Tweet replies
+    - [ ] Nested tweets(retweet with comment)  
+    - [ ] Retweet  
+    - [ ] Tweet pinning  
     - [ ] Routing
         - [ ] Route guards
         - [ ] Define all routes
@@ -35,12 +42,12 @@
     - [ ] Backend Integration
 - [ ] Backend
     - [ ] Install modules
-      - [x] Express
-      - [x] Mongoose
-      - [x] Cors
-      - [x] Nodemon
-      - [x] Body-parser
-      - [ ] Socketio
+      - [x] express
+      - [x] mongoose
+      - [x] cors
+      - [x] nodemon
+      - [x] body-parser
+      - [ ] socketio
     - [x] Express configurations
     - [x] Mongoose configurations 
         - [x] Create models
