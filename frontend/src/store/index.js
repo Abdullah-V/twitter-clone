@@ -5,13 +5,25 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    loginUsernameOrEmailModel:"",
+    loginPasswordModel:"",
+    loginErrors:null,
+
+    registerUsernameModel:"",
+    registerNameModel:"",
+    registerPasswordModel:"",
+    registerEmailModel:"",
+    registerErrors:"",
+
     registerPage:false,
     addTweetPopup:false,
-    userId:"asdad",
+    userId:localStorage.getItem('userId'),
     hashtagRegex:/(?:(?<=\s)|^)#(\w*[A-Za-z_ğüşıöçĞÜŞİÖÇ]+\w*)/gi,
     usernameRegex:/(?:(?<=\s)|^)@(\w*[A-Za-z_ğüşıöçĞÜŞİÖÇ]+\w*)/gi,
 
     zoomedImage:"",
+
+    currentUser:{},
 
     userForProfile:{
       name:"Selcuk Bayraktar",

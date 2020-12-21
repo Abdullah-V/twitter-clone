@@ -113,9 +113,9 @@ async function newTweet(currentUserId,tweetContent){
 }
 
 
-function getTheUser(userId) {
+function getTheUser(username) {
     return user
-        .findById(userId)
+        .findOne({username:username})
         .populate('tweets')
         .exec()
 }
@@ -126,50 +126,6 @@ function getLikedTweetsOfUser(userId){
         .findById(userId)
         .populate('likedTweets')
         .exec()
-}
-
-// TAMAM KIMI... ===>
-// async function register(username,password,name){
-//     var returned
-//     await user
-//         .countDocuments({username:username},async (err,count) => {
-//             if(err) throw err
-//
-//             if(count === 0){
-//                 await user.create({
-//                     name:name,
-//                     username:username,
-//                     password:password,
-//                 }).then(newUser => {
-//                     console.log(`newUser from met: ${newUser}`)
-//                     returned = newUser
-//                 })
-//                     .catch(e => {throw e})
-//             }
-//             else{
-//                 returned = "user is exists"
-//             }
-//         })
-//     return returned
-// }
-
-
-// TAMAM ===>
-async function login(emailOrUsername,password){
-    var returned = "default returned"
-    await user.findOne({
-        $and:[
-            {$or:[
-                {email:emailOrUsername},{username:emailOrUsername}
-            ]},
-            {password:password}
-        ]
-    },(err,user) => {
-        if(err) throw err
-
-        returned = user
-    })
-    return returned
 }
 
 
@@ -195,6 +151,66 @@ function addNewTweet(currentUserId,tweetContent){
 
 
 
+
+// Real app ===>
+
+app.post('/api/login',(req,res) => {
+    console.log('geldii')
+    console.log(req.body)
+
+    user.findOne({
+        $and:[
+            {$or:[
+                    {mail:req.body.usernameOrEmail},{username:req.body.usernameOrEmail}
+                ]},
+            {password:req.body.password}
+        ]
+    },(err,user) => {
+        if(err) throw err
+
+        console.log(`found user: ${user}`)
+        res.send({foundUser:user})
+    })
+})
+
+
+app.post('/api/register',(req,res) => {
+    console.log(req.body)
+    user
+        .countDocuments({username:req.body.username},(err,count) => {
+            if(err) throw err
+
+            if(count === 0){
+                user.create({
+                    name:req.body.name,
+                    username:req.body.username,
+                    password:req.body.password,
+                }).then(newUser => {
+                    console.log(`newUser from met: ${newUser}`)
+                    res.send(newUser)
+                })
+                    .catch(e => {throw e})
+            }
+            else{
+                res.send(false)
+            }
+        })
+})
+
+
+app.post('/api/getuser',(req,res) => {
+    console.log(req.body)
+    user
+        .findOne({username:req.body.username})
+        .populate('tweets')
+        .exec((err,user) => {
+            if(err) throw err
+
+            res.send(user)
+            console.log(user)
+        })
+
+})
 
 
 
@@ -228,15 +244,15 @@ app.get('/allTweets',(req,res) => {
 app.get('/operation',(req,res) => {
     res.send("operation succesfully")
 
-    var currentUserId = "5fdf458e3af01c3d92b8c6e6"
-    var newInfos = {
-        password:"abdullahpassword",
-        location:"Azerbaijan,Baku"
-    }
+    // var currentUserId = "5fdf458e3af01c3d92b8c6e6"
+    // var newInfos = {
+    //     password:"abdullahpassword",
+    //     location:"Azerbaijan,Baku"
+    // }
 
-    updateProfile(currentUserId,newInfos).then(result => {
-        console.log(result)
-    })
+    // updateProfile(currentUserId,newInfos).then(result => {
+    //     console.log(result)
+    // })
 
 
     // login("trialuser123","12345").then(result => {
@@ -260,10 +276,6 @@ app.get('/operation',(req,res) => {
     // }))
 
     // followOrUnfollowTheUser("5fdf458e3af01c3d92b8c6e6","5fdf455f1eff1e3d75a339d6",true)
-
-
-
-
 })
 
 

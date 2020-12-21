@@ -3,15 +3,20 @@
     <i style="color: #1DA1F2;font-size: 38px;margin: 30px 0px;" class="fab fa-twitter"></i>
     <h2>Twitter'a giriş yap</h2>
 
+      <h3 v-if="$store.state.loginErrors" style="margin: 10px 0px;color: #ef3615">{{ $store.state.loginErrors }}</h3>
+
     <div class="custom-input">
       <div>İsim veya e-posta</div>
-      <input @focusout="focusOutEvent(0)" @focus="focusEvent(0)" type="text">
+      <input v-model="$store.state.loginUsernameOrEmailModel" @focusout="focusOutEvent(0)" @focus="focusEvent(0)" type="text">
     </div>
 
     <div class="custom-input">
       <div>Şifre</div>
-      <input @focusout="focusOutEvent(1)" @focus="focusEvent(1)" type="password">
+      <input v-model="$store.state.loginPasswordModel" @focusout="focusOutEvent(1)" @focus="focusEvent(1)" type="password">
     </div>
+
+    {{ $store.state.loginPasswordModel }}
+    {{ $store.state.loginUsernameOrEmailModel }}
 
     <TwitterButton clickEvent="loginUser" h="54px" w="540px" br="27px" text="Giriş yap" bgType="blue"></TwitterButton>
 

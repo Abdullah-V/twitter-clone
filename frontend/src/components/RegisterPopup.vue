@@ -5,24 +5,30 @@
       <div class="popup-header">
         <TwitterButton clickEvent="toggleRegisterPage" h="30px" w="70px" br="15px" text="Geri" bgType="white"></TwitterButton>
         <i style="color: #1DA1F2;font-size: 30px" class="fab fa-twitter"></i>
-        <TwitterButton clickEvent="loginUser" h="30px" w="70px" br="15px" text="İleri" bgType="blue"></TwitterButton>
+        <TwitterButton clickEvent="register" h="30px" w="70px" br="15px" text="İleri" bgType="blue"></TwitterButton>
       </div>
 
       <div class="popup-content">
         <h2>Hesabını oluştur</h2>
+        <h3 v-if="$store.state.registerErrors" style="margin: 10px 0px;color: #ef3615">{{ $store.state.registerErrors }}</h3>
         <div class="custom-input">
-          <div>İsim</div>
-          <input @focusout="focusOutEvent(0)" @focus="focusEvent(0)" type="text">
+          <div>Name</div>
+          <input v-model="$store.state.registerNameModel" @focusout="focusOutEvent(0)" @focus="focusEvent(0)" type="text">
         </div>
 
         <div class="custom-input">
-          <div>Şifre</div>
-          <input @focusout="focusOutEvent(1)" @focus="focusEvent(1)" type="password">
+          <div>Username</div>
+          <input v-model="$store.state.registerUsernameModel" @focusout="focusOutEvent(1)" @focus="focusEvent(1)" type="text">
         </div>
 
         <div class="custom-input">
-          <div>E-posta</div>
-          <input @focusout="focusOutEvent(2)" @focus="focusEvent(2)" type="text">
+          <div>Password</div>
+          <input v-model="$store.state.registerPasswordModel" @focusout="focusOutEvent(2)" @focus="focusEvent(2)" type="password">
+        </div>
+
+        <div class="custom-input">
+          <div>E-mail</div>
+          <input v-model="$store.state.registerEmailModel" @focusout="focusOutEvent(3)" @focus="focusEvent(3)" type="text">
         </div>
       </div>
 
@@ -58,7 +64,8 @@ export default {
 
 .popup{
   width: 50%;
-  height: 60%;
+  min-height: 60%;
+  height: auto;
   background: white;
   padding: 10px 18px;
   opacity: 1;

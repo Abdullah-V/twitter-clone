@@ -27,6 +27,9 @@ export default {
 .fixed-header-for-tweet-detail{
   position: sticky;
   left: 0px;
+  top: 0px;
+  z-index: 999;
+  background: white;
   width: 100%;
   height: 55px;
   border: 1px solid #bfbfbf;

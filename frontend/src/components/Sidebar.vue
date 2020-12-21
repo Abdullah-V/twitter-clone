@@ -15,11 +15,16 @@
     <TwitterButton click-event="toggleAddTweetPopup" class="tb" h="54px" w="240px" br="27px" text="Tweet" bgType="blue"></TwitterButton>
     <TwitterButton click-event="toggleAddTweetPopup" h="60px" w="60px" br="30px" bg-type="blue" class="media-query-btn" text="<i class='fas fa-feather-alt'></i>"></TwitterButton>
 
-    <div class="current-user-mini-profile">
+    <div @click="toggleLogoutDiv()" class="current-user-mini-profile">
+
+      <div @click.stop="logout()" v-if="logoutDiv" class="logout">
+        <b>Logout @{{ $store.state.currentUser.username }}</b>
+      </div>
+
       <img src="https://pbs.twimg.com/profile_images/1155141513858433027/nJcIRDau_400x400.jpg" alt="">
       <span>
-        <span><b>Selçuk Bayraktar</b></span>
-        <span>@Selcuk</span>
+        <span><b>{{ $store.state.currentUser.name }}</b></span>
+        <span>@{{ $store.state.currentUser.username }}</span>
       </span>
       <span><i class="fas fa-ellipsis-h"></i></span>
     </div>
@@ -30,8 +35,20 @@
 <script>
 import NavItem from "@/components/NavItem";
 import TwitterButton from "@/components/TwitterButton";
+import { methodsMixin } from "@/methodsMixin";
 
 export default {
+  mixins:[methodsMixin],
+  data(){
+    return {
+      logoutDiv:false
+    }
+  },
+  methods:{
+    toggleLogoutDiv(){
+      this.logoutDiv = !this.logoutDiv
+    }
+  },
   components:{
     NavItem,
     TwitterButton
@@ -40,6 +57,24 @@ export default {
 </script>
 
 <style scoped>
+
+.logout{
+  height: 62px;
+  width: 210px;
+  padding: 20px;
+  border-radius: 6px;
+  position: absolute;
+  background: #e2e2e2;
+  bottom: 120px;
+  display: flex;
+  align-items: center;
+  left: 44px;
+  transition: 200ms all;
+}
+
+.logout:hover{
+  background: #ececec;
+}
 
 .current-user-mini-profile{
   width: 107%;

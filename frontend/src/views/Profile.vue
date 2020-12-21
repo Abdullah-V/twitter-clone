@@ -175,12 +175,15 @@ export default {
 .fixed-header-for-profile{
   position: sticky;
   left: 0px;
+  top: 0px;
   width: 100%;
   height: 55px;
   display: flex;
   padding: 0px;
   border: 1px solid #bfbfbf;
   border-top: 0px;
+  background: white;
+  z-index: 9999;
 }
 
 .fixed-header-for-profile span{

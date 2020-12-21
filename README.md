@@ -36,9 +36,10 @@
     - [ ] Retweet  
     - [ ] Tweet pinning  
     - [ ] Routing
-        - [ ] Route guards
+        - [x] Route guards
         - [ ] Define all routes
         - [ ] Define all child routes
+    - [ ] Update profile popup  
     - [ ] Backend Integration
 - [ ] Backend
     - [ ] Install modules

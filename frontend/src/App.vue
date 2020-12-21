@@ -68,6 +68,10 @@ export default {
       this.$store.state.zoomedImage = ""
     }
   },
+  async created() {
+      var u = await localStorage.getItem('userId')
+      this.getTheUser(u)
+  }
 }
 </script>
 
