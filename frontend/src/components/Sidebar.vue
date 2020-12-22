@@ -3,13 +3,13 @@
 
     <i style="color: #1DA1F2;font-size: 36px;margin: 10px 17px" class="fab fa-twitter"></i>
 
-    <NavItem text="Home" path="/home" icon="fas fa-home"></NavItem>
+    <NavItem exact text="Home" path="/home" icon="fas fa-home"></NavItem>
     <NavItem text="Explore" path="##" icon="fas fa-hashtag"></NavItem>
     <NavItem text="Notifications" path="###" icon="far fa-bell"></NavItem>
     <NavItem text="Messages" path="####" icon="far fa-envelope"></NavItem>
     <NavItem text="Bookmarks" path="#####" icon="far fa-bookmark"></NavItem>
     <NavItem text="Lists" path="######" icon="far fa-list-alt"></NavItem>
-    <NavItem text="Profile" path="/Selcuk" icon="far fa-user"></NavItem>
+    <NavItem text="Profile" :path="'/' + $store.state.currentUser.username" icon="far fa-user"></NavItem>
     <NavItem text="More" path="########" icon="fas fa-ellipsis-h"></NavItem>
       <div style="margin: 6px 0px"></div>
     <TwitterButton click-event="toggleAddTweetPopup" class="tb" h="54px" w="240px" br="27px" text="Tweet" bgType="blue"></TwitterButton>
@@ -21,7 +21,7 @@
         <b>Logout @{{ $store.state.currentUser.username }}</b>
       </div>
 
-      <img src="https://pbs.twimg.com/profile_images/1155141513858433027/nJcIRDau_400x400.jpg" alt="">
+      <img :src="$store.state.currentUser.profileImage || 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'" alt="">
       <span>
         <span><b>{{ $store.state.currentUser.name }}</b></span>
         <span>@{{ $store.state.currentUser.username }}</span>

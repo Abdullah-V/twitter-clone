@@ -3,35 +3,36 @@
     <div class="fixed-header-for-profile">
       <ActionButton action="goToBack" icon-class="fas fa-arrow-left" default-color="#1DA1F2" hover-color="#1DA1F2" hover-bg="#E8F5FE"></ActionButton>
       <span>
-        <h2>Selçuk Bayraktar</h2>
-        <h5 class="user-tweet-count">2,300 tweet</h5>
+         <h2>{{ $store.state.userForProfile.name }}</h2>
+        <h5 class="user-tweet-count">{{ $store.state.userForProfile.tweets.length }} tweet</h5>
       </span>
     </div>
-    <img @click.stop="zoomedBannerImage()" class="banner-img" src="https://pbs.twimg.com/profile_banners/2271763025/1598131465/1500x500" alt="">
+    <img @click.stop="zoomedBannerImage()" class="banner-img" :src="bannerImage()" alt="">
     <div class="profile-section">
       <div class="photo-and-buttons">
         <div class="profile-img">
-          <img @click="zoomedProfileImage()" src="https://pbs.twimg.com/profile_images/1155141513858433027/nJcIRDau_400x400.jpg" alt="">
+          <img @click="zoomedProfileImage()" :src="profilePhoto()" alt="">
         </div>
-        <span class="profile-buttons">
-          <TwitterButton h="40px" w="40px" br="20px" text="<i class='fas fa-ellipsis-h'></i>" bgType="white"></TwitterButton>
-          <TwitterButton h="40px" w="40px" br="20px" text="<i class='far fa-bell'></i>" bgType="white"></TwitterButton>
-          <TwitterButton h="40px" w="105px" br="20px" text="Follow" bgType="white"></TwitterButton>
+        <TwitterButton click-event="toggleEditProfilePopup" v-if="$store.state.userForProfile.username === $store.state.currentUser.username" h="40px" w="115px" br="20px" text="Edit Profile" bgType="white"></TwitterButton>
+        <span v-if="$store.state.userForProfile.username !== $store.state.currentUser.username" class="profile-buttons">
+            <TwitterButton  h="40px" w="40px" br="20px" text="<i class='fas fa-ellipsis-h'></i>" bgType="white"></TwitterButton>
+            <TwitterButton  h="40px" w="40px" br="20px" text="<i class='far fa-bell'></i>" bgType="white"></TwitterButton>
+            <TwitterButton  h="40px" w="105px" br="20px" text="Follow" bgType="white"></TwitterButton>
         </span>
       </div>
-      <h2>Selçuk Bayraktar</h2>
-      <h4 class="user-tweet-count">@Selcuk</h4>
+      <h2>{{ $store.state.userForProfile.name }}</h2>
+      <h4 class="user-tweet-count">@{{ $store.state.userForProfile.username }}</h4>
 
-      <pre v-html="user.bio"></pre>
+      <pre v-html="$store.state.userForProfile.bio"></pre>
 
-      <span class="some-info"><i class="fas fa-map-marker-alt"></i><span>Istanbul</span></span>
-      <span class="some-info"><i class="fas fa-envelope"></i><a href="mailto:selcuk@bayraktar.com">selcuk@bayraktar.com</a></span>
-      <span class="some-info"><i class="fas fa-link"></i><a href="#">baykarsavunma.com</a></span>
+      <span class="some-info" v-if="$store.state.userForProfile.location"><i class="fas fa-map-marker-alt"></i><span>{{ $store.state.userForProfile.location }}</span></span>
+      <span class="some-info" v-if="$store.state.userForProfile.mail"><i class="fas fa-envelope"></i><a href="mailto:selcuk@bayraktar.com">{{ $store.state.userForProfile.mail }}</a></span>
+      <span class="some-info" v-if="$store.state.userForProfile.website"><i class="fas fa-link"></i><a href="#">{{ $store.state.userForProfile.website }}</a></span>
       <span class="some-info"><i class="far fa-calendar-alt"></i><span>Joined January 24</span></span>
 
       <span class="f-and-f">
-        <span class="ff"><b>848</b> <span class="ftext">Following</span></span>
-        <span class="ff"><b>1.4m</b> <span class="ftext">Followers</span></span>
+        <span class="ff"><b>{{ $store.state.userForProfile.following.length }}</b> <span class="ftext">Following</span></span>
+        <span class="ff"><b>{{ $store.state.userForProfile.followers.length }}</b> <span class="ftext">Followers</span></span>
       </span>
 
       <div class="profile-tabs">
@@ -45,81 +46,10 @@
 
 
     <div style="position: relative;bottom: 95px">
-      <div v-for="(tweet,index) in $store.state.tweets" :key="index">
-        <Tweet :info-for-tweet="tweet"></Tweet>
-      </div>
-
-
-
-<!--    <Tweet-->
-<!--        is-detailed="true"-->
-<!--        tweet-user-name="Selçuk Bayraktar"-->
-<!--        tweet-user-username="@Selcuk"-->
-<!--        tweet-created-date="11h"-->
-<!--        tweet-user-img="https://pbs.twimg.com/profile_images/1155141513858433027/nJcIRDau_400x400.jpg"-->
-<!--        tweet-text="-->
-<!--#BayraktarTB2 S/İHA-->
-
-<!--7/24 devam eden uçuş eğitimlerinden...-->
-
-<!--#MilliTeknolojiHamlesi"-->
-<!--        tweet-img="https://pbs.twimg.com/media/EoLHVqaXYAcny8X?format=jpg&name=large"-->
-<!--        like-count="6.9k"-->
-<!--        comment-count="946"-->
-<!--        reply-count="2.1k"-->
-<!--    ></Tweet>-->
-
-<!--    <Tweet-->
-<!--        tweet-user-name="Selçuk Bayraktar"-->
-<!--        tweet-user-username="@Selcuk"-->
-<!--        tweet-created-date="11h"-->
-<!--        tweet-user-img="https://pbs.twimg.com/profile_images/1155141513858433027/nJcIRDau_400x400.jpg"-->
-<!--        tweet-text="-->
-<!--#BayraktarTB2 S/İHA-->
-
-<!--7/24 devam eden uçuş eğitimlerinden...-->
-
-<!--#MilliTeknolojiHamlesi"-->
-<!--        tweet-img="https://pbs.twimg.com/media/EoLHVqaXYAcny8X?format=jpg&name=large"-->
-<!--        like-count="6.9k"-->
-<!--        comment-count="946"-->
-<!--        reply-count="2.1k"-->
-<!--    ></Tweet>-->
-
-<!--    <Tweet-->
-<!--        tweet-user-name="Selçuk Bayraktar"-->
-<!--        tweet-user-username="@Selcuk"-->
-<!--        tweet-created-date="11h"-->
-<!--        tweet-user-img="https://pbs.twimg.com/profile_images/1155141513858433027/nJcIRDau_400x400.jpg"-->
-<!--        tweet-text="-->
-<!--#BayraktarTB2 S/İHA-->
-
-<!--7/24 devam eden uçuş eğitimlerinden...-->
-
-<!--#MilliTeknolojiHamlesi"-->
-<!--        tweet-img="https://pbs.twimg.com/media/EoLHVqaXYAcny8X?format=jpg&name=large"-->
-<!--        like-count="6.9k"-->
-<!--        comment-count="946"-->
-<!--        reply-count="2.1k"-->
-<!--    ></Tweet>-->
-
-<!--    <Tweet-->
-<!--        tweet-user-name="Selçuk Bayraktar"-->
-<!--        tweet-user-username="@Selcuk"-->
-<!--        tweet-created-date="11h"-->
-<!--        tweet-user-img="https://pbs.twimg.com/profile_images/1155141513858433027/nJcIRDau_400x400.jpg"-->
-<!--        tweet-text="-->
-<!--#BayraktarTB2 S/İHA-->
-
-<!--7/24 devam eden uçuş eğitimlerinden...-->
-
-<!--#MilliTeknolojiHamlesi"-->
-<!--        tweet-img="https://pbs.twimg.com/media/EoLHVqaXYAcny8X?format=jpg&name=large"-->
-<!--        like-count="6.9k"-->
-<!--        comment-count="946"-->
-<!--        reply-count="2.1k"-->
-<!--    ></Tweet>-->
-
+<!--      <div v-for="(tweet,index) in $store.state.tweets" :key="index">-->
+<!--        <Tweet :info-for-tweet="tweet"></Tweet>-->
+<!--      </div>-->
+      <Tweet :info-for-tweet="$store.state.tweets[0]"></Tweet>
   </div>
 
   </div>
@@ -130,6 +60,7 @@ import ActionButton from "@/components/ActionButton";
 import TwitterButton from "@/components/TwitterButton";
 import Tweet from "@/components/Tweet";
 import { methodsMixin } from "@/methodsMixin";
+import axios from "axios";
 
 export default {
   mixins:[methodsMixin],
@@ -140,10 +71,34 @@ export default {
   },
   data(){
     return {
-      user:this.$store.state.userForProfile
+      urlRegex: new RegExp('(https?:\\/\\/)|(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)', 'ig'),
     }
   },
   methods:{
+    image(u){
+      if(u.match(this.urlRegex)){
+        return u
+      }
+      else{
+        return ""
+      }
+    },
+    bannerImage(){
+      if(this.$store.state.userForProfile.bannerImage && this.$store.state.userForProfile.bannerImage.match(this.urlRegex)){
+        return this.$store.state.userForProfile.bannerImage
+      }
+      else{
+        return "https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png"
+      }
+    },
+    profilePhoto(){
+      if(this.$store.state.userForProfile.profileImage && this.$store.state.userForProfile.profileImage.match(this.urlRegex)){
+        return this.$store.state.userForProfile.profileImage
+      }
+      else{
+        return "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+      }
+    },
     tabClick(j){
       var tabElems = document.querySelectorAll(".a-profile-tab")
       for(var i = 0;i<4;i++){
@@ -161,12 +116,27 @@ export default {
     }
   },
   created(){
-    console.log(this.user.bio)
-    this.user.bio = this.user.bio.replaceAll(this.$store.state.hashtagRegex,"<a href=" + "'#$1'>#$1</a>")
-    this.user.bio = this.user.bio.replaceAll(this.$store.state.usernameRegex,"<a href=" + "'#$1'>@$1</a>")
-    console.log(this.user.bio)
+    // console.log(this.$store.state.userForProfile.bio)
+    this.$store.state.userForProfile.bio = this.$store.state.userForProfile.bio.replaceAll(this.$store.state.hashtagRegex,"<a href=" + "'#$1'>#$1</a>")
+    this.$store.state.userForProfile.bio = this.$store.state.userForProfile.bio.replaceAll(this.$store.state.usernameRegex,"<a href=" + "'#$1'>@$1</a>")
     this.restartTweets()
-  }
+  },
+  watch:{
+    '$route'(newValue,oldValue){
+      console.log(oldValue)
+      if(newValue.params.username === this.$store.state.currentUser.username){
+        this.$store.state.userForProfile = this.$store.state.currentUser
+      }
+      else{
+        axios.post('http://localhost:3000/api/getuserwithdetails',{
+          username:newValue.params.username,
+        })
+            .then(async (result) => {
+              this.$store.state.userForProfile = await result.data
+            })
+      }
+    }
+  },
 }
 </script>
 

@@ -4,7 +4,7 @@
     <div v-if="tweetActionLVisible" class="tweet-actions-list">
       <div class="tweet-actions-list-item">
         <i class="fas fa-user-alt-slash"></i>
-        Unfollow {{ infoForTweet.tweetUserUsername }}
+        Unfollow {{ infoForTweet.author.username }}
       </div>
       <div class="tweet-actions-list-item">
         <i class="far fa-list-alt"></i>
@@ -12,11 +12,11 @@
       </div>
       <div class="tweet-actions-list-item">
         <i class="fas fa-volume-mute"></i>
-        Mute {{ infoForTweet.tweetUserUsername }}
+        Mute {{ infoForTweet.author.username }}
       </div>
       <div class="tweet-actions-list-item">
         <i class="fas fa-ban"></i>
-        Block {{ infoForTweet.tweetUserUsername }}
+        Block {{ infoForTweet.author.username }}
       </div>
       <div class="tweet-actions-list-item">
         <i class="fas fa-code"></i>
@@ -61,27 +61,27 @@
 
     
     <div class="tweet-section1" @click.stop="rootClick()">
-      <img :src="infoForTweet.tweetUserImg" alt="">
+      <img :src="infoForTweet.author.profileImage" alt="">
     </div>
 
     <div class="tweet-section2" @click.stop="rootClick()">
       <div class="tweet-section2-header">
         <span class="header-sec1">
-          <span class="name">{{ infoForTweet.tweetUserName }}</span>
-          <span class="username">{{ infoForTweet.tweetUserUsername }}</span>
+          <span class="name">{{ infoForTweet.author.name }}</span>
+          <span class="username">{{ infoForTweet.author.username }}</span>
           <span class="uc">&#8226;</span>
-          <span class="created-date">{{ infoForTweet.tweetCreatedDate }}</span>
+          <span class="created-date">{{ infoForTweet.createdDate }}</span>
         </span>
         <span @click.stop="toggleTweetActionLVisible()" class="header-sec2"><ActionButton icon-class="fas fa-ellipsis-h" default-color="#5B7083" hover-color="#1DA1F2" hover-bg="#E8F5FE"></ActionButton></span>
       </div>
       <div class="tweet-content">
-        <div class="tweet-text" v-if="infoForTweet.tweetText">
-          <pre v-html="infoForTweet.tweetText" v-if="infoForTweet.isDetailed" style="font-size: 30px;line-height: 30px"></pre>
-          <pre v-html="infoForTweet.tweetText" v-if="!infoForTweet.isDetailed"></pre>
+        <div class="tweet-text" v-if="infoForTweet.text">
+          <pre v-html="infoForTweet.text" v-if="infoForTweet.isDetailed" style="font-size: 30px;line-height: 30px"></pre>
+          <pre v-html="infoForTweet.text" v-if="!infoForTweet.isDetailed"></pre>
         </div>
-        <span v-if="infoForTweet.tweetImg">
-          <img v-if="!infoForTweet.isDetailed" @click.stop="makeZoomedImage()" class="tweet-img" :src="infoForTweet.tweetImg" alt="">
-          <img style="height: 500px;" v-if="infoForTweet.isDetailed" @click.stop="makeZoomedImage()" class="tweet-img" :src="infoForTweet.tweetImg" alt="">
+        <span v-if="infoForTweet.tweetImage">
+          <img v-if="!infoForTweet.isDetailed" @click.stop="makeZoomedImage()" class="tweet-img" :src="infoForTweet.tweetImage" alt="">
+          <img style="height: 500px;" v-if="infoForTweet.isDetailed" @click.stop="makeZoomedImage()" class="tweet-img" :src="infoForTweet.tweetImage" alt="">
         </span>
       </div>
 
@@ -107,7 +107,7 @@
       <div class="tweet-action-buttons">
         <span class="with-count">
           <ActionButton iconClass="far fa-comment"  default-color="#5B7083" hover-color="#1DA1F2" hover-bg="#E8F5FE"></ActionButton>
-          <span class="count">{{ infoForTweet.replyCount }}</span>
+          <span class="count">{{ infoForTweet.replies.length }}</span>
         </span>
         <span class="with-count" @click.stop="toggleRetweetActionVisible()">
           <ActionButton iconClass="fas fa-retweet"  default-color="#5B7083" hover-color="#17BF63" hover-bg="#E0F2E8"></ActionButton>
@@ -115,7 +115,7 @@
         </span>
         <span class="with-count">
         <ActionButton iconClass="far fa-heart"  default-color="#5B7083" hover-color="#E0245E" hover-bg="#F5E1E7"></ActionButton>
-          <span class="count">{{ infoForTweet.likeCount }}</span>
+          <span class="count">{{ infoForTweet.likedUsers.length }}</span>
         </span>
         <span @click.stop="toggleActionList3()">
           <ActionButton iconClass="fas fa-upload"  default-color="#5B7083" hover-color="#1DA1F2" hover-bg="#E8F5FE"></ActionButton>
@@ -137,7 +137,7 @@ import { methodsMixin } from "@/methodsMixin";
 export default {
   mixins:[methodsMixin],
   name:"Tweet",
-  props:["infoForTweet","isDetailed","child","replyCount","commentCount","likeCount","tweetUserImg","tweetUserName","tweetUserUsername","tweetText","tweetImg","tweetCreatedDate"],
+  props:["infoForTweet","isDetailed","child"],
   components:{
     ActionButton
   },
@@ -149,9 +149,10 @@ export default {
     }
   },
   mounted() {
-    var r = this.infoForTweet.tweetText.replaceAll(this.$store.state.hashtagRegex,"<a href=" + "'#$1'>#$1</a>")
-    r = r.replaceAll(this.$store.state.usernameRegex,"<a href=" + "'#$1'>@$1</a>")
-    this.infoForTweet.tweetText = r
+    var trial = '<button class="link" @click.prevent="$router.push({path:`/$1`})">@$1</button>'
+    var r = this.infoForTweet.text.replaceAll(this.$store.state.hashtagRegex,"<a href=" + "'#'>#$1</a>")
+    r = r.replaceAll(this.$store.state.usernameRegex,trial)
+    this.infoForTweet.text = r
   },
   methods:{
     toggleTweetActionLVisible(){
@@ -171,7 +172,7 @@ export default {
       this.actionList3 = !this.actionList3
     },
     makeZoomedImage(){
-      this.$store.state.zoomedImage = this.infoForTweet.tweetImg
+      this.$store.state.zoomedImage = this.infoForTweet.tweetImage
       console.log('tweet image clicked')
     },
     rootClick(){
@@ -181,7 +182,7 @@ export default {
       console.log('tweet root clicked')
       this.$store.state.tweetForDetail = this.infoForTweet
       this.$store.state.tweetForDetail.isDetailed = true
-      var redirectedPath = "/" + this.infoForTweet.tweetUserUsername + "/tweets/" + this.infoForTweet.tweetId
+      var redirectedPath = "/" + this.infoForTweet.author.username + "/tweets/" + this.infoForTweet._id
       this.$router.push({path:redirectedPath})
     }
   }

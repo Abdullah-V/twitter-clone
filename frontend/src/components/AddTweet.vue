@@ -2,7 +2,7 @@
   <div class="add-tweet-root">
     <img class="add-tweet-user-img" :src="addTweetUserImg" alt="">
     <div class="add-tweet-section2">
-      <textarea placeholder="What's happening?"></textarea>
+      <textarea v-model="$store.state.newTweet.text" placeholder="What's happening?"></textarea>
       <div class="bottom-tool-bar">
         <div class="tools">
           <ActionButton iconClass="far fa-file-image" default-color="#1DA1F2" hover-color="#1DA1F2" hover-bg="#E8F5FE"></ActionButton>
@@ -12,7 +12,7 @@
           <ActionButton iconClass="far fa-calendar-alt" default-color="#1DA1F2" hover-color="#1DA1F2" hover-bg="#E8F5FE"></ActionButton>
 
         </div>
-        <TwitterButton h="40px" w="75px" br="20px" text="Tweet" bgType="blue"></TwitterButton>
+        <TwitterButton click-event="addNewTweet" h="40px" w="75px" br="20px" text="Tweet" bgType="blue"></TwitterButton>
       </div>
     </div>
   </div>

@@ -3,7 +3,7 @@
 ### START: 29 november 2020
 ### NOTE: november 6 - novermber 17 my computer is broken and my lessons are too many, my project is halfway. 
 ### END: in progress...
-### [=====> . . . . . .] 50%
+### [======> . . . .] 60%
 ## Todos:
 - [ ] Frontend
     - [x] TwitterButton component
@@ -39,8 +39,10 @@
         - [x] Route guards
         - [ ] Define all routes
         - [ ] Define all child routes
-    - [ ] Update profile popup  
+    - [x] Update profile popup  
     - [ ] Backend Integration
+    - [ ] Uploading contents piece by piece.
+    - [ ] Upload new content at the end of the page
 - [ ] Backend
     - [ ] Install modules
       - [x] express
@@ -62,8 +64,11 @@
     - [ ] Bookmarks for users
     - [ ] Useful functions for apis
         - [ ] Follow suggestion
-- [ ] Socket support for realtime 
+    - [ ] Uploading contents piece by piece
+    - [ ] Upload new content at the end of the page
 
+- [ ] Socket support for realtime 
+- [ ] Add images to readme
 ## Specifications:
 * Responsive.
 * Its offering many functions of twitter.

@@ -152,6 +152,34 @@ function addNewTweet(currentUserId,tweetContent){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Real app ===>
 
 app.post('/api/login',(req,res) => {
@@ -198,19 +226,119 @@ app.post('/api/register',(req,res) => {
 })
 
 
-app.post('/api/getuser',(req,res) => {
+app.post('/api/getuserwithoutdetail',(req,res) => {
     console.log(req.body)
     user
-        .findOne({username:req.body.username})
-        .populate('tweets')
-        .exec((err,user) => {
+        .findOne({username:req.body.username},(err,user) => {
             if(err) throw err
 
             res.send(user)
-            console.log(user)
         })
-
 })
+
+
+app.post('/api/getuserwithdetails',(req,res) => {
+    user
+        .findOne({username:req.body.username})
+        .populate('tweets')
+        .populate('likedTweets')
+        .exec()
+        .then((user) => {
+            console.log(user)
+            res.send(user)
+        })
+})
+
+
+app.post('/api/getcurrentuser',(req,res) => {
+    user
+        .findOne({username:req.body.username})
+        .populate({
+            path:'tweet',
+            populate:{
+                path:'author',
+                model:'user'
+            },
+        })
+        .populate({
+            path:'likedTweets',
+            populate:{
+                path:'author',
+                model:'user'
+            }
+        })
+        .populate('followers')
+        .populate('following')
+        .exec()
+        .then((user) => {
+            // console.log(user)
+            res.send(user)
+        })
+})
+
+
+app.post('/api/updateuser',(req,res) => {
+    console.log(req.body)
+    user.update({ _id: req.body.userId }, {$set:req.body.newInfos}, (err, result) => {
+        if (err) throw err;
+
+        console.log(result)
+
+        res.send(result)
+    });
+})
+
+
+app.post('/api/newtweet',async (req,res) => {
+     await tweet
+        .create(req.body.tweetContent)
+        .then(async (newTweet) => {
+            await user
+                .findOne({username:req.body.username},async (err,currentUser) => {
+                    if(err){console.log(err)}
+
+                    await currentUser.tweets.push(newTweet._id)
+                    await currentUser.save()
+
+                    await tweet
+                        .findOne({_id:newTweet._id})
+                        .populate('author')
+                        .exec(async (err,result) => {
+                            if(err) throw err
+                            await console.log(result)
+                            await res.send(result)
+                        })
+
+                    // console.log(newTweet)
+                    // console.log(currentUser)
+                })
+        })
+        .catch(e => {throw e})
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -243,6 +371,28 @@ app.get('/allTweets',(req,res) => {
 
 app.get('/operation',(req,res) => {
     res.send("operation succesfully")
+
+    user
+        .findOne({_id:"5fdf455f1eff1e3d75a339d6"})
+        .populate({
+            path:'likedTweets',
+            populate:[{
+                path:'author',
+                model:'user',
+                populate:{
+                    path:'tweets',
+                    model:'tweet'
+                }
+            },
+                {
+                    path:"likedUsers",model:'user'
+                }
+            ]
+        })
+        .populate('likedUsers')
+        .exec((err,doc) => {
+            console.log(err,doc)
+        })
 
     // var currentUserId = "5fdf458e3af01c3d92b8c6e6"
     // var newInfos = {

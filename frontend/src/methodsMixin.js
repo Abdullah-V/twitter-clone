@@ -87,18 +87,71 @@ export var methodsMixin = {
             }
 
         },
-        getTheUser(username){
-            http.post('/getuser',{
-                username
+        // getUserForMiniProfile(username){
+        //     http.post('/getuserwithoutdetail',{
+        //         username
+        //     })
+        //         .then(result => {
+        //             console.log(result.data)
+        //             this.$store.state.currentUser = result.data
+        //         })
+        // },
+        updateUser(){
+            this.$store.state.editProfilePopup = false
+            http.post('/updateuser',{
+                newInfos:this.$store.state.newInfos,
+                userId:this.$store.state.currentUser._id
             })
-                .then(result => {
-                    console.log(result.data)
-                    this.$store.state.currentUser = result.data
+                .then(async (result) => {
+                    console.log(result)
+                    await this.getCurrentUser()
+                    this.$router.go(0)
+                    // this._vm.$forceUpdate();
                 })
+        },
+        addNewTweet(){
+          http.post('/newtweet',{
+              username:localStorage.getItem('userId'),
+              tweetContent:{
+                  text:this.$store.state.newTweet.text,
+                  tweetImage:this.$store.state.newTweet.image,
+                  author:this.$store.state.currentUser._id
+              },
+          })
+              .then(result => {
+                  console.log(result.data)
+                  this.$store.state.tweets.push(result.data)
+              })
+        },
+        getCurrentUser(){
+            http.post('/getcurrentuser',{
+                        username:localStorage.getItem('userId')
+                    })
+                        .then(async (result) => {
+                            console.log(result.data)
+                            this.$store.state.currentUser = await result.data
+                            this.$store.state.newInfos.name = this.$store.state.currentUser.name || ""
+                            this.$store.state.newInfos.mail = this.$store.state.currentUser.mail || ""
+                            this.$store.state.newInfos.bio = this.$store.state.currentUser.bio || ""
+                            this.$store.state.newInfos.location = this.$store.state.currentUser.location || ""
+                            this.$store.state.newInfos.website = this.$store.state.currentUser.website || ""
+                            this.$store.state.newInfos.bannerImage = this.$store.state.currentUser.bannerImage || "https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png"
+                            this.$store.state.newInfos.profileImage = this.$store.state.currentUser.profileImage || "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+                        })
+        },
+        toggleEditProfilePopup(){
+            this.$store.state.editProfilePopup = !this.$store.state.editProfilePopup
+            this.$store.state.newInfos.name = this.$store.state.currentUser.name || ""
+            this.$store.state.newInfos.mail = this.$store.state.currentUser.mail || ""
+            this.$store.state.newInfos.bio = this.$store.state.currentUser.bio || ""
+            this.$store.state.newInfos.location = this.$store.state.currentUser.location || ""
+            this.$store.state.newInfos.website = this.$store.state.currentUser.website || ""
+            this.$store.state.newInfos.bannerImage = this.$store.state.currentUser.bannerImage || "https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png"
+            this.$store.state.newInfos.profileImage = this.$store.state.currentUser.profileImage || "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
         },
         sampleAction(obj){
             console.log("a action from mixin")
-            console.log(`parametr in mixin: ${obj}`)
+            console.log(`parameter in mixin: ${obj}`)
         },
         toggleAddTweetPopup(){
             this.$store.state.addTweetPopup = !this.$store.state.addTweetPopup

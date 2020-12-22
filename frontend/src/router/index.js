@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import axios from "axios";
 import store from "@/store/index"
 import Hello from "@/views/Hello";
 import Login from "@/views/Login";
@@ -53,8 +54,27 @@ const routes = [
     {
         path:"/:username",
         component: Profile,
-        beforeEnter: (to, from, next) => {
-            isLogin(next)
+        beforeEnter: async (to, from, next) => {
+            if(localStorage.getItem('userId')){
+                if((to.params.username === store.state.userForProfile.username)){
+                    next()
+                }
+                else if(to.params.username === store.state.currentUser.username){
+                    store.state.userForProfile = store.state.currentUser
+                }
+                else{
+                    axios.post('http://localhost:3000/api/getuserwithdetails',{
+                        username:to.params.username,
+                    })
+                        .then(async (result) => {
+                            store.state.userForProfile = await result.data
+                            next()
+                        })
+                }
+            }
+            else{
+                next('/')
+            }
         }
     },
     {

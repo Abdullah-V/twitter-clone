@@ -15,11 +15,28 @@ export default new Vuex.Store({
     registerEmailModel:"",
     registerErrors:"",
 
+    newInfos:{
+      name:"",
+      mail:"",
+      website:"",
+      bio:"",
+      location:"",
+      profileImage:"",
+      bannerImage:"",
+    },
+
+    newTweet:{
+      text:"",
+      image:"",
+    },
+
     registerPage:false,
     addTweetPopup:false,
+    editProfilePopup:false,
     userId:localStorage.getItem('userId'),
     hashtagRegex:/(?:(?<=\s)|^)#(\w*[A-Za-z_ğüşıöçĞÜŞİÖÇ]+\w*)/gi,
     usernameRegex:/(?:(?<=\s)|^)@(\w*[A-Za-z_ğüşıöçĞÜŞİÖÇ]+\w*)/gi,
+
 
     zoomedImage:"",
 
@@ -68,28 +85,17 @@ export default new Vuex.Store({
 
     tweets:[
       {
-        tweetId:1,
-        tweetUserName:"Selçuk Bayraktar",
-        tweetUserUsername:"@Selcuk",
-        tweetCreatedDate:"11h",
-        tweetUserImg:"https://pbs.twimg.com/profile_images/1155141513858433027/nJcIRDau_400x400.jpg",
-        tweetText:"#BayraktarTB2 S/İHA \n\n 7/24 devam eden uçuş eğitimlerinden... \n\n #MilliTeknolojiHamlesi",
-      tweetImg:"https://pbs.twimg.com/media/EoLHVqaXYAcny8X?format=jpg&name=large",
-      likeCount:"6.9k",
-      commentCount:"946",
-      replyCount:"2.1k",
-      },
-      {
-        tweetId:2,
-        tweetUserName:"Selçuk Bayraktar",
-        tweetUserUsername:"@Selcuk",
-        tweetCreatedDate:"11h",
-        tweetUserImg:"https://pbs.twimg.com/profile_images/1155141513858433027/nJcIRDau_400x400.jpg",
-        tweetText:"#BayraktarTB2 S/İHA \n\n 7/24 devam eden uçuş eğitimlerinden... \n\n #MilliTeknolojiHamlesi",
-        tweetImg:"https://pbs.twimg.com/media/EoLHVqaXYAcny8X?format=jpg&name=large",
-        likeCount:"6.9k",
-        commentCount:"946",
-        replyCount:"2.1k",
+        _id:1,
+        author:{
+          name:"Selçuk Bayraktar",
+          username:"@Selcuk",
+          profileImage:"https://pbs.twimg.com/profile_images/1155141513858433027/nJcIRDau_400x400.jpg"
+        },
+        createdDate:"11h",
+        text:"#BayraktarTB2 S/İHA \n\n 7/24 devam eden uçuş eğitimlerinden... \n\n #MilliTeknolojiHamlesi",
+        tweetImage:"https://pbs.twimg.com/media/EoLHVqaXYAcny8X?format=jpg&name=large",
+      likedUsers:[0,1,2,3,4,5,6,7,8],
+        replies:[0,1,2,3,4],
       },
     ]
 

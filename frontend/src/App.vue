@@ -9,7 +9,7 @@
     </div>
 
 
-
+    <EditProfilePopup v-if="$store.state.editProfilePopup"></EditProfilePopup>
     <AddTweetPopup v-if="$store.state.addTweetPopup"></AddTweetPopup>
 
     <div class="left-section" v-if="$store.state.userId">
@@ -46,6 +46,7 @@ import Sidebar from "@/components/Sidebar";
 import MiniUserProfile from "@/components/MiniUserProfile";
 import AddTweetPopup from "@/components/AddTweetPopup";
 import ActionButton from "@/components/ActionButton";
+import EditProfilePopup from "@/components/EditProfilePopup";
 
 export default {
   mixins:[methodsMixin],
@@ -53,7 +54,8 @@ export default {
     Sidebar,
     MiniUserProfile,
     AddTweetPopup,
-    ActionButton
+    ActionButton,
+    EditProfilePopup
 },
   methods:{
     searchInputFocusEvent(){
@@ -70,7 +72,7 @@ export default {
   },
   async created() {
       var u = await localStorage.getItem('userId')
-      this.getTheUser(u)
+      await this.getCurrentUser(u)
   }
 }
 </script>
