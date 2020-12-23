@@ -9,7 +9,13 @@
       </div>
       <div class="tweets">
         <AddTweet :add-tweet-user-img="$store.state.currentUser.profileImage || 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'"></AddTweet>
-        <Tweet :key="index" v-for="(tweet,index) in $store.state.tweets" :info-for-tweet="tweet"></Tweet>
+        <div :key="tweet._id" v-for="tweet in $store.state.tweets">
+          <Tweet :info-for-tweet="tweet"></Tweet>
+        </div>
+<!--        {{ $store.state.tweets }}-->
+<!--        <span :key="tweet._id" v-for="tweet in $store.state.tweets">-->
+<!--          <h1>HERE: </h1>{{ tweet }}-->
+<!--        </span>-->
       </div>
     </div>
 

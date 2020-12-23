@@ -240,39 +240,39 @@ app.post('/api/getuserwithoutdetail',(req,res) => {
 app.post('/api/getuserwithdetails',(req,res) => {
     user
         .findOne({username:req.body.username})
-        .populate('tweets')
+        .populate({
+            path:'tweets',
+            populate:{
+                path:'author',
+                model:'user',
+            }
+        })
         .populate('likedTweets')
         .exec()
         .then((user) => {
             console.log(user)
             res.send(user)
+            console.log("the work")
         })
 })
 
 
-app.post('/api/getcurrentuser',(req,res) => {
-    user
-        .findOne({username:req.body.username})
+app.post('/api/getthetweet',(req,res) => {
+    tweet
+        .findOne({_id:req.body.tweetId})
+        .populate('author')
         .populate({
-            path:'tweet',
-            populate:{
-                path:'author',
-                model:'user'
-            },
-        })
-        .populate({
-            path:'likedTweets',
+            path:"replies",
             populate:{
                 path:'author',
                 model:'user'
             }
         })
-        .populate('followers')
-        .populate('following')
-        .exec()
-        .then((user) => {
-            // console.log(user)
-            res.send(user)
+        .exec((err,tweet) => {
+            if(err) throw err
+
+            console.log(tweet)
+            res.send(tweet)
         })
 })
 
@@ -308,18 +308,39 @@ app.post('/api/newtweet',async (req,res) => {
                             await console.log(result)
                             await res.send(result)
                         })
-
-                    // console.log(newTweet)
-                    // console.log(currentUser)
                 })
         })
         .catch(e => {throw e})
 })
 
 
+app.post('/api/gettweetpage',(req,res) => {
+    // res.send('succes')
+    var page = Number(req.body.page)
+    var s = (page - 1) * Number(req.body.tweetPerPage)
+    var l = Number(req.body.tweetPerPage)
+    tweet
+        .find({},{},() => {})
+        .skip(s)
+        .limit(l)
+        .populate({
+            path:'author',
+        })
+        .exec((err,tweets) => {
+            if(err) throw err
 
+            console.log(tweets)
+            res.send(tweets)
+            console.log(s,l)
+            console.log(req.body)
+        })
+})
 
-
+// 20 tweet
+// 5 tweet per page
+// get page 2
+// start = 20
+// end = 40
 
 
 

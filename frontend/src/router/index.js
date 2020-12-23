@@ -59,14 +59,14 @@ const routes = [
                 if((to.params.username === store.state.userForProfile.username)){
                     next()
                 }
-                else if(to.params.username === store.state.currentUser.username){
-                    store.state.userForProfile = store.state.currentUser
-                }
                 else{
                     axios.post('http://localhost:3000/api/getuserwithdetails',{
                         username:to.params.username,
                     })
                         .then(async (result) => {
+                            // console.log(`result data: ${JSON.stringify(result.data)}`)
+                            var deneme = result.data
+                            console.log(deneme.tweets)
                             store.state.userForProfile = await result.data
                             next()
                         })
@@ -81,7 +81,24 @@ const routes = [
         path:"/:username/tweets/:tweetId",
         component: TweetDetails,
         beforeEnter: (to, from, next) => {
-            isLogin(next)
+            if(localStorage.getItem('userId')){
+                if(to.params.tweetId === store.state.tweetForDetail._id){
+                    next()
+                    return
+                }
+                axios.post('http://localhost:3000/api/getthetweet',{
+                    tweetId:to.params.tweetId
+                })
+                    .then(result => {
+                        console.log(result.data)
+                        store.state.tweetForDetail = result.data
+                        store.state.tweetForDetail.isDetailed = true
+                        next()
+                    })
+            }
+            else{
+                next('/')
+            }
         }
     }
 ]

@@ -3,17 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="5aa0c897-1731-4388-95a7-12f2720cdedf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/tweet.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/tweet.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/AddTweet.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/AddTweet.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Sidebar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Sidebar.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Tweet.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Tweet.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/methodsMixin.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/methodsMixin.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Home.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/views/Profile.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Profile.vue" afterDir="false" />
     </list>
@@ -79,7 +73,8 @@
       <workItem from="1608450093416" duration="32984000" />
       <workItem from="1608526499605" duration="5907000" />
       <workItem from="1608554069321" duration="424000" />
-      <workItem from="1608616972150" duration="28972000" />
+      <workItem from="1608616972150" duration="29249000" />
+      <workItem from="1608716494912" duration="15801000" />
     </task>
     <servers />
   </component>

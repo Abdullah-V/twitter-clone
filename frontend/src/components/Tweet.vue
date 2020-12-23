@@ -67,8 +67,8 @@
     <div class="tweet-section2" @click.stop="rootClick()">
       <div class="tweet-section2-header">
         <span class="header-sec1">
-          <span class="name">{{ infoForTweet.author.name }}</span>
-          <span class="username">{{ infoForTweet.author.username }}</span>
+          <span @click.stop="$router.push({path:'/' + infoForTweet.author.username})" class="name">{{ infoForTweet.author.name }}</span>
+          <span class="username">@{{ infoForTweet.author.username }}</span>
           <span class="uc">&#8226;</span>
           <span class="created-date">{{ infoForTweet.createdDate }}</span>
         </span>
@@ -122,8 +122,8 @@
         </span>
       </div>
       <span class="f-and-f" v-if="infoForTweet.isDetailed">
-        <span class="ff"><b>168</b> <span class="ftext">Retweet</span></span>
-        <span style="padding: 0px 20px" class="ff"><b>41.7k</b> <span class="ftext">Likes</span></span>
+        <span class="ff"><b>{{ infoForTweet.retweeters.length }}</b> <span class="ftext">Retweet</span></span>
+        <span style="padding: 0px 20px" class="ff"><b>{{ infoForTweet.likedUsers.length }}</b> <span class="ftext">Likes</span></span>
       </span>
     </div>
 
@@ -149,9 +149,8 @@ export default {
     }
   },
   mounted() {
-    var trial = '<button class="link" @click.prevent="$router.push({path:`/$1`})">@$1</button>'
-    var r = this.infoForTweet.text.replaceAll(this.$store.state.hashtagRegex,"<a href=" + "'#'>#$1</a>")
-    r = r.replaceAll(this.$store.state.usernameRegex,trial)
+    var r = this.infoForTweet.text.replaceAll(this.$store.state.hashtagRegex,"<a class='link' href=" + "'#'>#$1</a>")
+    r = r.replaceAll(this.$store.state.usernameRegex,"<a class='link' href='/$1'>@$1</a>")
     this.infoForTweet.text = r
   },
   methods:{
@@ -180,8 +179,8 @@ export default {
         return
       }
       console.log('tweet root clicked')
-      this.$store.state.tweetForDetail = this.infoForTweet
-      this.$store.state.tweetForDetail.isDetailed = true
+      // this.$store.state.tweetForDetail = this.infoForTweet
+      // this.$store.state.tweetForDetail.isDetailed = true
       var redirectedPath = "/" + this.infoForTweet.author.username + "/tweets/" + this.infoForTweet._id
       this.$router.push({path:redirectedPath})
     }

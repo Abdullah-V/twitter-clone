@@ -26,8 +26,8 @@
       <pre v-html="$store.state.userForProfile.bio"></pre>
 
       <span class="some-info" v-if="$store.state.userForProfile.location"><i class="fas fa-map-marker-alt"></i><span>{{ $store.state.userForProfile.location }}</span></span>
-      <span class="some-info" v-if="$store.state.userForProfile.mail"><i class="fas fa-envelope"></i><a href="mailto:selcuk@bayraktar.com">{{ $store.state.userForProfile.mail }}</a></span>
-      <span class="some-info" v-if="$store.state.userForProfile.website"><i class="fas fa-link"></i><a href="#">{{ $store.state.userForProfile.website }}</a></span>
+      <span class="some-info" v-if="$store.state.userForProfile.mail"><i class="fas fa-envelope"></i><a :href="'mailto:' + $store.state.userForProfile.mail">{{ $store.state.userForProfile.mail }}</a></span>
+      <span class="some-info" v-if="$store.state.userForProfile.website"><i class="fas fa-link"></i><a :href="$store.state.userForProfile.website ">{{ $store.state.userForProfile.website }}</a></span>
       <span class="some-info"><i class="far fa-calendar-alt"></i><span>Joined January 24</span></span>
 
       <span class="f-and-f">
@@ -46,11 +46,13 @@
 
 
     <div style="position: relative;bottom: 95px">
-<!--      <div v-for="(tweet,index) in $store.state.tweets" :key="index">-->
-<!--        <Tweet :info-for-tweet="tweet"></Tweet>-->
-<!--      </div>-->
-      <Tweet :info-for-tweet="$store.state.tweets[0]"></Tweet>
+      <div v-for="(tweet,index) in $store.state.userForProfile.tweets" :key="index">
+        <Tweet :info-for-tweet="tweet"></Tweet>
+      </div>
+<!--      <Tweet :info-for-tweet="$store.state.tweets[0]"></Tweet>-->
   </div>
+
+<!--    {{ $store.state.userForProfile.tweets }}-->
 
   </div>
 </template>
@@ -109,10 +111,10 @@ export default {
       tabElems[j].style.borderBottom = "2px solid #1DA1F2"
     },
     zoomedProfileImage(){
-      this.$store.state.zoomedImage = this.$store.state.userForProfile.profileImg
+      this.$store.state.zoomedImage = this.$store.state.userForProfile.profileImage
     },
     zoomedBannerImage(){
-      this.$store.state.zoomedImage = this.$store.state.userForProfile.bannerImg
+      this.$store.state.zoomedImage = this.$store.state.userForProfile.bannerImage
     }
   },
   created(){
@@ -124,10 +126,9 @@ export default {
   watch:{
     '$route'(newValue,oldValue){
       console.log(oldValue)
-      if(newValue.params.username === this.$store.state.currentUser.username){
-        this.$store.state.userForProfile = this.$store.state.currentUser
-      }
-      else{
+      // if(newValue.params.username === this.$store.state.currentUser.username){
+      //   this.$store.state.userForProfile = this.$store.state.currentUser
+      // }
         axios.post('http://localhost:3000/api/getuserwithdetails',{
           username:newValue.params.username,
         })
@@ -135,7 +136,6 @@ export default {
               this.$store.state.userForProfile = await result.data
             })
       }
-    }
   },
 }
 </script>

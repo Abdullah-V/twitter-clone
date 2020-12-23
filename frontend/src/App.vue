@@ -70,9 +70,10 @@ export default {
       this.$store.state.zoomedImage = ""
     }
   },
-  async created() {
-      var u = await localStorage.getItem('userId')
-      await this.getCurrentUser(u)
+  created() {
+      console.log('app created')
+      this.getTweetPage()
+      this.getCurrentUser()
   }
 }
 </script>

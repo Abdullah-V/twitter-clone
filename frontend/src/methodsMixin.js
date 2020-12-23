@@ -123,12 +123,22 @@ export var methodsMixin = {
                   this.$store.state.tweets.push(result.data)
               })
         },
+        getTweetPage(){
+            http.post('/gettweetpage',{
+                page:1,
+                tweetPerPage:3,
+            })
+                .then(result => {
+                    this.$store.state.tweets = result.data
+                    console.log(result.data)
+                })
+        },
         getCurrentUser(){
-            http.post('/getcurrentuser',{
+            http.post('/getuserwithoutdetail',{
                         username:localStorage.getItem('userId')
                     })
                         .then(async (result) => {
-                            console.log(result.data)
+                            console.log("current user",result.data)
                             this.$store.state.currentUser = await result.data
                             this.$store.state.newInfos.name = this.$store.state.currentUser.name || ""
                             this.$store.state.newInfos.mail = this.$store.state.currentUser.mail || ""
