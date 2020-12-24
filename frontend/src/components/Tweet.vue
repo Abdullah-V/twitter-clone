@@ -2,6 +2,10 @@
   <div class="tweet-root">
 
     <div v-if="tweetActionLVisible" class="tweet-actions-list">
+      <div @click="removeTweet(infoForTweet._id)" v-if="infoForTweet.author._id === $store.state.currentUser._id" class="tweet-actions-list-item">
+        <i style="color: #e0245e" class="fas fa-trash-alt"></i>
+        <span style="color: #e0245e;">Delete tweet</span>
+      </div>
       <div class="tweet-actions-list-item">
         <i class="fas fa-user-alt-slash"></i>
         Unfollow {{ infoForTweet.author.username }}
@@ -61,7 +65,7 @@
 
     
     <div class="tweet-section1" @click.stop="rootClick()">
-      <img :src="infoForTweet.author.profileImage" alt="">
+      <img :src="infoForTweet.author.profileImage || 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'" alt="">
     </div>
 
     <div class="tweet-section2" @click.stop="rootClick()">
@@ -76,12 +80,12 @@
       </div>
       <div class="tweet-content">
         <div class="tweet-text" v-if="infoForTweet.text">
-          <pre v-html="infoForTweet.text" v-if="infoForTweet.isDetailed" style="font-size: 30px;line-height: 30px"></pre>
+          <pre v-html="infoForTweet.text" v-if="infoForTweet.isDetailed" style="font-size: 25px;line-height: 30px"></pre>
           <pre v-html="infoForTweet.text" v-if="!infoForTweet.isDetailed"></pre>
         </div>
         <span v-if="infoForTweet.tweetImage">
-          <img v-if="!infoForTweet.isDetailed" @click.stop="makeZoomedImage()" class="tweet-img" :src="infoForTweet.tweetImage" alt="">
-          <img style="height: 500px;" v-if="infoForTweet.isDetailed" @click.stop="makeZoomedImage()" class="tweet-img" :src="infoForTweet.tweetImage" alt="">
+          <img v-if="!infoForTweet.isDetailed && isImage()" @click.stop="makeZoomedImage()" class="tweet-img" :src="infoForTweet.tweetImage" alt="">
+          <img style="height: 500px;" v-if="infoForTweet.isDetailed && isImage()" @click.stop="makeZoomedImage()" class="tweet-img" :src="infoForTweet.tweetImage" alt="">
         </span>
       </div>
 
@@ -105,7 +109,7 @@
 <!--        </div>-->
 
       <div class="tweet-action-buttons">
-        <span class="with-count">
+        <span @click.stop="" class="with-count">
           <ActionButton iconClass="far fa-comment"  default-color="#5B7083" hover-color="#1DA1F2" hover-bg="#E8F5FE"></ActionButton>
           <span class="count">{{ infoForTweet.replies.length }}</span>
         </span>
@@ -113,8 +117,12 @@
           <ActionButton iconClass="fas fa-retweet"  default-color="#5B7083" hover-color="#17BF63" hover-bg="#E0F2E8"></ActionButton>
           <span class="count">{{ infoForTweet.commentCount }}</span>
         </span>
-        <span class="with-count">
+        <span v-if="!$store.state.currentUser.likedTweets.includes(infoForTweet._id)" @click.stop="likeTweet()" class="with-count">
         <ActionButton iconClass="far fa-heart"  default-color="#5B7083" hover-color="#E0245E" hover-bg="#F5E1E7"></ActionButton>
+          <span class="count">{{ infoForTweet.likedUsers.length }}</span>
+        </span>
+        <span v-if="$store.state.currentUser.likedTweets.includes(infoForTweet._id)" @click.stop="unLikeTweet()" class="with-count">
+        <ActionButton iconClass="fas fa-heart"  default-color="#e0245e" hover-color="#e0245e" hover-bg="#F5E1E7"></ActionButton>
           <span class="count">{{ infoForTweet.likedUsers.length }}</span>
         </span>
         <span @click.stop="toggleActionList3()">
@@ -143,6 +151,7 @@ export default {
   },
   data(){
     return{
+      urlRegex: new RegExp('(https?:\\/\\/)|(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)', 'ig'),
       tweetActionLVisible:false,
       retweetActionVisible:false,
       actionList3:false,
@@ -183,7 +192,20 @@ export default {
       // this.$store.state.tweetForDetail.isDetailed = true
       var redirectedPath = "/" + this.infoForTweet.author.username + "/tweets/" + this.infoForTweet._id
       this.$router.push({path:redirectedPath})
-    }
+    },
+    isImage(){
+      if(this.infoForTweet.tweetImage.match(this.urlRegex)){
+        return true
+      }
+    },
+    likeTweet(){
+      this.likeOrUnlike(this.infoForTweet._id,true)
+      this.infoForTweet.likedUsers.push(this.$store.state.currentUser._id)
+    },
+    unLikeTweet(){
+      this.likeOrUnlike(this.infoForTweet._id,false)
+      this.infoForTweet.likedUsers.splice(this.infoForTweet.likedUsers.indexOf(this.$store.state.currentUser._id),1)
+    },
   }
 }
 </script>
@@ -289,6 +311,7 @@ export default {
   background:white;
   position:absolute;
   right: 70px;
+  z-index: 9;
 }
 
 .tweet-actions-list-item{
@@ -310,6 +333,7 @@ export default {
 }
 
 .retweet-actions-list{
+  z-index: 9;
   width: 150px;
   height: auto;
   background: white;
@@ -319,6 +343,7 @@ export default {
 }
 
 .action-list3{
+  z-index: 9;
   width: 240px;
   height: auto;
   background: white;

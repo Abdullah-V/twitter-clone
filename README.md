@@ -30,11 +30,16 @@
     - [x] Image zoomer
     - [ ] Folowers list
     - [ ] Tweet likers list
-    - [ ] Tweets detail page
+    - [x] Tweets detail page
     - [ ] Tweet replies
     - [ ] Nested tweets(retweet with comment)  
-    - [ ] Retweet  
-    - [ ] Tweet pinning  
+    - [ ] Retweet
+    - [ ] Tweet pinning
+    - [ ] Search
+    - [ ] Shortcuts
+    - [x] Delete tweet
+    - [ ] Alert  
+    - [x] Image preview on tweet adding
     - [ ] Routing
         - [x] Route guards
         - [ ] Define all routes

@@ -2,7 +2,7 @@
   <div class="add-tweet-popup-root">
     <div class="popup">
       <div class="popup-header"><ActionButton action="toggleAddTweetPopup" icon-class="fas fa-times" default-color="#1DA1F2" hover-color="#1DA1F2" hover-bg="#E8F5FE"></ActionButton></div>
-      <AddTweet add-tweet-user-img="https://abs.twimg.com/sticky/default_profile_images/default_profile_400x400.png"></AddTweet>
+      <AddTweet></AddTweet>
     </div>
   </div>
 </template>

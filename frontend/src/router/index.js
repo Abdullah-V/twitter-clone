@@ -82,10 +82,10 @@ const routes = [
         component: TweetDetails,
         beforeEnter: (to, from, next) => {
             if(localStorage.getItem('userId')){
-                if(to.params.tweetId === store.state.tweetForDetail._id){
-                    next()
-                    return
-                }
+                // if(to.params.tweetId === store.state.tweetForDetail._id){
+                //     next()
+                //     return
+                // }
                 axios.post('http://localhost:3000/api/getthetweet',{
                     tweetId:to.params.tweetId
                 })

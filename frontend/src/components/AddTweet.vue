@@ -1,8 +1,14 @@
 <template>
   <div class="add-tweet-root">
-    <img class="add-tweet-user-img" :src="addTweetUserImg" alt="">
+    <img class="add-tweet-user-img" :src="$store.state.currentUser.profileImage" alt="">
     <div class="add-tweet-section2">
       <textarea v-model="$store.state.newTweet.text" placeholder="What's happening?"></textarea>
+      <img style=" width: 100%;
+  height: 275px;
+  border-radius: 17px;
+  margin: 20px 0px;" v-if="$store.state.newTweet.image && isImage()" :src="$store.state.newTweet.image" alt="">
+      <h3 style="color: #ef3615;" v-if="$store.state.newTweet.image && !isImage()">Please enter a valid URL</h3>
+      <input v-model="$store.state.newTweet.image" type="text" placeholder="Image URL">
       <div class="bottom-tool-bar">
         <div class="tools">
           <ActionButton iconClass="far fa-file-image" default-color="#1DA1F2" hover-color="#1DA1F2" hover-bg="#E8F5FE"></ActionButton>
@@ -23,11 +29,22 @@ import ActionButton from "@/components/ActionButton";
 import TwitterButton from "@/components/TwitterButton";
 
 export default {
+  data(){
+    return {
+      urlRegex: new RegExp('(https?:\\/\\/)|(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)', 'ig'),
+    }
+  },
   components:{
     ActionButton,
     TwitterButton
   },
-  props:["addTweetUserImg"],
+  methods:{
+    isImage(){
+      if(this.$store.state.newTweet.image.match(this.urlRegex)){
+        return true
+      }
+    }
+  }
 }
 </script>
 
@@ -59,15 +76,24 @@ export default {
   padding-top: 10px;
 }
 
-textarea{
+textarea,
+input{
   border: 0px;
   width: 100%;
-  min-height: 90px;
-  max-height: 535px;
   border-bottom: 1px solid #bfbfbf;
   resize: none;
   margin-bottom: 10px;
   font-size: 20px;
+}
+
+textarea{
+  min-height: 90px;
+  max-height: 535px;
+}
+
+input{
+  min-height: 40px;
+  max-height: 535px;
 }
 
 .bottom-tool-bar{

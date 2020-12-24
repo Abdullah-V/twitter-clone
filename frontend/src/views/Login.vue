@@ -15,8 +15,8 @@
       <input v-model="$store.state.loginPasswordModel" @focusout="focusOutEvent(1)" @focus="focusEvent(1)" type="password">
     </div>
 
-    {{ $store.state.loginPasswordModel }}
-    {{ $store.state.loginUsernameOrEmailModel }}
+<!--    {{ $store.state.loginPasswordModel }}-->
+<!--    {{ $store.state.loginUsernameOrEmailModel }}-->
 
     <TwitterButton clickEvent="loginUser" h="54px" w="540px" br="27px" text="Giriş yap" bgType="blue"></TwitterButton>
 

@@ -15,9 +15,13 @@
         </div>
         <TwitterButton click-event="toggleEditProfilePopup" v-if="$store.state.userForProfile.username === $store.state.currentUser.username" h="40px" w="115px" br="20px" text="Edit Profile" bgType="white"></TwitterButton>
         <span v-if="$store.state.userForProfile.username !== $store.state.currentUser.username" class="profile-buttons">
-            <TwitterButton  h="40px" w="40px" br="20px" text="<i class='fas fa-ellipsis-h'></i>" bgType="white"></TwitterButton>
-            <TwitterButton  h="40px" w="40px" br="20px" text="<i class='far fa-bell'></i>" bgType="white"></TwitterButton>
-            <TwitterButton  h="40px" w="105px" br="20px" text="Follow" bgType="white"></TwitterButton>
+
+              <TwitterButton v-if="$store.state.currentUser.following.includes($store.state.userForProfile._id)" h="40px" w="40px" br="20px" text="<i class='fas fa-ellipsis-h'></i>" bgType="white"></TwitterButton>
+              <TwitterButton v-if="$store.state.currentUser.following.includes($store.state.userForProfile._id)"  h="40px" w="40px" br="20px" text="<i class='far fa-bell'></i>" bgType="white"></TwitterButton>
+              <FollowUnfollowButton v-if="$store.state.currentUser.following.includes($store.state.userForProfile._id)"></FollowUnfollowButton>
+            <span v-if="!$store.state.currentUser.following.includes($store.state.userForProfile._id)" @click="followOrUnfollow(true)">
+              <TwitterButton h="40px" w="105px" br="20px" text="Follow" bgType="white"></TwitterButton>
+            </span>
         </span>
       </div>
       <h2>{{ $store.state.userForProfile.name }}</h2>
@@ -27,8 +31,8 @@
 
       <span class="some-info" v-if="$store.state.userForProfile.location"><i class="fas fa-map-marker-alt"></i><span>{{ $store.state.userForProfile.location }}</span></span>
       <span class="some-info" v-if="$store.state.userForProfile.mail"><i class="fas fa-envelope"></i><a :href="'mailto:' + $store.state.userForProfile.mail">{{ $store.state.userForProfile.mail }}</a></span>
-      <span class="some-info" v-if="$store.state.userForProfile.website"><i class="fas fa-link"></i><a :href="$store.state.userForProfile.website ">{{ $store.state.userForProfile.website }}</a></span>
-      <span class="some-info"><i class="far fa-calendar-alt"></i><span>Joined January 24</span></span>
+      <span class="some-info" v-if="$store.state.userForProfile.website"><i class="fas fa-link"></i><a :href="$store.state.userForProfile.website">{{ $store.state.userForProfile.website }}</a></span>
+      <span class="some-info"><i class="far fa-calendar-alt"></i><span>Joined {{ $store.state.userForProfile.joinedDate }}</span></span>
 
       <span class="f-and-f">
         <span class="ff"><b>{{ $store.state.userForProfile.following.length }}</b> <span class="ftext">Following</span></span>
@@ -63,13 +67,15 @@ import TwitterButton from "@/components/TwitterButton";
 import Tweet from "@/components/Tweet";
 import { methodsMixin } from "@/methodsMixin";
 import axios from "axios";
+import FollowUnfollowButton from "@/components/FollowUnfollowButton";
 
 export default {
   mixins:[methodsMixin],
   components:{
     ActionButton,
     TwitterButton,
-    Tweet
+    Tweet,
+    FollowUnfollowButton
   },
   data(){
     return {
@@ -198,7 +204,7 @@ export default {
 }
 
 .photo-and-buttons{
-  width: 100%;
+  width: auto;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -206,7 +212,7 @@ export default {
 }
 
 .photo-and-buttons span.profile-buttons{
-  width: 200px;
+  width: auto;
   display: flex;
   justify-content: space-between;
 }

@@ -5,7 +5,7 @@
       <span @click="closeZoomedImage()" class="image-close-icon">
         <i class="fas fa-times"></i>
       </span>
-      <img style="width: 90%;height: 96%;border-radius: 25px" :src="$store.state.zoomedImage" alt="">
+      <img style="max-height: 98%;max-width: 90%;border-radius: 10px" :src="$store.state.zoomedImage" alt="">
     </div>
 
 
@@ -74,6 +74,15 @@ export default {
       console.log('app created')
       this.getTweetPage()
       this.getCurrentUser()
+  },
+  mounted:{
+    deneme(){
+      var zoomedImg = document.querySelector("image-zoomer img")
+      var realWidth = zoomedImg.naturalWidth;
+      var realHeight = zoomedImg.naturalHeight;
+      zoomedImg.style.height = realHeight
+      zoomedImg.style.width = realWidth
+    }
   }
 }
 </script>

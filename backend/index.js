@@ -27,6 +27,8 @@ app.use(bodyParser.json())
 
 
 // TAMAM ===>
+
+
 function followOrUnfollowTheUser(currentUserId,userIdToFollow,follow){
     user
         .findById(currentUserId)
@@ -140,13 +142,13 @@ async function updateProfile(currentUserId,newInfos){
 }
 
 
-function addNewTweet(currentUserId,tweetContent){
-
-}
+function addNewTweet(currentUserId,tweetContent){}
 
 
 
 // MORE ON NEXT COMMIT ;)
+
+
 
 
 
@@ -242,12 +244,15 @@ app.post('/api/getuserwithdetails',(req,res) => {
         .findOne({username:req.body.username})
         .populate({
             path:'tweets',
+            options:{
+                sort:{createdDate: -1}
+            },
             populate:{
                 path:'author',
                 model:'user',
             }
         })
-        .populate('likedTweets')
+        // .populate('likedTweets')
         .exec()
         .then((user) => {
             console.log(user)
@@ -320,9 +325,10 @@ app.post('/api/gettweetpage',(req,res) => {
     var s = (page - 1) * Number(req.body.tweetPerPage)
     var l = Number(req.body.tweetPerPage)
     tweet
-        .find({},{},() => {})
-        .skip(s)
-        .limit(l)
+        .find({})
+        // .skip(s)
+        // .limit(l)
+        .sort({createdDate: -1})
         .populate({
             path:'author',
         })
@@ -336,11 +342,103 @@ app.post('/api/gettweetpage',(req,res) => {
         })
 })
 
-// 20 tweet
-// 5 tweet per page
-// get page 2
-// start = 20
-// end = 40
+
+app.post('/api/followorunfollow',(req,res) => {
+    var currentUserId = req.body.currentUserId
+    var userIdToFollow = req.body.userIdToFollow
+    var follow = req.body.follow
+
+    console.log(currentUserId,userIdToFollow,follow)
+
+    user
+        .findById(currentUserId)
+        .exec((error,currentUser) => {
+            if(error){console.log(error)}
+
+            console.log(`current user : ${currentUser}`)
+            if(follow){
+                currentUser.following.push(userIdToFollow)
+                currentUser.save()
+            }
+            else{
+                currentUser.following.splice(currentUser.following.indexOf(userIdToFollow),1)
+                currentUser.save()
+            }
+            user
+                .findById(userIdToFollow)
+                .exec((error,userToFollow) => {
+                    if(error){console.log(error)}
+
+                    console.log(`user to follow: ${userToFollow}`)
+
+                    if(follow){
+                        userToFollow.followers.push(currentUserId)
+                        userToFollow.save()
+                    }
+                    else{
+                        userToFollow.followers.splice(userToFollow.followers.indexOf(currentUserId),1)
+                        userToFollow.save()
+                    }
+                })
+        })
+
+    res.send('success')
+})
+
+
+app.post('/api/removetweet',(req,res) => {
+    var tweetId = req.body.tweetId
+    tweet
+        .findOneAndDelete({_id:tweetId},(err,removed) => {
+            if(err) throw err
+
+            console.log(`document have been removed: ${removed}`)
+        })
+})
+
+
+app.post('/api/likeorunlike',(req,res) => {
+    var currentUserId = req.body.currentUserId
+    var tweetId = req.body.tweetId
+    var like = req.body.like
+    user
+        .findById(currentUserId,(err,currentUser) => {
+            if(err){console.log(err)}
+
+            if(like){
+                currentUser.likedTweets.push(tweetId)
+                currentUser.save()
+            }
+            else {
+                currentUser.likedTweets.splice(currentUser.likedTweets.indexOf(tweetId),1)
+                currentUser.save()
+            }
+
+            tweet.findById(tweetId,(err,tweet) => {
+                if(err){console.log(err)}
+
+                if(like){
+                    tweet.likedUsers.push(currentUserId)
+                    tweet.save()
+                }
+                else {
+                    tweet.likedUsers.splice(tweet.likedUsers.indexOf(currentUserId),1)
+                    tweet.save()
+                }
+            })
+        })
+})
+
+
+
+
+
+
+
+
+
+
+
 
 
 
