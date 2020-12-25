@@ -132,6 +132,27 @@ export var methodsMixin = {
                   this.$store.state.newTweet.image = ""
               })
         },
+        addReply(){
+            if(!this.$store.state.newTweet.text && !this.$store.state.newTweet.image){
+                return
+            }
+          http.post('/addreply',{
+              username:localStorage.getItem('userId'),
+              tweetContent:{
+                  text:this.$store.state.newTweet.text,
+                  tweetImage:this.$store.state.newTweet.image,
+                  author:this.$store.state.currentUser._id,
+                  isReply:true,
+                  parent:this.$store.state.repliedTweet._id
+              },
+          })
+              .then(result => {
+                  console.log(result.data)
+                  this.$router.go(0)
+                  this.$store.state.newTweet.text = ""
+                  this.$store.state.newTweet.image = ""
+              })
+        },
         getTweetPage(){
             http.post('/gettweetpage',{
                 page:1,
@@ -160,17 +181,13 @@ export var methodsMixin = {
         },
         removeTweet(tweetId){
             console.log("remove calisdi")
-            this.$store.state.tweets.forEach((t,i) => {
-                if(t._id === tweetId){
-                    this.$store.state.tweets.splice(i,1)
-                }
-            })
             http.post('/removetweet',{
                 tweetId
             })
                 .then(result => {
                     console.log(result.data)
                 })
+            this.$router.go(0)
         },
         getCurrentUser(){
             http.post('/getuserwithoutdetail',{
@@ -220,8 +237,12 @@ export var methodsMixin = {
             console.log("a action from mixin")
             console.log(`parameter in mixin: ${obj}`)
         },
-        toggleAddTweetPopup(){
-            this.$store.state.addTweetPopup = !this.$store.state.addTweetPopup
+        closeAddTweetPopup(){
+            this.$store.state.addTweetPopup = false
+            this.$store.state.repliedTweet = {}
+        },
+        openAddTweetPopup(){
+            this.$store.state.addTweetPopup = true
         },
         routeToPath(p){
             this.$router.push({path:p})

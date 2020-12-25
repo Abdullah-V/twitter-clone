@@ -23,6 +23,9 @@ const routes = [
     {
     path:"/",
     component:Hello,
+    meta:{
+      title:"Twitter clone - Welcome"
+    },
     beforeEnter: (to, from, next) => {
         if(store.state.userId){
             next('/home')
@@ -35,6 +38,9 @@ const routes = [
     {
       path: "/login",
       component:Login,
+        meta:{
+            title:"Twitter clone - Login"
+        },
         beforeEnter: (to, from, next) => {
             if(store.state.userId){
                 next('/home')
@@ -47,6 +53,9 @@ const routes = [
     {
         path: "/home",
         component:Home,
+        meta:{
+            title:"Twitter clone - Home"
+        },
         beforeEnter: (to, from, next) => {
             isLogin(next)
         }
@@ -54,6 +63,9 @@ const routes = [
     {
         path:"/:username",
         component: Profile,
+        meta:{
+          title:"User"
+        },
         beforeEnter: async (to, from, next) => {
             if(localStorage.getItem('userId')){
                 if((to.params.username === store.state.userForProfile.username)){
@@ -64,9 +76,10 @@ const routes = [
                         username:to.params.username,
                     })
                         .then(async (result) => {
-                            // console.log(`result data: ${JSON.stringify(result.data)}`)
-                            var deneme = result.data
-                            console.log(deneme.tweets)
+                            console.log(`here is user: ${result.data}`)
+                            if(!result.data){
+                                next("/")
+                            }
                             store.state.userForProfile = await result.data
                             next()
                         })
@@ -80,6 +93,9 @@ const routes = [
     {
         path:"/:username/tweets/:tweetId",
         component: TweetDetails,
+        meta:{
+            title:"Twitter clone - Tweet"
+        },
         beforeEnter: (to, from, next) => {
             if(localStorage.getItem('userId')){
                 // if(to.params.tweetId === store.state.tweetForDetail._id){
@@ -100,6 +116,10 @@ const routes = [
                 next('/')
             }
         }
+    },
+    {
+        path:"*",
+        redirect:"/"
     }
 ]
 
@@ -107,6 +127,17 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeResolve((to,from,next) => {
+    if(to.meta.title === "User"){
+        document.title = "Twitter clone - " + store.state.userForProfile.name
+    }
+    else{
+        document.title = to.meta.title || "Twitter clone"
+        console.log(from)
+    }
+    next()
 })
 
 export default router

@@ -3,7 +3,7 @@
 ### START: 29 november 2020
 ### NOTE: november 6 - novermber 17 my computer is broken and my lessons are too many, my project is halfway. 
 ### END: in progress...
-### [======> . . . .] 60%
+### [=======> . .] 80%
 ## Todos:
 - [ ] Frontend
     - [x] TwitterButton component
@@ -38,7 +38,10 @@
     - [ ] Search
     - [ ] Shortcuts
     - [x] Delete tweet
-    - [ ] Alert  
+    - [ ] Alert
+      - [ ] Alert component
+      - [ ] enableAlert compoentn
+    - [ ] Show parent tweet in tweet details page  
     - [x] Image preview on tweet adding
     - [ ] Routing
         - [x] Route guards
@@ -66,7 +69,6 @@
         - [ ] User operations api
         - [ ] Tweet operation api
     - [ ] Notifications for users
-    - [ ] Bookmarks for users
     - [ ] Useful functions for apis
         - [ ] Follow suggestion
     - [ ] Uploading contents piece by piece

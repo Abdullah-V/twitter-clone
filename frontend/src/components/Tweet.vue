@@ -68,6 +68,14 @@
       <img :src="infoForTweet.author.profileImage || 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'" alt="">
     </div>
 
+<!--    <span v-if="infoForTweet.parent">-->
+<!--      <span v-if="infoForTweet.parent.author">-->
+<!--        <span v-if="infoForTweet.parent.author.username">-->
+<!--          {{ infoForTweet.parent.author.username }}-->
+<!--        </span>-->
+<!--      </span>-->
+<!--    </span>-->
+
     <div class="tweet-section2" @click.stop="rootClick()">
       <div class="tweet-section2-header">
         <span class="header-sec1">
@@ -75,6 +83,18 @@
           <span class="username">@{{ infoForTweet.author.username }}</span>
           <span class="uc">&#8226;</span>
           <span class="created-date">{{ infoForTweet.createdDate }}</span>
+
+          <br>
+
+           <span v-if="infoForTweet.parent">
+      <span v-if="infoForTweet.parent.author">
+        <span class="created-date">Replying to</span>
+        <span @click.stop="$router.push({path:'/' + infoForTweet.parent.author.username})" class="link" v-if="infoForTweet.parent.author.username">
+          @{{ infoForTweet.parent.author.username }}
+        </span>
+      </span>
+    </span>
+
         </span>
         <span @click.stop="toggleTweetActionLVisible()" class="header-sec2"><ActionButton icon-class="fas fa-ellipsis-h" default-color="#5B7083" hover-color="#1DA1F2" hover-bg="#E8F5FE"></ActionButton></span>
       </div>
@@ -109,7 +129,7 @@
 <!--        </div>-->
 
       <div class="tweet-action-buttons">
-        <span @click.stop="" class="with-count">
+        <span @click.stop="replieTweet()" class="with-count">
           <ActionButton iconClass="far fa-comment"  default-color="#5B7083" hover-color="#1DA1F2" hover-bg="#E8F5FE"></ActionButton>
           <span class="count">{{ infoForTweet.replies.length }}</span>
         </span>
@@ -188,8 +208,6 @@ export default {
         return
       }
       console.log('tweet root clicked')
-      // this.$store.state.tweetForDetail = this.infoForTweet
-      // this.$store.state.tweetForDetail.isDetailed = true
       var redirectedPath = "/" + this.infoForTweet.author.username + "/tweets/" + this.infoForTweet._id
       this.$router.push({path:redirectedPath})
     },
@@ -206,6 +224,10 @@ export default {
       this.likeOrUnlike(this.infoForTweet._id,false)
       this.infoForTweet.likedUsers.splice(this.infoForTweet.likedUsers.indexOf(this.$store.state.currentUser._id),1)
     },
+    replieTweet(){
+      this.$store.state.repliedTweet = this.infoForTweet
+      this.$store.state.addTweetPopup = true
+    }
   }
 }
 </script>

@@ -27,8 +27,8 @@
       <div class="who-to-follow">
         <div class="title"><span>Who to follow</span><ActionButton class="sett-acb" icon-class="fas fa-cog" default-color="#1DA1F2" hover-color="#1DA1F2" hover-bg="#E8F5FE"></ActionButton></div>
         <div class="users-container">
-          <MiniUserProfile imgSrc="https://pbs.twimg.com/profile_images/1151410974240444416/yVvaD7hU_400x400.jpg" name="Recep Tayyip Erdoğan" username="@RTErdogan"></MiniUserProfile>
-          <MiniUserProfile imgSrc="https://pbs.twimg.com/profile_images/1317884017333723138/3gyjyuL2_400x400.jpg" name="İlham Əliyev" username="@azpresident"></MiniUserProfile>
+          <MiniUserProfile imgSrc="https://randomuser.me/api/portraits/men/67.jpg" name="John Doe" username="@doejohn"></MiniUserProfile>
+          <MiniUserProfile imgSrc="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" name="Abdullah" username="@abdullah2005"></MiniUserProfile>
 
         </div>
         <div class="more">Show more</div>
@@ -83,6 +83,10 @@ export default {
       zoomedImg.style.height = realHeight
       zoomedImg.style.width = realWidth
     }
+  },
+  '$route' (to, from) {
+    document.title = to.meta.title || 'Your Website'
+    console.log(from)
   }
 }
 </script>

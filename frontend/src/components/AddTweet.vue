@@ -1,8 +1,8 @@
 <template>
   <div class="add-tweet-root">
-    <img class="add-tweet-user-img" :src="$store.state.currentUser.profileImage" alt="">
+    <img class="add-tweet-user-img" :src="$store.state.currentUser.profileImage || 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'" alt="">
     <div class="add-tweet-section2">
-      <textarea v-model="$store.state.newTweet.text" placeholder="What's happening?"></textarea>
+      <textarea v-model="$store.state.newTweet.text" :placeholder="p || `What's happening?`"></textarea>
       <img style=" width: 100%;
   height: 275px;
   border-radius: 17px;
@@ -18,7 +18,7 @@
           <ActionButton iconClass="far fa-calendar-alt" default-color="#1DA1F2" hover-color="#1DA1F2" hover-bg="#E8F5FE"></ActionButton>
 
         </div>
-        <TwitterButton click-event="addNewTweet" h="40px" w="75px" br="20px" text="Tweet" bgType="blue"></TwitterButton>
+        <TwitterButton :click-event="cevent || 'addNewTweet'" h="40px" w="75px" br="20px" :text="btntext || 'Tweet'" bgType="blue"></TwitterButton>
       </div>
     </div>
   </div>
@@ -29,6 +29,7 @@ import ActionButton from "@/components/ActionButton";
 import TwitterButton from "@/components/TwitterButton";
 
 export default {
+  props:["p","btntext","cevent"],
   data(){
     return {
       urlRegex: new RegExp('(https?:\\/\\/)|(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)', 'ig'),
@@ -52,7 +53,7 @@ export default {
 
 .add-tweet-root{
   width: 100%;
-  min-height: 150px;
+  /*min-height: 150px;*/
   max-height: 535px;
   padding: 10px 15px;
   display: flex;

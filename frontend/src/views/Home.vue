@@ -10,7 +10,7 @@
       <div class="tweets">
         <AddTweet :add-tweet-user-img="$store.state.currentUser.profileImage || 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'"></AddTweet>
         <div :key="tweet._id" v-for="tweet in $store.state.tweets">
-          <Tweet :info-for-tweet="tweet"></Tweet>
+          <Tweet v-if="!tweet.isReply" :info-for-tweet="tweet"></Tweet>
         </div>
 <!--        {{ $store.state.tweets }}-->
 <!--        <span :key="tweet._id" v-for="tweet in $store.state.tweets">-->
@@ -52,6 +52,7 @@ export default {
   padding: 0px 4px 0px 15px;
   border: 1px solid #bfbfbf;
   position: fixed;
+  z-index: 99;
 }
 
 .fixed-header-text{

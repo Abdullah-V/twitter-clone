@@ -7,18 +7,39 @@
     </div>
 
     <Tweet :info-for-tweet="$store.state.tweetForDetail"></Tweet>
+
+    <div :key="tweet._id" v-for="tweet in $store.state.tweetForDetail.replies">
+      <Tweet :info-for-tweet="tweet"></Tweet>
+    </div>
+
   </div>
 </template>
 
 <script>
 import Tweet from "@/components/Tweet";
 import ActionButton from "@/components/ActionButton";
+import axios from "axios";
 
 export default {
   components:{
     Tweet,
     ActionButton
   },
+  watch:{
+    '$route'(oldValue,newValue){
+      console.log(oldValue.params)
+      console.log(newValue.params)
+      console.log("tweet watcher work")
+      axios.post('http://localhost:3000/api/getthetweet',{
+        tweetId:oldValue.params.tweetId
+      })
+          .then(async (result) => {
+            console.log(result.data)
+            this.$store.state.tweetForDetail = await  result.data
+            this.$store.state.tweetForDetail.isDetailed = true
+          })
+    }
+  }
 }
 </script>
 

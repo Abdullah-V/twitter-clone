@@ -247,10 +247,20 @@ app.post('/api/getuserwithdetails',(req,res) => {
             options:{
                 sort:{createdDate: -1}
             },
-            populate:{
+            populate:[
+                {
                 path:'author',
                 model:'user',
-            }
+                },
+                {
+                    path:'parent',
+                    model:'tweet',
+                    populate:{
+                        path:'author',
+                        model:'user'
+                    }
+                }
+            ]
         })
         // .populate('likedTweets')
         .exec()
@@ -268,6 +278,23 @@ app.post('/api/getthetweet',(req,res) => {
         .populate('author')
         .populate({
             path:"replies",
+            populate:[
+                {
+                path:'author',
+                model:'user'
+                },
+                {
+                    path:'parent',
+                    model:'tweet',
+                    populate:{
+                        path:'author',
+                        model:'user'
+                    }
+                }
+            ]
+        })
+        .populate({
+            path:'parent',
             populate:{
                 path:'author',
                 model:'user'
@@ -298,6 +325,39 @@ app.post('/api/newtweet',async (req,res) => {
      await tweet
         .create(req.body.tweetContent)
         .then(async (newTweet) => {
+            await user
+                .findOne({username:req.body.username},async (err,currentUser) => {
+                    if(err){console.log(err)}
+
+                    await currentUser.tweets.push(newTweet._id)
+                    await currentUser.save()
+
+                    await tweet
+                        .findOne({_id:newTweet._id})
+                        .populate('author')
+                        .exec(async (err,result) => {
+                            if(err) throw err
+                            await console.log(result)
+                            await res.send(result)
+                        })
+                })
+        })
+        .catch(e => {throw e})
+})
+
+
+app.post('/api/addreply',async (req,res) => {
+    await tweet
+        .create(req.body.tweetContent)
+        .then(async (newTweet) => {
+            tweet
+                .findById(newTweet.parent)
+                .exec((err,t) => {
+                    if(err) throw err
+
+                    t.replies.push(newTweet._id)
+                    t.save()
+                })
             await user
                 .findOne({username:req.body.username},async (err,currentUser) => {
                     if(err){console.log(err)}
@@ -386,8 +446,21 @@ app.post('/api/followorunfollow',(req,res) => {
 })
 
 
-app.post('/api/removetweet',(req,res) => {
+app.post('/api/removetweet',async (req,res) => {
     var tweetId = req.body.tweetId
+
+    await tweet
+        .findById(tweetId,(err,t) => {
+            if(t.isReply) {
+                tweet
+                    .findById(t.parent, async (err, parentTweet) => {
+                        await parentTweet.replies.splice(parentTweet.replies.indexOf(tweetId), 1)
+                        parentTweet.save()
+                    })
+            }
+        })
+
+
     tweet
         .findOneAndDelete({_id:tweetId},(err,removed) => {
             if(err) throw err
@@ -491,27 +564,31 @@ app.get('/allTweets',(req,res) => {
 app.get('/operation',(req,res) => {
     res.send("operation succesfully")
 
-    user
-        .findOne({_id:"5fdf455f1eff1e3d75a339d6"})
-        .populate({
-            path:'likedTweets',
-            populate:[{
-                path:'author',
-                model:'user',
-                populate:{
-                    path:'tweets',
-                    model:'tweet'
-                }
-            },
-                {
-                    path:"likedUsers",model:'user'
-                }
-            ]
-        })
-        .populate('likedUsers')
-        .exec((err,doc) => {
-            console.log(err,doc)
-        })
+
+
+
+
+    // user
+    //     .findOne({_id:"5fdf455f1eff1e3d75a339d6"})
+    //     .populate({
+    //         path:'likedTweets',
+    //         populate:[{
+    //             path:'author',
+    //             model:'user',
+    //             populate:{
+    //                 path:'tweets',
+    //                 model:'tweet'
+    //             }
+    //         },
+    //             {
+    //                 path:"likedUsers",model:'user'
+    //             }
+    //         ]
+    //     })
+    //     .populate('likedUsers')
+    //     .exec((err,doc) => {
+    //         console.log(err,doc)
+    //     })
 
     // var currentUserId = "5fdf458e3af01c3d92b8c6e6"
     // var newInfos = {

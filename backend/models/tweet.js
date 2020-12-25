@@ -9,8 +9,8 @@ const tweetSchema = new mongoose.Schema({
     author:{ type: Schema.Types.ObjectId, ref: 'user' },
     likedUsers:[{ type: Schema.Types.ObjectId, ref: 'user' }],
     replies: [{ type: Schema.Types.ObjectId, ref: 'tweet' }],
-    // child: { type: Schema.Types.ObjectId, ref: 'tweet' },
-    // parent: { type: Schema.Types.ObjectId, ref: 'tweet' },
+    child: { type: Schema.Types.ObjectId, ref: 'tweet' },
+    parent: { type: Schema.Types.ObjectId, ref: 'tweet' },
     retweeters: [{ type: Schema.Types.ObjectId, ref: 'user' }],
 });
 
