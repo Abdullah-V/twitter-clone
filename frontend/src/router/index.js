@@ -7,6 +7,7 @@ import Login from "@/views/Login";
 import Home from "@/views/Home";
 import Profile from "@/views/Profile";
 import TweetDetails from "@/views/TweetDetails";
+import Bookmarks from "@/views/Bookmarks";
 
 Vue.use(VueRouter)
 
@@ -58,6 +59,25 @@ const routes = [
         },
         beforeEnter: (to, from, next) => {
             isLogin(next)
+        }
+    },
+    {
+        path:"/bookmarks",
+        component: Bookmarks,
+        meta:{
+            title:"Bookmarks"
+        },
+        beforeEnter:(to,from,next) => {
+            isLogin(next)
+            console.log('bookmarks router')
+            axios.post('http://localhost:3000/api/getbookmarks',{
+                username: localStorage.getItem('userId'),
+            })
+                .then(async (result) => {
+                    console.log(result.data)
+                    store.state.bookmarks = await result.data
+                    next()
+                })
         }
     },
     {

@@ -159,7 +159,7 @@ export default {
   border: 1px solid #bfbfbf;
   border-top: 0px;
   background: white;
-  z-index: 9999;
+  z-index: 9;
 }
 
 .fixed-header-for-profile span{

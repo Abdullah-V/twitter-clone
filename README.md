@@ -18,7 +18,7 @@
     - [x] All components responsive
     - [x] Fixed headers for pages
     - [x] Profile page
-    - [ ] Bookmarks page
+    - [x] Bookmarks page
     - [ ] Notifications page
     - [x] Child pages menu for some parent pages
     - [x] Tweet component
@@ -40,8 +40,8 @@
     - [x] Delete tweet
     - [ ] Alert
       - [ ] Alert component
-      - [ ] enableAlert compoentn
-    - [ ] Show parent tweet in tweet details page  
+      - [ ] enableAlert component
+    - [x] Show parent tweet in tweet details page  
     - [x] Image preview on tweet adding
     - [ ] Routing
         - [x] Route guards
@@ -65,15 +65,12 @@
             - [x] User model
             - [x] Tweet model
         - [x] Relationships
-    - [ ] Api
-        - [ ] User operations api
-        - [ ] Tweet operation api
+    - [x] Api
     - [ ] Notifications for users
     - [ ] Useful functions for apis
         - [ ] Follow suggestion
     - [ ] Uploading contents piece by piece
     - [ ] Upload new content at the end of the page
-
 - [ ] Socket support for realtime 
 - [ ] Add images to readme
 ## Specifications:

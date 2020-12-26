@@ -163,6 +163,24 @@ export var methodsMixin = {
                     console.log(result.data)
                 })
         },
+        addOrRemoveFromBookmarks(tweetId,add){
+          http.post('/addorremovefrombookmarks',{
+              username:localStorage.getItem('userId'),
+              tweetId,
+              add
+          })
+              .then(result => {
+                  console.log(result.data)
+                  if(add){
+                      this.$store.state.currentUser.bookmarks.unshift(tweetId)
+                  }
+                  else{
+                      this.$store.state.currentUser.bookmarks.splice(this.$store.state.currentUser.bookmarks.indexOf(tweetId),1)
+                      this.$router.go(0)
+                      // this.$store.state.bookmarks.splice(this.$store.state.currentUser.bookmarks.indexOf(tweetId),1)
+                  }
+              })
+        },
         likeOrUnlike(tweetId,like){
             http.post("/likeorunlike",{
                 currentUserId: this.$store.state.currentUser._id,

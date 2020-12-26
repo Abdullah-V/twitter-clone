@@ -52,7 +52,7 @@ export default {
   padding: 0px 4px 0px 15px;
   border: 1px solid #bfbfbf;
   position: fixed;
-  z-index: 99;
+  z-index: 9;
 }
 
 .fixed-header-text{

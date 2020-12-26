@@ -50,10 +50,16 @@
         <i class="far fa-envelope"></i>
         Send via direct message
       </div>
-      <div class="tweet-actions-list-item">
+
+      <div @click="addOrRemoveFromBookmarks(infoForTweet._id,false)" v-if="$store.state.currentUser.bookmarks.includes(infoForTweet._id)" class="tweet-actions-list-item">
+        <i class="far fa-bookmark"></i>
+        Remove tweet from bookmarks
+      </div>
+      <div @click="addOrRemoveFromBookmarks(infoForTweet._id,true)" v-else class="tweet-actions-list-item">
         <i class="far fa-bookmark"></i>
         Add tweet to bookmarks
       </div>
+
       <div class="tweet-actions-list-item">
         <i class="fas fa-link"></i>
         Copy link to tweet
@@ -195,6 +201,7 @@ export default {
       this.retweetActionVisible = !this.retweetActionVisible
     },
     toggleActionList3(){
+      console.log('action 3')
       this.retweetActionVisible = false
       this.tweetActionLVisible = false
       this.actionList3 = !this.actionList3

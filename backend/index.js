@@ -6,10 +6,16 @@ const bodyParser = require('body-parser')
 const user = require('./models/user')
 const tweet = require('./models/tweet')
 
-mongoose.connect('mongodb://localhost/twitter-trial', {
-    useFindAndModify: false,
-    useCreateIndex: true,useNewUrlParser: true,useUnifiedTopology: true },() => {
-    console.log('database connected: mongodb://localhost/twitter-trial')
+const PORT = process.env.PORT || 3000
+const MONGODB_URI = process.env.MONGODB_URL || 'mongodb://localhost/twitter-trial'
+
+mongoose.connect(MONGODB_URI, {
+        useFindAndModify: false,
+        useCreateIndex: true,
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    },() => {
+    console.log(`database connected: ${MONGODB_URI}`)
 });
 
 app.use(cors())
@@ -503,8 +509,50 @@ app.post('/api/likeorunlike',(req,res) => {
 })
 
 
+app.post('/api/addorremovefrombookmarks',(req,res) => {
+    user
+        .findOne({username:req.body.username},(err,u) => {
+            if(err) throw err
+
+            if(req.body.add){
+                u.bookmarks.unshift(req.body.tweetId)
+                u.save()
+                res.send("adding to bookmark: success")
+            }
+            else{
+                u.bookmarks.splice(u.bookmarks.indexOf(req.body.tweetId),1)
+                u.save()
+                res.send("remove from bookmark: success")
+            }
+        })
+})
 
 
+app.post('/api/getbookmarks',(req,res) => {
+    user
+        .findOne({username:req.body.username})
+        .populate({
+            path: 'bookmarks',
+            populate:[
+                {
+                    path: 'author',
+                    model: 'user'
+                },
+                {
+                    path: 'parent',
+                    model: 'tweet',
+                    populate:{
+                        path: 'author',
+                        model: 'user'
+                    }
+                }
+            ]
+        })
+        .exec((err,u) => {
+            if(err) throw err
+            res.send(u.bookmarks)
+        })
+})
 
 
 
@@ -626,7 +674,7 @@ app.get('/operation',(req,res) => {
 
 
 
-app.listen(3000,() => {
+app.listen(PORT,() => {
     console.log('server running: localhost:3000')
 })
 

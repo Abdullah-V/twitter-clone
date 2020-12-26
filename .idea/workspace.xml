@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="5aa0c897-1731-4388-95a7-12f2720cdedf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/tweet.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/tweet.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/AddTweet.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/AddTweet.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/AddTweetPopup.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/AddTweetPopup.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Sidebar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Sidebar.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/Tweet.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Tweet.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/methodsMixin.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/methodsMixin.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/router/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/Profile.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Profile.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/views/TweetDetails.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/TweetDetails.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +88,8 @@
       <workItem from="1608794496162" duration="1488000" />
       <workItem from="1608795998003" duration="11936000" />
       <workItem from="1608813557474" duration="8583000" />
-      <workItem from="1608876837473" duration="24520000" />
+      <workItem from="1608876837473" duration="25214000" />
+      <workItem from="1608968999142" duration="10707000" />
     </task>
     <servers />
   </component>

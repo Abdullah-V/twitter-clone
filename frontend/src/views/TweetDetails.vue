@@ -6,6 +6,10 @@
       <h2 style="padding-left: 5px">Tweet</h2>
     </div>
 
+    <div v-if="$store.state.tweetForDetail.parent">
+      <Tweet :info-for-tweet="$store.state.tweetForDetail.parent"></Tweet>
+    </div>
+
     <Tweet :info-for-tweet="$store.state.tweetForDetail"></Tweet>
 
     <div :key="tweet._id" v-for="tweet in $store.state.tweetForDetail.replies">

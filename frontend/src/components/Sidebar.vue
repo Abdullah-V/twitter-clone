@@ -7,7 +7,7 @@
     <NavItem text="Explore" path="##" icon="fas fa-hashtag"></NavItem>
     <NavItem text="Notifications" path="###" icon="far fa-bell"></NavItem>
     <NavItem text="Messages" path="####" icon="far fa-envelope"></NavItem>
-    <NavItem text="Bookmarks" path="#####" icon="far fa-bookmark"></NavItem>
+    <NavItem text="Bookmarks" path="/bookmarks" icon="far fa-bookmark"></NavItem>
     <NavItem text="Lists" path="######" icon="far fa-list-alt"></NavItem>
     <NavItem text="Profile" :path="'/' + $store.state.currentUser.username" icon="far fa-user"></NavItem>
     <NavItem text="More" path="########" icon="fas fa-ellipsis-h"></NavItem>
