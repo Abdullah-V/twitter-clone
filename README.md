@@ -72,7 +72,7 @@
     - [ ] Uploading contents piece by piece
     - [ ] Upload new content at the end of the page
 - [ ] Socket support for realtime 
-- [ ] Add images to readme
+- [x] Add images to readme
 ## Specifications:
 * Responsive.
 * Its offering many functions of twitter.
