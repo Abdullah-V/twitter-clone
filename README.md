@@ -3,7 +3,12 @@
 ### START: 29 november 2020
 ### NOTE: november 6 - novermber 17 my computer is broken and my lessons are too many, my project is halfway. 
 ### END: in progress...
-### [=======> . .] 80%
+![alt text](https://github.com/Abdullah-V/MEVN-stack-twitter-clone/blob/master/images/Screenshot%20from%202020-12-30%2009-56-37.png)
+![alt text](https://github.com/Abdullah-V/MEVN-stack-twitter-clone/blob/master/images/Screenshot%20from%202020-12-30%2009-56-45.png)
+![alt text](https://github.com/Abdullah-V/MEVN-stack-twitter-clone/blob/master/images/Screenshot%20from%202020-12-30%2009-56-52.png)
+![alt text](https://github.com/Abdullah-V/MEVN-stack-twitter-clone/blob/master/images/Screenshot%20from%202020-12-30%2009-57-04.png)
+![alt text](https://github.com/Abdullah-V/MEVN-stack-twitter-clone/blob/master/images/Screenshot%20from%202020-12-30%2009-58-19.png)
+![alt text](https://github.com/Abdullah-V/MEVN-stack-twitter-clone/blob/master/images/Screenshot%20from%202020-12-30%2009-58-51.png)
 ## Todos:
 - [ ] Frontend
     - [x] TwitterButton component
