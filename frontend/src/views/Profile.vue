@@ -135,7 +135,7 @@ export default {
       // if(newValue.params.username === this.$store.state.currentUser.username){
       //   this.$store.state.userForProfile = this.$store.state.currentUser
       // }
-        axios.post('http://localhost:3000/api/getuserwithdetails',{
+        axios.post('http://tw-cl-api.herokuapp.com/api/getuserwithdetails',{
           username:newValue.params.username,
         })
             .then(async (result) => {

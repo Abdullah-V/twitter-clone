@@ -70,7 +70,7 @@ const routes = [
         beforeEnter:(to,from,next) => {
             isLogin(next)
             console.log('bookmarks router')
-            axios.post('http://localhost:3000/api/getbookmarks',{
+            axios.post('http://tw-cl-api.herokuapp.com/api/getbookmarks',{
                 username: localStorage.getItem('userId'),
             })
                 .then(async (result) => {
@@ -92,7 +92,7 @@ const routes = [
                     next()
                 }
                 else{
-                    axios.post('http://localhost:3000/api/getuserwithdetails',{
+                    axios.post('http://tw-cl-api.herokuapp.com/api/getuserwithdetails',{
                         username:to.params.username,
                     })
                         .then(async (result) => {
@@ -122,7 +122,7 @@ const routes = [
                 //     next()
                 //     return
                 // }
-                axios.post('http://localhost:3000/api/getthetweet',{
+                axios.post('http://tw-cl-api.herokuapp.com/api/getthetweet',{
                     tweetId:to.params.tweetId
                 })
                     .then(result => {

@@ -2,16 +2,15 @@ const app = require('express')()
 const mongoose = require('mongoose')
 const cors = require('cors')
 const bodyParser = require('body-parser')
+require('dotenv').config()
 
 const user = require('./models/user')
 const tweet = require('./models/tweet')
 
 const PORT = process.env.PORT || 3000
-const MONGODB_URI = process.env.MONGODB_URL || 'mongodb+srv://twitterAdmin:admin12345@cluster0.d0aoi.mongodb.net/testDB?retryWrites=true&w=majority'
+const MONGODB_URI = process.env.MONGODB_URL || 'mongodb://localhost/twitter-trial'
 
-// mongodb://localhost/twitter-trial
 
-// mongodb+srv://twitterAdmin:admin12345@cluster0.d0aoi.mongodb.net/testDB?retryWrites=true&w=majority
 
 
 mongoose.connect(MONGODB_URI, {
@@ -20,7 +19,7 @@ mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 },() => {
-    console.log(`database connected: ${MONGODB_URI}`)
+    console.log(`database connected`)
 });
 
 app.use(cors())

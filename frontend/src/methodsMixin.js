@@ -2,7 +2,7 @@ import axios from 'axios'
 // import router from "@/router";
 
 const http = axios.create({
-    baseURL:"http://localhost:3000/api",
+    baseURL:"http://tw-cl-api.herokuapp.com/api",
 })
 
 
