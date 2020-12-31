@@ -7,180 +7,25 @@ const user = require('./models/user')
 const tweet = require('./models/tweet')
 
 const PORT = process.env.PORT || 3000
-const MONGODB_URI = process.env.MONGODB_URL || 'mongodb://localhost/twitter-trial'
+const MONGODB_URI = process.env.MONGODB_URL || 'mongodb+srv://twitterAdmin:admin12345@cluster0.d0aoi.mongodb.net/testDB?retryWrites=true&w=majority'
+
+// mongodb://localhost/twitter-trial
+
+// mongodb+srv://twitterAdmin:admin12345@cluster0.d0aoi.mongodb.net/testDB?retryWrites=true&w=majority
+
 
 mongoose.connect(MONGODB_URI, {
-        useFindAndModify: false,
-        useCreateIndex: true,
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    },() => {
+    // useFindAndModify: false,
+    // useCreateIndex: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+},() => {
     console.log(`database connected: ${MONGODB_URI}`)
 });
 
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-
-
-
-
-
-
-
-
-
-
-
-// TAMAM ===>
-
-
-function followOrUnfollowTheUser(currentUserId,userIdToFollow,follow){
-    user
-        .findById(currentUserId)
-        .exec((error,currentUser) => {
-            if(error){console.log(error)}
-
-            console.log(`current user : ${currentUser}`)
-            if(follow){
-                currentUser.following.push(userIdToFollow)
-                currentUser.save()
-            }
-            else{
-                currentUser.following.splice(currentUser.following.indexOf(userIdToFollow),1)
-                currentUser.save()
-            }
-            user
-                .findById(userIdToFollow)
-                .exec((error,userToFollow) => {
-                    if(error){console.log(error)}
-
-                    console.log(`user to follow: ${userToFollow}`)
-
-                    if(follow){
-                        userToFollow.followers.push(currentUserId)
-                        userToFollow.save()
-                    }
-                    else{
-                        userToFollow.followers.splice(userToFollow.followers.indexOf(currentUserId),1)
-                        userToFollow.save()
-                    }
-                })
-        })
-}
-
-
-
-// TAMAM ===>
-function likeOrUnlikeTheTweet(currentUserId,tweetId,like){
-    user
-        .findById(currentUserId,(err,currentUser) => {
-        if(err){console.log(err)}
-
-        if(like){
-            currentUser.likedTweets.push(tweetId)
-            currentUser.save()
-        }
-        else {
-            currentUser.likedTweets.splice(currentUser.likedTweets.indexOf(tweetId),1)
-            currentUser.save()
-        }
-
-        tweet.findById(tweetId,(err,tweet) => {
-            if(err){console.log(err)}
-
-            if(like){
-                tweet.likedUsers.push(currentUserId)
-                tweet.save()
-            }
-            else {
-                tweet.likedUsers.splice(tweet.likedUsers.indexOf(currentUserId),1)
-                tweet.save()
-            }
-        })
-    })
-}
-
-// TAMAM ===>
-async function newTweet(currentUserId,tweetContent){
-    var returnedTweet
-    await tweet
-        .create(tweetContent)
-        .then(newTweet => {
-            user
-                .findById(currentUserId,(err,currentUser) => {
-                    if(err){console.log(err)}
-
-                    currentUser.tweets.push(newTweet._id)
-                    currentUser.save()
-                })
-            returnedTweet = newTweet
-        })
-        .catch(e => {throw e})
-    return returnedTweet
-}
-
-
-function getTheUser(username) {
-    return user
-        .findOne({username:username})
-        .populate('tweets')
-        .exec()
-}
-
-
-function getLikedTweetsOfUser(userId){
-    return user
-        .findById(userId)
-        .populate('likedTweets')
-        .exec()
-}
-
-
-// TAMAM ===>
-async function updateProfile(currentUserId,newInfos){
-    var returned
-    await user.update({ _id: currentUserId }, {$set:newInfos}, (err, result) => {
-        if (err) throw err;
-        returned = result
-    });
-    return returned
-}
-
-
-function addNewTweet(currentUserId,tweetContent){}
-
-
-
-// MORE ON NEXT COMMIT ;)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -255,8 +100,8 @@ app.post('/api/getuserwithdetails',(req,res) => {
             },
             populate:[
                 {
-                path:'author',
-                model:'user',
+                    path:'author',
+                    model:'user',
                 },
                 {
                     path:'parent',
@@ -286,8 +131,8 @@ app.post('/api/getthetweet',(req,res) => {
             path:"replies",
             populate:[
                 {
-                path:'author',
-                model:'user'
+                    path:'author',
+                    model:'user'
                 },
                 {
                     path:'parent',
@@ -328,7 +173,7 @@ app.post('/api/updateuser',(req,res) => {
 
 
 app.post('/api/newtweet',async (req,res) => {
-     await tweet
+    await tweet
         .create(req.body.tweetContent)
         .then(async (newTweet) => {
             await user
@@ -587,7 +432,7 @@ app.post('/api/getbookmarks',(req,res) => {
 
 
 app.get('/',(req,res) => {
-    res.send("Avaiable paths:\n/allUsers\n/allTweets\n/newUser")
+    res.send("Avaiable paths:\n/allUsers\n/allTweets")
 })
 
 
@@ -614,6 +459,13 @@ app.get('/operation',(req,res) => {
 
 
 
+
+    // user
+    // 	.create({
+    // 		username: "firstuser",
+    // 		name: "First User",
+    // 		password: "12345",
+    // 	})
 
 
     // user
@@ -675,7 +527,7 @@ app.get('/operation',(req,res) => {
 
 
 app.listen(PORT,() => {
-    console.log('server running: localhost:3000')
+    console.log('server running: ' + PORT)
 })
 
 

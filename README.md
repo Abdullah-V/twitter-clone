@@ -1,8 +1,8 @@
 # MEVN stack twitter clone
 ### MEVN stack twitter clone.
 ### START: 29 november 2020
-### NOTE: november 6 - novermber 17 my computer is broken and my lessons are too many, my project is halfway. 
-### END: in progress...
+### NOTE: november 6 - novermber 17 my computer is broken and my lessons are too many, my project is halfway.
+### END: 24 december
 ![alt text](https://github.com/Abdullah-V/MEVN-stack-twitter-clone/blob/master/images/Screenshot%20from%202020-12-30%2009-56-37.png)
 ![alt text](https://github.com/Abdullah-V/MEVN-stack-twitter-clone/blob/master/images/Screenshot%20from%202020-12-30%2009-56-45.png)
 ![alt text](https://github.com/Abdullah-V/MEVN-stack-twitter-clone/blob/master/images/Screenshot%20from%202020-12-30%2009-56-52.png)
@@ -29,43 +29,42 @@
     - [x] Tweet component
     - [x] Profile component for sidebar
     - [x] Add tweet component
-    - [x] Toggle action list for tweet component  
+    - [x] Toggle action list for tweet component
     - [x] Add tweet popup
     - [x] Action button component
     - [x] Image zoomer
     - [ ] Folowers list
     - [ ] Tweet likers list
     - [x] Tweets detail page
-    - [ ] Tweet replies
-    - [ ] Nested tweets(retweet with comment)  
+    - [x] Tweet replies
+    - [ ] Nested tweets(retweet with comment)
     - [ ] Retweet
     - [ ] Tweet pinning
     - [ ] Search
     - [ ] Shortcuts
     - [x] Delete tweet
-    - [ ] Alert
-      - [ ] Alert component
-      - [ ] enableAlert component
-    - [x] Show parent tweet in tweet details page  
+    - [x] Show parent tweet in tweet details page
     - [x] Image preview on tweet adding
     - [ ] Routing
         - [x] Route guards
         - [ ] Define all routes
         - [ ] Define all child routes
-    - [x] Update profile popup  
-    - [ ] Backend Integration
+    - [x] Update profile popup
+    - [x] Backend Integration
     - [ ] Uploading contents piece by piece.
     - [ ] Upload new content at the end of the page
+    - [ ] Loading spinner
+    - [ ] Copy link of tweet
 - [ ] Backend
     - [ ] Install modules
-      - [x] express
-      - [x] mongoose
-      - [x] cors
-      - [x] nodemon
-      - [x] body-parser
-      - [ ] socketio
+        - [x] express
+        - [x] mongoose
+        - [x] cors
+        - [x] nodemon
+        - [x] body-parser
+        - [ ] socketio
     - [x] Express configurations
-    - [x] Mongoose configurations 
+    - [x] Mongoose configurations
         - [x] Create models
             - [x] User model
             - [x] Tweet model
@@ -76,7 +75,7 @@
         - [ ] Follow suggestion
     - [ ] Uploading contents piece by piece
     - [ ] Upload new content at the end of the page
-- [ ] Socket support for realtime 
+- [ ] Socket support for realtime
 - [x] Add images to readme
 ## Specifications:
 * Responsive.

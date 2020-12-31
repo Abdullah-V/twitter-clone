@@ -90,23 +90,6 @@ export default {
   }
 }
 
-var moneys = [200,100,50,20,10,5,1]
-function solution(amount,currentMoneys = []){
-  var b = false
-  moneys.forEach(money => {
-    if(((amount - money) >= 0) && b === false){
-      amount -= money
-      currentMoneys.push(money)
-      b = true
-    }
-  })
-  if(amount === 0){
-    return currentMoneys
-  }
-  else{
-    return solution(amount,currentMoneys)
-  }
-}
 
 /*
 var moneys = [200,100,50,20,10,5,1]
@@ -132,7 +115,6 @@ console.log(solution(948))
 // The solution of a problem that comes to mind :)
 
  */
-console.log(solution(948))
 
 
 
