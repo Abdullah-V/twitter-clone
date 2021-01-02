@@ -5,6 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    isLoading:true,
+
     loginUsernameOrEmailModel:"",
     loginPasswordModel:"",
     loginErrors:null,
@@ -49,41 +51,7 @@ export default new Vuex.Store({
 
     bookmarks:{},
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // TRIAL ====>
-
-    tweets:[
-      {
-        _id:1,
-        author:{
-          name:"Selçuk Bayraktar",
-          username:"@Selcuk",
-          profileImage:"https://pbs.twimg.com/profile_images/1155141513858433027/nJcIRDau_400x400.jpg"
-        },
-        createdDate:"11h",
-        text:"#BayraktarTB2 S/İHA \n\n 7/24 devam eden uçuş eğitimlerinden... \n\n #MilliTeknolojiHamlesi",
-        tweetImage:"https://pbs.twimg.com/media/EoLHVqaXYAcny8X?format=jpg&name=large",
-      likedUsers:[0,1,2,3,4,5,6,7,8],
-        replies:[0,1,2,3,4],
-      },
-    ]
+    tweets:[]
 
 
 

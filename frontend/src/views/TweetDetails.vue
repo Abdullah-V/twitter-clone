@@ -34,7 +34,7 @@ export default {
       console.log(oldValue.params)
       console.log(newValue.params)
       console.log("tweet watcher work")
-      axios.post('http://tw-cl-api.herokuapp.com/api/getthetweet',{
+      axios.post(`${process.env.VUE_APP_API_BASE_URL}/getthetweet`,{
         tweetId:oldValue.params.tweetId
       })
           .then(async (result) => {

@@ -1,6 +1,9 @@
 <template>
   <div id="app">
 
+    <Loader v-if="$store.state.isLoading"></Loader>
+
+
     <div class="image-zoomer" v-if="$store.state.zoomedImage">
       <span @click="closeZoomedImage()" class="image-close-icon">
         <i class="fas fa-times"></i>
@@ -17,6 +20,7 @@
     </div>
 
     <router-view></router-view>
+
 
     <div class="right-section" v-if="$store.state.userId">
       <div class="search-box">
@@ -47,6 +51,8 @@ import MiniUserProfile from "@/components/MiniUserProfile";
 import AddTweetPopup from "@/components/AddTweetPopup";
 import ActionButton from "@/components/ActionButton";
 import EditProfilePopup from "@/components/EditProfilePopup";
+import Loader from "@/components/Loader";
+// import axios from "axios";
 
 export default {
   mixins:[methodsMixin],
@@ -55,7 +61,8 @@ export default {
     MiniUserProfile,
     AddTweetPopup,
     ActionButton,
-    EditProfilePopup
+    EditProfilePopup,
+    Loader
 },
   methods:{
     searchInputFocusEvent(){
@@ -71,6 +78,7 @@ export default {
     }
   },
   created() {
+      console.log(process.env)
       console.log('app created')
       this.getTweetPage()
       this.getCurrentUser()
@@ -113,6 +121,7 @@ function solution(amount,currentMoneys = []){
 console.log(solution(948))
 
 // The solution of a problem that comes to mind :)
+
 
  */
 

@@ -2,7 +2,7 @@ import axios from 'axios'
 // import router from "@/router";
 
 const http = axios.create({
-    baseURL:"http://tw-cl-api.herokuapp.com/api",
+    baseURL: process.env.VUE_APP_API_BASE_URL,
 })
 
 
@@ -101,6 +101,7 @@ export var methodsMixin = {
         //         })
         // },
         updateUser(){
+            this.$store.state.isLoading = true
             this.$store.state.editProfilePopup = false
             http.post('/updateuser',{
                 newInfos:this.$store.state.newInfos,
@@ -109,6 +110,7 @@ export var methodsMixin = {
                 .then(async (result) => {
                     console.log(result)
                     await this.getCurrentUser()
+                    this.$store.state.isLoading = true
                     this.$router.go(0)
                     // this._vm.$forceUpdate();
                 })
@@ -117,6 +119,7 @@ export var methodsMixin = {
             if(!this.$store.state.newTweet.text && !this.$store.state.newTweet.image){
                 return
             }
+            this.$store.state.isLoading = true
           http.post('/newtweet',{
               username:localStorage.getItem('userId'),
               tweetContent:{
@@ -130,13 +133,15 @@ export var methodsMixin = {
                   this.$store.state.tweets.unshift(result.data)
                   this.$store.state.newTweet.text = ""
                   this.$store.state.newTweet.image = ""
+                  this.$store.state.isLoading = false
               })
         },
         addReply(){
             if(!this.$store.state.newTweet.text && !this.$store.state.newTweet.image){
                 return
             }
-          http.post('/addreply',{
+            this.$store.state.isLoading = true
+            http.post('/addreply',{
               username:localStorage.getItem('userId'),
               tweetContent:{
                   text:this.$store.state.newTweet.text,
@@ -151,20 +156,24 @@ export var methodsMixin = {
                   this.$router.go(0)
                   this.$store.state.newTweet.text = ""
                   this.$store.state.newTweet.image = ""
+                  this.$store.state.isLoading = false
               })
         },
         getTweetPage(){
+            this.$store.state.isLoading = true
             http.post('/gettweetpage',{
                 page:1,
                 tweetPerPage:3,
             })
-                .then(result => {
-                    this.$store.state.tweets = result.data
+                .then(async (result) => {
+                    this.$store.state.tweets = await result.data
                     console.log(result.data)
+                    this.$store.state.isLoading = false
                 })
         },
         addOrRemoveFromBookmarks(tweetId,add){
-          http.post('/addorremovefrombookmarks',{
+            this.$store.state.isLoading = true
+            http.post('/addorremovefrombookmarks',{
               username:localStorage.getItem('userId'),
               tweetId,
               add
@@ -179,6 +188,7 @@ export var methodsMixin = {
                       this.$router.go(0)
                       // this.$store.state.bookmarks.splice(this.$store.state.currentUser.bookmarks.indexOf(tweetId),1)
                   }
+                  this.$store.state.isLoading = false
               })
         },
         likeOrUnlike(tweetId,like){
@@ -198,16 +208,17 @@ export var methodsMixin = {
             }
         },
         removeTweet(tweetId){
-            console.log("remove calisdi")
+            this.$store.state.isLoading = true
             http.post('/removetweet',{
-                tweetId
+              tweetId
             })
                 .then(result => {
-                    console.log(result.data)
+                  console.log(result.data)
+                    this.$router.go(0)
                 })
-            this.$router.go(0)
         },
         getCurrentUser(){
+            this.$store.state.isLoading = true
             http.post('/getuserwithoutdetail',{
                         username:localStorage.getItem('userId')
                     })
@@ -221,6 +232,7 @@ export var methodsMixin = {
                             this.$store.state.newInfos.website = this.$store.state.currentUser.website || ""
                             this.$store.state.newInfos.bannerImage = this.$store.state.currentUser.bannerImage || "https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png"
                             this.$store.state.newInfos.profileImage = this.$store.state.currentUser.profileImage || "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+                            this.$store.state.isLoading = false
                         })
         },
         followOrUnfollow(follow){

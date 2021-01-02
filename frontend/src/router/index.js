@@ -69,13 +69,15 @@ const routes = [
         },
         beforeEnter:(to,from,next) => {
             isLogin(next)
+            store.state.isLoading = true
             console.log('bookmarks router')
-            axios.post('http://tw-cl-api.herokuapp.com/api/getbookmarks',{
+            axios.post(`${process.env.VUE_APP_API_BASE_URL}/getbookmarks`,{
                 username: localStorage.getItem('userId'),
             })
                 .then(async (result) => {
                     console.log(result.data)
                     store.state.bookmarks = await result.data
+                    store.state.isLoading = false
                     next()
                 })
         }
@@ -92,7 +94,8 @@ const routes = [
                     next()
                 }
                 else{
-                    axios.post('http://tw-cl-api.herokuapp.com/api/getuserwithdetails',{
+                    store.state.isLoading = true
+                    axios.post(`${process.env.VUE_APP_API_BASE_URL}/getuserwithdetails`,{
                         username:to.params.username,
                     })
                         .then(async (result) => {
@@ -101,6 +104,7 @@ const routes = [
                                 next("/")
                             }
                             store.state.userForProfile = await result.data
+                            store.state.isLoading = false
                             next()
                         })
                 }
@@ -122,13 +126,15 @@ const routes = [
                 //     next()
                 //     return
                 // }
-                axios.post('http://tw-cl-api.herokuapp.com/api/getthetweet',{
+                store.state.isLoading = true
+                axios.post(`${process.env.VUE_APP_API_BASE_URL}/getthetweet`,{
                     tweetId:to.params.tweetId
                 })
-                    .then(result => {
+                    .then(async (result) => {
                         console.log(result.data)
-                        store.state.tweetForDetail = result.data
+                        store.state.tweetForDetail = await result.data
                         store.state.tweetForDetail.isDetailed = true
+                        store.state.isLoading = false
                         next()
                     })
             }

@@ -167,6 +167,7 @@
 <script>
 import ActionButton from "@/components/ActionButton";
 import { methodsMixin } from "@/methodsMixin";
+// import axios from "axios";
 
 export default {
   mixins:[methodsMixin],
@@ -187,8 +188,19 @@ export default {
     var r = this.infoForTweet.text.replaceAll(this.$store.state.hashtagRegex,"<a class='link' href=" + "'#'>#$1</a>")
     r = r.replaceAll(this.$store.state.usernameRegex,"<a class='link' href='/$1'>@$1</a>")
     this.infoForTweet.text = r
+
   },
   methods:{
+    // remtwe(){
+    //   this.$store.state.isLoading = true
+    //   axios.post(,{
+    //     tweetId:this.infoForTweet._id
+    //   })
+    //       .then(result => {
+    //         console.log(result.data)
+    //         this.$store.state.isLoading = false
+    //       })
+    // },
     toggleTweetActionLVisible(){
       this.actionList3 = false
       this.retweetActionVisible = false
