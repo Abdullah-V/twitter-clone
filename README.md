@@ -1,5 +1,5 @@
 # MEVN stack twitter clone
-### MEVN stack twitter clone.
+## Here is live demo: https://twitter-cln.herokuapp.com
 ### START: 29 november 2020
 ### NOTE: november 6 - novermber 17 my computer is broken and my lessons are too many, my project is halfway.
 ### END: 24 december
