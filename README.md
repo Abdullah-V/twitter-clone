@@ -80,8 +80,9 @@
 ## Specifications:
 * Responsive.
 * Its offering many functions of twitter.
-<!-- * **Fully handwritten** css.
-* Make by only one person.
+* **Fully handwritten** css.
+<!-- * Make by only one person.
 * Make by a 16 years old when has only been dealing with **computers and software for 6 months**.
 * **Do not "copy and paste"** from anywhere.
-* **Made without any algorithm inspiration** from anywhere. -->
+* **Made without any algorithm inspiration** from anywhere.
+ -->
